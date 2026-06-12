@@ -1,0 +1,238 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// --- Modal ------------------------------------------------------------------
+
+.modal {
+  --vitrus-modal-zindex: #{$zindex-modal};
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--vitrus-modal-zindex);
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden auto;
+  outline: 0;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+
+  .modal.fade & {
+    transform: $modal-fade-transform;
+    transition: $modal-transition;
+  }
+
+  .modal.show & {
+    transform: $modal-show-transform;
+  }
+
+  .modal.modal-static & {
+    transform: $modal-scale-transform;
+  }
+}
+
+.modal-dialog-scrollable {
+  height: calc(100% - 1rem);
+
+  .modal-content {
+    max-height: 100%;
+    overflow: hidden;
+  }
+
+  .modal-body {
+    overflow-y: auto;
+  }
+}
+
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: var(--vitrus-modal-content-bg);
+  background-clip: padding-box;
+  border: $modal-content-border-width solid var(--vitrus-modal-content-border-color);
+  border-radius: var(--vitrus-modal-content-border-radius);
+  box-shadow: $modal-content-box-shadow;
+  outline: 0;
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+}
+
+.modal-backdrop {
+  --vitrus-backdrop-zindex: #{$zindex-modal-backdrop};
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--vitrus-backdrop-zindex);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--vitrus-modal-backdrop-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  &.fade {
+    opacity: 0;
+    transition: opacity 0.15s linear;
+  }
+
+  &.show {
+    opacity: $modal-backdrop-opacity;
+  }
+}
+
+.modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: $modal-header-padding-y $modal-header-padding-x;
+  border-bottom: $modal-header-border-width solid $modal-header-border-color;
+  border-top-left-radius: var(--vitrus-modal-content-border-radius);
+  border-top-right-radius: var(--vitrus-modal-content-border-radius);
+
+  .btn-close {
+    padding: calc($modal-header-padding-y * 0.5) calc($modal-header-padding-x * 0.5);
+    margin: calc($modal-header-padding-y * -0.5) calc($modal-header-padding-x * -0.5)
+      calc($modal-header-padding-y * -0.5) auto;
+  }
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: $modal-title-line-height;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: $modal-inner-padding;
+}
+
+.modal-footer {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: calc($modal-inner-padding - $modal-footer-gap * 0.5);
+  border-top: $modal-footer-border-width solid $modal-footer-border-color;
+  border-bottom-right-radius: var(--vitrus-modal-content-border-radius);
+  border-bottom-left-radius: var(--vitrus-modal-content-border-radius);
+
+  > * {
+    margin: calc($modal-footer-gap * 0.5);
+  }
+}
+
+.modal.fade {
+  transition: opacity 0.15s linear;
+
+  &:not(.show) {
+    opacity: 0;
+  }
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+@include media-breakpoint-up(sm) {
+  .modal-dialog {
+    max-width: $modal-md;
+    margin: 1.75rem auto;
+  }
+
+  .modal-dialog-scrollable {
+    height: calc(100% - 3.5rem);
+  }
+
+  .modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .modal-sm {
+    max-width: $modal-sm;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .modal-lg,
+  .modal-xl {
+    max-width: $modal-lg;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .modal-xl {
+    max-width: $modal-xl;
+  }
+}
+
+@mixin modal-fullscreen {
+  width: 100vw;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+
+  .modal-content {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .modal-header,
+  .modal-footer {
+    border-radius: 0;
+  }
+
+  .modal-body {
+    overflow-y: auto;
+  }
+}
+
+.modal-fullscreen {
+  @include modal-fullscreen;
+}
+
+@include media-breakpoint-down(md) {
+  .modal-fullscreen-md-down {
+    @include modal-fullscreen;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .modal-fullscreen-lg-down {
+    @include modal-fullscreen;
+  }
+}
+
+@include media-breakpoint-down(xl) {
+  .modal-fullscreen-xl-down {
+    @include modal-fullscreen;
+  }
+}
+
+@include media-breakpoint-down(xxl) {
+  .modal-fullscreen-xxl-down {
+    @include modal-fullscreen;
+  }
+}

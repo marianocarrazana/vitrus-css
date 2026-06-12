@@ -17,12 +17,11 @@ Bootstrap-style docs site that doubles as a live demo.
 - Component inventory: [`components.md`](./components.md)
 - Class/architecture notes: [`rules_classes.md`](./rules_classes.md)
 
-The current build is **Phase 3a**: everything through Phase 2 (foundation,
-utilities, Phase 1 components, navbar, nav, breadcrumb, pagination,
-spinners, progress, runtime theming via `data-vitrus-theme`), plus a
-JavaScript bundle with **Alert**, **Collapse**, and **Tab** plugins.
-Overlay components (dropdown, modal, toast, tooltip, popover, offcanvas,
-accordion) ship in **Phase 3b**.
+The current build is **Phase 3b**: everything through Phase 2 (foundation,
+utilities, Phase 1–2 components, runtime theming via `data-vitrus-theme`),
+plus a JavaScript bundle with **Alert**, **Collapse**, **Tab**, **Dropdown**,
+**Modal**, **Offcanvas**, **Toast**, **Tooltip**, **Popover**, and
+**Accordion** plugins. `@popperjs/core` is bundled for overlay positioning.
 
 ---
 
@@ -459,6 +458,16 @@ If you changed a component, also:
 | `js/alert.js`                    | Alert dismiss plugin (`data-vitrus-dismiss="alert"`).                                       |
 | `js/collapse.js`                 | Collapse toggle plugin (`data-vitrus-toggle="collapse"`).                                   |
 | `js/tab.js`                      | Tab switching plugin (`data-vitrus-toggle="tab"`).                                          |
+| `js/dropdown.js`                 | Dropdown menu plugin (`data-vitrus-toggle="dropdown"`).                                     |
+| `js/modal.js`                    | Modal dialog plugin (`data-vitrus-toggle="modal"`).                                         |
+| `js/offcanvas.js`                | Offcanvas panel plugin (`data-vitrus-toggle="offcanvas"`).                                  |
+| `js/toast.js`                    | Toast notification plugin.                                                                  |
+| `js/tooltip.js`                  | Tooltip plugin (`data-vitrus-toggle="tooltip"`).                                            |
+| `js/popover.js`                  | Popover plugin (`data-vitrus-toggle="popover"`).                                            |
+| `js/accordion.js`                | Accordion helper delegating to Collapse.                                                    |
+| `js/util/backdrop.js`            | Shared backdrop for modal/offcanvas.                                                        |
+| `js/util/focustrap.js`           | Focus trap for modal/offcanvas.                                                             |
+| `js/util/scrollbar.js`           | Body scroll lock while overlays are open.                                                   |
 | `vite.config.js`                 | Multi-page input discovery, `root: docs/`, Sass loadPaths.                                  |
 | `vite.js.config.js`              | Library build → `dist/vitrus.bundle.js`, `dist/vitrus.js`.                                  |
 | `scripts/create-dev-symlink.mjs` | Bridges `docs/css` → `../css` for dev/build.                                                |

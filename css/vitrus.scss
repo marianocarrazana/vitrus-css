@@ -32,6 +32,13 @@
 @use "components/pagination";
 @use "components/spinners";
 @use "components/progress";
+@use "components/dropdown";
+@use "components/modal";
+@use "components/offcanvas";
+@use "components/toast";
+@use "components/tooltip";
+@use "components/popover";
+@use "components/accordion";
 
 // Utilities last — high specificity + !important, per ITCSS
 @use "utilities";

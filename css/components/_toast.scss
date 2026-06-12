@@ -1,0 +1,101 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// --- Toast ------------------------------------------------------------------
+
+.toast-container {
+  --vitrus-toast-zindex: #{$zindex-toast};
+
+  position: absolute;
+  z-index: var(--vitrus-toast-zindex);
+  width: max-content;
+  max-width: 100%;
+  pointer-events: none;
+
+  > :not(:last-child) {
+    margin-bottom: $toast-spacing;
+  }
+}
+
+.toast-container.top-0 {
+  top: 0;
+}
+
+.toast-container.top-50 {
+  top: 50%;
+}
+
+.toast-container.bottom-0 {
+  bottom: 0;
+}
+
+.toast-container.start-0 {
+  left: 0;
+}
+
+.toast-container.end-0 {
+  right: 0;
+}
+
+.toast-container.p-3 {
+  padding: 1rem;
+}
+
+.toast {
+  --vitrus-toast-bg: #{$toast-background-color};
+
+  width: var(--vitrus-toast-max-width);
+  max-width: 100%;
+  font-size: $toast-font-size;
+  color: $toast-color;
+  pointer-events: auto;
+  background-color: var(--vitrus-toast-bg);
+  background-clip: padding-box;
+  border: $toast-border-width solid var(--vitrus-toast-border-color);
+  box-shadow: $toast-box-shadow;
+  border-radius: var(--vitrus-toast-border-radius);
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+
+  &.showing {
+    opacity: 0;
+  }
+
+  &:not(.show) {
+    display: none;
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+.toast.fade {
+  transition: opacity 0.15s linear;
+
+  &:not(.show) {
+    opacity: 0;
+  }
+}
+
+.toast-header {
+  display: flex;
+  align-items: center;
+  padding: $toast-padding-y $toast-padding-x;
+  color: $toast-header-color;
+  background-color: $toast-header-background-color;
+  background-clip: padding-box;
+  border-bottom: $toast-border-width solid $toast-header-border-color;
+  border-top-left-radius: calc(var(--vitrus-toast-border-radius) - $toast-border-width);
+  border-top-right-radius: calc(var(--vitrus-toast-border-radius) - $toast-border-width);
+
+  .btn-close {
+    margin-right: calc($toast-padding-x * -0.5);
+    margin-left: $toast-padding-x;
+  }
+}
+
+.toast-body {
+  padding: $toast-padding-x;
+  word-wrap: break-word;
+}

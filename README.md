@@ -8,7 +8,7 @@ A CSS component library that mirrors the **Bootstrap 5 class API** while deliver
 - CSS-custom-property theming with dark-mode ready tokens
 - Self-documenting: the `docs/` site explains usage, shows live examples, and serves as the primary QA surface
 
-> **Status:** Phase 3a — CSS foundation through Phase 2, plus a JavaScript bundle (`vitrus.bundle.min.js`) with Alert, Collapse, and Tab plugins. Overlay components (dropdown, modal, toast, tooltip, popover, offcanvas, accordion) ship in Phase 3b.
+> **Status:** Phase 3b shipped — full JS bundle with Alert, Collapse, Tab, Dropdown, Modal, Offcanvas, Toast, Tooltip, Popover, and Accordion plugins (Popper bundled).
 
 ---
 

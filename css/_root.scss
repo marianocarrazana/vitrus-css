@@ -120,6 +120,56 @@
   --vitrus-progress-border-radius: #{$progress-border-radius};
   --vitrus-progress-bar-bg: #{$primary};
 
+  // Z-index stack
+  --vitrus-zindex-dropdown: #{$zindex-dropdown};
+  --vitrus-zindex-offcanvas: #{$zindex-offcanvas};
+  --vitrus-zindex-modal-backdrop: #{$zindex-modal-backdrop};
+  --vitrus-zindex-modal: #{$zindex-modal};
+  --vitrus-zindex-popover: #{$zindex-popover};
+  --vitrus-zindex-tooltip: #{$zindex-tooltip};
+  --vitrus-zindex-toast: #{$zindex-toast};
+
+  // Dropdown
+  --vitrus-dropdown-min-width: #{$dropdown-min-width};
+  --vitrus-dropdown-bg: #{$dropdown-bg};
+  --vitrus-dropdown-border-color: #{$dropdown-border-color};
+  --vitrus-dropdown-border-radius: #{$dropdown-border-radius};
+  --vitrus-dropdown-box-shadow: #{$dropdown-box-shadow};
+  --vitrus-dropdown-link-color: #{$dropdown-link-color};
+  --vitrus-dropdown-link-hover-color: #{$dropdown-link-hover-color};
+  --vitrus-dropdown-link-hover-bg: #{$dropdown-link-hover-bg};
+  --vitrus-dropdown-link-active-bg: #{$dropdown-link-active-bg};
+
+  // Modal
+  --vitrus-modal-content-bg: #{$modal-content-bg};
+  --vitrus-modal-content-border-color: #{$modal-content-border-color};
+  --vitrus-modal-content-border-radius: #{$modal-content-border-radius};
+  --vitrus-modal-backdrop-bg: #{$modal-backdrop-bg};
+
+  // Offcanvas
+  --vitrus-offcanvas-bg: #{$offcanvas-bg-color};
+  --vitrus-offcanvas-horizontal-width: #{$offcanvas-horizontal-width};
+  --vitrus-offcanvas-backdrop-bg: #{$offcanvas-backdrop-bg};
+
+  // Toast
+  --vitrus-toast-max-width: #{$toast-max-width};
+  --vitrus-toast-bg: #{$toast-background-color};
+  --vitrus-toast-border-color: #{$toast-border-color};
+  --vitrus-toast-border-radius: #{$toast-border-radius};
+
+  // Tooltip / popover
+  --vitrus-tooltip-bg: #{$tooltip-bg};
+  --vitrus-tooltip-max-width: #{$tooltip-max-width};
+  --vitrus-popover-bg: #{$popover-bg};
+  --vitrus-popover-max-width: #{$popover-max-width};
+  --vitrus-popover-border-color: #{$popover-border-color};
+
+  // Accordion
+  --vitrus-accordion-bg: #{$accordion-bg};
+  --vitrus-accordion-border-color: #{$accordion-border-color};
+  --vitrus-accordion-button-bg: #{$accordion-button-bg};
+  --vitrus-accordion-button-active-bg: #{$accordion-button-active-bg};
+
   // Heading sizes
   @each $key, $value in $headings-font-sizes {
     --vitrus-#{$key}-font-size: #{$value};

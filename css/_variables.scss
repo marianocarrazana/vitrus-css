@@ -217,3 +217,152 @@ $progress-bg: var(--vitrus-glass-bg-soft);
 $progress-border-radius: $border-radius-pill;
 $progress-bar-bg: var(--vitrus-primary);
 $progress-bar-color: #fff;
+
+// --- Z-index stack (Bootstrap 5 parity) -------------------------------------
+$zindex-dropdown: 1000;
+$zindex-offcanvas: 1045;
+$zindex-modal-backdrop: 1050;
+$zindex-modal: 1055;
+$zindex-popover: 1070;
+$zindex-tooltip: 1080;
+$zindex-toast: 1090;
+
+// --- Dropdown ---------------------------------------------------------------
+$dropdown-min-width: 10rem;
+$dropdown-padding-x: 0;
+$dropdown-padding-y: 0.5rem;
+$dropdown-spacer: 0.125rem;
+$dropdown-font-size: $font-size-base;
+$dropdown-color: $body-color;
+$dropdown-bg: $glass-bg-strong;
+$dropdown-border-color: $glass-border;
+$dropdown-border-radius: $glass-radius-sm;
+$dropdown-border-width: 1px;
+$dropdown-divider-bg: $border-color;
+$dropdown-divider-margin-y: 0.5rem;
+$dropdown-box-shadow: $glass-shadow-lg;
+$dropdown-link-color: $body-color;
+$dropdown-link-hover-color: $primary;
+$dropdown-link-hover-bg: rgba($primary, 0.08);
+$dropdown-link-active-color: #fff;
+$dropdown-link-active-bg: $primary;
+$dropdown-link-disabled-color: $text-muted;
+$dropdown-item-padding-y: 0.25rem;
+$dropdown-item-padding-x: 1rem;
+$dropdown-header-color: $text-muted;
+$dropdown-header-padding-x: 1rem;
+$dropdown-header-padding-y: 0.5rem;
+
+// --- Modal ------------------------------------------------------------------
+$modal-inner-padding: 1rem;
+$modal-header-padding-y: 1rem;
+$modal-header-padding-x: 1rem;
+$modal-header-border-color: $border-color;
+$modal-footer-border-color: $border-color;
+$modal-footer-gap: 0.5rem;
+$modal-title-line-height: $line-height-base;
+$modal-content-color: $body-color;
+$modal-content-bg: $glass-bg-strong;
+$modal-content-border-color: $glass-border;
+$modal-content-border-width: 1px;
+$modal-content-border-radius: $glass-radius;
+$modal-content-box-shadow: $glass-shadow-lg;
+$modal-backdrop-bg: rgba($dark, 0.55);
+$modal-backdrop-opacity: 1;
+$modal-header-border-width: 1px;
+$modal-footer-border-width: 1px;
+$modal-sm: 300px;
+$modal-md: 500px;
+$modal-lg: 800px;
+$modal-xl: 1140px;
+$modal-fade-transform: translate(0, -50px);
+$modal-show-transform: none;
+$modal-transition: transform 0.3s ease-out;
+$modal-scale-transform: scale(1.02);
+
+// --- Offcanvas --------------------------------------------------------------
+$offcanvas-padding-y: 1rem;
+$offcanvas-padding-x: 1rem;
+$offcanvas-horizontal-width: 400px;
+$offcanvas-vertical-height: 30vh;
+$offcanvas-transition-duration: 0.3s;
+$offcanvas-border-color: $glass-border;
+$offcanvas-border-width: 1px;
+$offcanvas-bg-color: $glass-bg-strong;
+$offcanvas-color: $body-color;
+$offcanvas-box-shadow: $glass-shadow-lg;
+$offcanvas-backdrop-bg: rgba($dark, 0.5);
+$offcanvas-backdrop-opacity: 1;
+
+// --- Toast ------------------------------------------------------------------
+$toast-max-width: 350px;
+$toast-padding-x: 0.75rem;
+$toast-padding-y: 0.5rem;
+$toast-font-size: $font-size-sm;
+$toast-color: $body-color;
+$toast-background-color: $glass-bg-strong;
+$toast-border-width: 1px;
+$toast-border-color: $glass-border;
+$toast-border-radius: $glass-radius-sm;
+$toast-box-shadow: $glass-shadow-lg;
+$toast-header-color: $text-muted;
+$toast-header-background-color: rgba(255, 255, 255, 0.4);
+$toast-header-border-color: $border-color;
+$toast-spacing: 0.75rem;
+
+// --- Tooltip ----------------------------------------------------------------
+$tooltip-font-size: $font-size-sm;
+$tooltip-max-width: 200px;
+$tooltip-color: #fff;
+$tooltip-bg: $dark;
+$tooltip-border-radius: $border-radius-sm;
+$tooltip-opacity: 0.95;
+$tooltip-padding-y: 0.25rem;
+$tooltip-padding-x: 0.5rem;
+$tooltip-arrow-width: 0.8rem;
+$tooltip-arrow-height: 0.4rem;
+
+// --- Popover ----------------------------------------------------------------
+$popover-font-size: $font-size-sm;
+$popover-bg: $glass-bg-strong;
+$popover-max-width: 276px;
+$popover-border-width: 1px;
+$popover-border-color: $glass-border;
+$popover-border-radius: $glass-radius-sm;
+$popover-box-shadow: $glass-shadow-lg;
+$popover-header-padding-y: 0.5rem;
+$popover-header-padding-x: 1rem;
+$popover-header-font-size: $font-size-base;
+$popover-header-color: $body-color;
+$popover-header-bg: rgba(255, 255, 255, 0.4);
+$popover-body-padding-y: 1rem;
+$popover-body-padding-x: 1rem;
+$popover-body-color: $body-color;
+$popover-arrow-width: 1rem;
+$popover-arrow-height: 0.5rem;
+
+// --- Accordion --------------------------------------------------------------
+$accordion-padding-y: 1rem;
+$accordion-padding-x: 1.25rem;
+$accordion-color: $body-color;
+$accordion-bg: $glass-bg-soft;
+$accordion-border-width: 1px;
+$accordion-border-color: $border-color;
+$accordion-border-radius: $glass-radius-sm;
+$accordion-inner-border-radius: $border-radius-sm;
+$accordion-body-padding-y: $accordion-padding-y;
+$accordion-body-padding-x: $accordion-padding-x;
+$accordion-button-padding-y: $accordion-padding-y;
+$accordion-button-padding-x: $accordion-padding-x;
+$accordion-button-color: $body-color;
+$accordion-button-bg: $glass-bg;
+$accordion-button-active-bg: $glass-bg-strong;
+$accordion-button-active-color: $body-color;
+$accordion-button-focus-border-color: rgba($primary, 0.5);
+$accordion-button-focus-box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+$accordion-icon-width: 1.25rem;
+$accordion-icon-color: $body-color;
+$accordion-icon-active-color: $primary;
+$accordion-icon-transition: transform 0.2s ease-in-out;
+$accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;

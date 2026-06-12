@@ -1,0 +1,102 @@
+@use '../variables' as *;
+
+// --- Tooltip ----------------------------------------------------------------
+
+.tooltip {
+  --vitrus-tooltip-zindex: #{$zindex-tooltip};
+
+  position: absolute;
+  z-index: var(--vitrus-tooltip-zindex);
+  display: block;
+  margin: 0;
+  font-family: var(--vitrus-font-sans);
+  font-style: normal;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  white-space: normal;
+  word-spacing: normal;
+  line-break: auto;
+  font-size: $tooltip-font-size;
+  word-wrap: break-word;
+  opacity: 0;
+
+  &.show {
+    opacity: $tooltip-opacity;
+  }
+}
+
+.tooltip.fade {
+  transition: opacity 0.15s linear;
+}
+
+.tooltip .tooltip-arrow {
+  display: block;
+  width: $tooltip-arrow-width;
+  height: $tooltip-arrow-height;
+
+  &::before {
+    position: absolute;
+    content: '';
+    border-color: transparent;
+    border-style: solid;
+  }
+}
+
+.bs-tooltip-top .tooltip-arrow {
+  bottom: calc(-1 * $tooltip-arrow-height);
+
+  &::before {
+    top: -1px;
+    border-width: $tooltip-arrow-height calc($tooltip-arrow-width * 0.5) 0;
+    border-top-color: var(--vitrus-tooltip-bg);
+  }
+}
+
+.bs-tooltip-end .tooltip-arrow {
+  left: calc(-1 * $tooltip-arrow-height);
+  width: $tooltip-arrow-height;
+  height: $tooltip-arrow-width;
+
+  &::before {
+    right: -1px;
+    border-width: calc($tooltip-arrow-width * 0.5) $tooltip-arrow-height calc($tooltip-arrow-width * 0.5) 0;
+    border-right-color: var(--vitrus-tooltip-bg);
+  }
+}
+
+.bs-tooltip-bottom .tooltip-arrow {
+  top: calc(-1 * $tooltip-arrow-height);
+
+  &::before {
+    bottom: -1px;
+    border-width: 0 calc($tooltip-arrow-width * 0.5) $tooltip-arrow-height;
+    border-bottom-color: var(--vitrus-tooltip-bg);
+  }
+}
+
+.bs-tooltip-start .tooltip-arrow {
+  right: calc(-1 * $tooltip-arrow-height);
+  width: $tooltip-arrow-height;
+  height: $tooltip-arrow-width;
+
+  &::before {
+    left: -1px;
+    border-width: calc($tooltip-arrow-width * 0.5) 0 calc($tooltip-arrow-width * 0.5) $tooltip-arrow-height;
+    border-left-color: var(--vitrus-tooltip-bg);
+  }
+}
+
+.tooltip-inner {
+  max-width: var(--vitrus-tooltip-max-width);
+  padding: $tooltip-padding-y $tooltip-padding-x;
+  color: $tooltip-color;
+  text-align: center;
+  background-color: var(--vitrus-tooltip-bg);
+  border-radius: $tooltip-border-radius;
+}

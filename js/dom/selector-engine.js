@@ -3,8 +3,12 @@ const SelectorEngine = {
     return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
   },
 
-  findOne(selector, element = document.documentElement) {
-    return Element.prototype.querySelector.call(element, selector);
+  findOne(selector, element = document.documentElement, reverse = false) {
+    const elements = SelectorEngine.find(selector, element);
+    if (!elements.length) {
+      return null;
+    }
+    return reverse ? elements[elements.length - 1] : elements[0];
   },
 
   children(element, selector) {

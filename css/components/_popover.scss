@@ -1,0 +1,72 @@
+@use '../variables' as *;
+
+// --- Popover ----------------------------------------------------------------
+
+.popover {
+  --vitrus-popover-zindex: #{$zindex-popover};
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--vitrus-popover-zindex);
+  display: block;
+  max-width: var(--vitrus-popover-max-width);
+  font-family: var(--vitrus-font-sans);
+  font-style: normal;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  white-space: normal;
+  word-spacing: normal;
+  line-break: auto;
+  font-size: $popover-font-size;
+  word-wrap: break-word;
+  background-color: var(--vitrus-popover-bg);
+  background-clip: padding-box;
+  border: $popover-border-width solid var(--vitrus-popover-border-color);
+  border-radius: $popover-border-radius;
+  box-shadow: $popover-box-shadow;
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+
+  .popover-arrow {
+    display: block;
+    width: $popover-arrow-width;
+    height: $popover-arrow-height;
+
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      border-color: transparent;
+      border-style: solid;
+      border-width: 0;
+    }
+  }
+}
+
+.popover-header {
+  padding: $popover-header-padding-y $popover-header-padding-x;
+  margin-bottom: 0;
+  font-size: $popover-header-font-size;
+  color: $popover-header-color;
+  background-color: $popover-header-bg;
+  border-bottom: $popover-border-width solid var(--vitrus-popover-border-color);
+  border-top-left-radius: $popover-border-radius;
+  border-top-right-radius: $popover-border-radius;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.popover-body {
+  padding: $popover-body-padding-y $popover-body-padding-x;
+  color: $popover-body-color;
+}

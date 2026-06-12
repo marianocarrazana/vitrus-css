@@ -1,7 +1,7 @@
 {
   "name": "vitrus-css",
   "version": "0.1.0",
-  "description": "VitrusCSS — a Bootstrap 5-compatible component library with a glassmorphism design language. Sass-authored, CSS-variable driven, dark-mode ready.",
+  "description": "VitrusCSS — a Bootstrap 5-compatible component library with a glassmorphism design language. Sass-authored, CSS-variable driven, dark-mode ready. Bundles @popperjs/core for overlay positioning.",
   "private": true,
   "type": "module",
   "files": [
@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.10.0",
+    "@popperjs/core": "^2.11.8",
     "eslint": "^9.10.0",
     "prettier": "^3.3.3",
     "sass": "^1.78.0",

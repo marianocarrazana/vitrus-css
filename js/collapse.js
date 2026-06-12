@@ -21,7 +21,12 @@ class Collapse extends BaseComponent {
   constructor(element, config) {
     super(element);
     this._isTransitioning = false;
-    this._config = { ...Collapse.Default, ...config };
+    const parent = this._element.getAttribute('data-vitrus-parent');
+    this._config = {
+      ...Collapse.Default,
+      ...(parent ? { parent } : {}),
+      ...config,
+    };
     this._triggerArray = [];
     const toggleList = SelectorEngine.find(
       `[data-vitrus-toggle="collapse"][data-vitrus-target="#${element.id}"],[data-vitrus-toggle="collapse"][data-vitrus-target=".${element.classList[0]}"]`,

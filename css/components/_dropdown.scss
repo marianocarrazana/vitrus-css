@@ -1,0 +1,198 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// --- Dropdown ---------------------------------------------------------------
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  white-space: nowrap;
+
+  &::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: '';
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+  }
+
+  &:empty::after {
+    margin-left: 0;
+  }
+}
+
+.dropdown-menu {
+  --vitrus-dropdown-zindex: #{$zindex-dropdown};
+
+  position: absolute;
+  z-index: var(--vitrus-dropdown-zindex);
+  display: none;
+  min-width: var(--vitrus-dropdown-min-width);
+  padding: $dropdown-padding-y $dropdown-padding-x;
+  margin: 0;
+  font-size: $dropdown-font-size;
+  color: $dropdown-color;
+  text-align: left;
+  list-style: none;
+  background-color: var(--vitrus-dropdown-bg);
+  background-clip: padding-box;
+  border: $dropdown-border-width solid var(--vitrus-dropdown-border-color);
+  border-radius: var(--vitrus-dropdown-border-radius);
+  box-shadow: var(--vitrus-dropdown-box-shadow);
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+
+  &[data-vitrus-popper] {
+    top: 100%;
+    left: 0;
+    margin-top: $dropdown-spacer;
+    display: block;
+  }
+
+}
+
+.dropdown-menu-start {
+  --vitrus-position: start;
+
+  &[data-vitrus-popper] {
+    right: auto;
+    left: 0;
+  }
+}
+
+.dropdown-menu-end {
+  --vitrus-position: end;
+
+  &[data-vitrus-popper] {
+    right: 0;
+    left: auto;
+  }
+}
+
+.dropup .dropdown-menu[data-vitrus-popper] {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: $dropdown-spacer;
+}
+
+.dropend .dropdown-menu[data-vitrus-popper] {
+  top: 0;
+  right: auto;
+  left: 100%;
+  margin-top: 0;
+  margin-left: $dropdown-spacer;
+}
+
+.dropstart .dropdown-menu[data-vitrus-popper] {
+  top: 0;
+  right: 100%;
+  left: auto;
+  margin-top: 0;
+  margin-right: $dropdown-spacer;
+}
+
+.dropdown-divider {
+  height: 0;
+  margin: $dropdown-divider-margin-y 0;
+  overflow: hidden;
+  border-top: 1px solid $dropdown-divider-bg;
+  opacity: 1;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  clear: both;
+  font-weight: $font-weight-normal;
+  color: var(--vitrus-dropdown-link-color);
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  border-radius: $border-radius-sm;
+
+  &:hover,
+  &:focus {
+    color: var(--vitrus-dropdown-link-hover-color);
+    background-color: var(--vitrus-dropdown-link-hover-bg);
+  }
+
+  &.active,
+  &:active {
+    color: $dropdown-link-active-color;
+    background-color: var(--vitrus-dropdown-link-active-bg);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $dropdown-link-disabled-color;
+    pointer-events: none;
+    background-color: transparent;
+  }
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-header {
+  display: block;
+  padding: $dropdown-header-padding-y $dropdown-header-padding-x;
+  margin-bottom: 0;
+  font-size: $font-size-sm;
+  color: $dropdown-header-color;
+  white-space: nowrap;
+}
+
+.dropdown-item-text {
+  display: block;
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  color: $dropdown-link-color;
+}
+
+.dropdown-menu-dark {
+  color: #dee2e6;
+  background-color: rgba($dark, 0.92);
+  border-color: rgba(255, 255, 255, 0.15);
+
+  .dropdown-item {
+    color: #dee2e6;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    &.active,
+    &:active {
+      color: #fff;
+      background-color: $primary;
+    }
+
+    &.disabled,
+    &:disabled {
+      color: #adb5bd;
+    }
+  }
+
+  .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .dropdown-item-text {
+    color: #dee2e6;
+  }
+
+  .dropdown-header {
+    color: #adb5bd;
+  }
+}

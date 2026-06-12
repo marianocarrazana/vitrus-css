@@ -1,0 +1,115 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// --- Offcanvas --------------------------------------------------------------
+
+.offcanvas {
+  --vitrus-offcanvas-zindex: #{$zindex-offcanvas};
+
+  position: fixed;
+  bottom: 0;
+  z-index: var(--vitrus-offcanvas-zindex);
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  color: $offcanvas-color;
+  visibility: hidden;
+  background-color: var(--vitrus-offcanvas-bg);
+  background-clip: padding-box;
+  outline: 0;
+  box-shadow: $offcanvas-box-shadow;
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  transition: transform $offcanvas-transition-duration ease-in-out;
+
+  &.offcanvas-start {
+    top: 0;
+    left: 0;
+    width: var(--vitrus-offcanvas-horizontal-width);
+    border-right: $offcanvas-border-width solid $offcanvas-border-color;
+    transform: translateX(-100%);
+  }
+
+  &.offcanvas-end {
+    top: 0;
+    right: 0;
+    width: var(--vitrus-offcanvas-horizontal-width);
+    border-left: $offcanvas-border-width solid $offcanvas-border-color;
+    transform: translateX(100%);
+  }
+
+  &.offcanvas-top {
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $offcanvas-vertical-height;
+    max-height: 100%;
+    border-bottom: $offcanvas-border-width solid $offcanvas-border-color;
+    transform: translateY(-100%);
+  }
+
+  &.offcanvas-bottom {
+    right: 0;
+    left: 0;
+    height: $offcanvas-vertical-height;
+    max-height: 100%;
+    border-top: $offcanvas-border-width solid $offcanvas-border-color;
+    transform: translateY(100%);
+  }
+
+  &.show {
+    transform: none;
+  }
+}
+
+.offcanvas-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $zindex-modal-backdrop;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--vitrus-offcanvas-backdrop-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  &.fade {
+    opacity: 0;
+    transition: opacity 0.15s linear;
+  }
+
+  &.show {
+    opacity: $offcanvas-backdrop-opacity;
+  }
+}
+
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $offcanvas-padding-y $offcanvas-padding-x;
+
+  .btn-close {
+    padding: calc($offcanvas-padding-y * 0.5) calc($offcanvas-padding-x * 0.5);
+    margin-top: calc($offcanvas-padding-y * -0.5);
+    margin-right: calc($offcanvas-padding-x * -0.5);
+    margin-bottom: calc($offcanvas-padding-y * -0.5);
+  }
+}
+
+.offcanvas-title {
+  margin-bottom: 0;
+  line-height: $line-height-base;
+}
+
+.offcanvas-body {
+  flex-grow: 1;
+  padding: $offcanvas-padding-y $offcanvas-padding-x;
+  overflow-y: auto;
+}
+
+@include media-breakpoint-up(lg) {
+  .offcanvas-lg {
+    --vitrus-offcanvas-horizontal-width: #{$offcanvas-horizontal-width};
+  }
+}
