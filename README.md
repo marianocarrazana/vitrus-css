@@ -89,4 +89,4 @@ scripts/              # Build & dev helpers
 
 ## License
 
-MIT
+[MIT](LICENSE)

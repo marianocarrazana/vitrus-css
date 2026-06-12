@@ -8,7 +8,8 @@
     "dist",
     "css",
     "js",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "main": "dist/vitrus.min.css",
   "style": "dist/vitrus.min.css",
