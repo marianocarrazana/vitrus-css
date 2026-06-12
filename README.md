@@ -8,7 +8,7 @@ A CSS component library that mirrors the **Bootstrap 5 class API** while deliver
 - CSS-custom-property theming with dark-mode ready tokens
 - Self-documenting: the `docs/` site explains usage, shows live examples, and serves as the primary QA surface
 
-> **Status:** Phase 2 — foundation, utilities, Phase 1 components (buttons, badges, alerts, cards, forms), and navigation/feedback (navbar, nav, breadcrumb, pagination, spinners, progress) plus runtime theming with dark glass via the `midnight` preset. JS-dependent components (dropdown, modal, toast, tooltip, popover, offcanvas, accordion) ship in Phase 3.
+> **Status:** Phase 3a — CSS foundation through Phase 2, plus a JavaScript bundle (`vitrus.bundle.min.js`) with Alert, Collapse, and Tab plugins. Overlay components (dropdown, modal, toast, tooltip, popover, offcanvas, accordion) ship in Phase 3b.
 
 ---
 
@@ -16,7 +16,10 @@ A CSS component library that mirrors the **Bootstrap 5 class API** while deliver
 
 ```html
 <link rel="stylesheet" href="dist/vitrus.min.css" />
+<script src="dist/vitrus.bundle.min.js" defer></script>
 ```
+
+Interactive components use `data-vitrus-toggle`, `data-vitrus-target`, and `data-vitrus-dismiss` (Vitrus equivalents of Bootstrap's `data-bs-*` attributes). Class names and markup match Bootstrap 5.
 
 ## Sass integration
 
@@ -45,7 +48,8 @@ required right after `npm install`.
 
 ```bash
 npm run build:css   # emits dist/vitrus.css, dist/vitrus.min.css
-npm run build       # builds the CSS bundle and the static docs site (demo-dist/)
+npm run build:js    # emits dist/vitrus.bundle.js, dist/vitrus.bundle.min.js, dist/vitrus.js
+npm run build       # builds CSS, JS, and the static docs site (demo-dist/)
 ```
 
 ## Project structure
@@ -74,7 +78,8 @@ css/                  # Sass source (ITCSS order)
   _themes.scss
 docs/                 # Documentation + live demo (run with `npm run dev`)
   css → ../css        # dev-only symlink, created by `npm run setup`
-dist/                 # Compiled CSS (build artifact)
+js/                   # Component plugins (Alert, Collapse, Tab, …)
+dist/                 # Compiled CSS + JS bundles (build artifact)
 demo-dist/            # Built static demo site (build artifact)
 scripts/              # Build & dev helpers
 ```

@@ -103,3 +103,11 @@
 .tab-content > .active {
   display: block;
 }
+
+.tab-pane.fade {
+  transition: opacity 0.15s linear;
+
+  &:not(.show) {
+    opacity: 0;
+  }
+}

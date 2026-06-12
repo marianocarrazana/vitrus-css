@@ -91,7 +91,7 @@
             <div class="alert alert-danger" role="alert"><strong>Something went wrong.</strong> Please try again.</div>
             <div class="alert alert-warning" role="alert"><strong>Heads up!</strong> This action cannot be undone.</div>
             <div class="alert alert-info" role="alert">
-              <strong>Note:</strong> Phase 3 brings dismiss behavior via JS.
+              <strong>Note:</strong> Include <code>vitrus.bundle.min.js</code> for dismiss behavior.
             </div>
           </div>
 
@@ -123,20 +123,28 @@
         </section>
 
         <section class="docs-section">
-          <h2 class="docs-section-title">Dismissible markup</h2>
-          <p class="docs-section-sub">The dismiss button is in place; wiring it up ships in Phase 3.</p>
+          <h2 class="docs-section-title">Dismissible</h2>
+          <p class="docs-section-sub">
+            Add <code>fade show</code> for a transition. The close button uses
+            <code>data-vitrus-dismiss="alert"</code> (auto-wired by the bundle).
+          </p>
 
           <div class="docs-example">
-            <div class="alert alert-warning alert-dismissible" role="alert">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
               <strong>Warning:</strong> Better check yourself before you wreck yourself.
-              <button type="button" class="btn-close" aria-label="Close"></button>
+              <button
+                type="button"
+                class="btn-close"
+                data-vitrus-dismiss="alert"
+                aria-label="Close"
+              ></button>
             </div>
           </div>
 
           <div class="docs-code">
-            <pre><code>&lt;div class="alert alert-warning alert-dismissible" role="alert"&gt;
+            <pre><code>&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
   Warning text.
-  &lt;button type="button" class="btn-close" aria-label="Close"&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn-close" data-vitrus-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </section>
@@ -144,6 +152,7 @@
         <footer class="docs-footer">VitrusCSS · Alerts</footer>
       </main>
     </div>
+    <script src="../assets/js/vitrus.bundle.min.js" defer></script>
     <script type="module" src="../assets/js/theme.js"></script>
   </body>
 </html>

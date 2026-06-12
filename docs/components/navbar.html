@@ -108,15 +108,15 @@
         <section class="docs-section">
           <h2 class="docs-section-title">Collapsible (mobile)</h2>
           <p class="docs-section-sub">
-            Resize below 992px to test the toggler. Vitrus ships collapse CSS only; this demo uses a small docs script
-            to toggle <code>.show</code>.
+            Resize below 992px to test the toggler. Include <code>vitrus.bundle.min.js</code> and use
+            <code>data-vitrus-toggle="collapse"</code> on the toggler.
           </p>
 
           <div class="docs-example">
             <nav class="navbar navbar-expand-lg">
               <a class="navbar-brand" href="#">Vitrus</a>
               <button
-                class="navbar-toggler"
+                class="navbar-toggler collapsed"
                 type="button"
                 data-vitrus-toggle="collapse"
                 data-vitrus-target="#navbarDemo"
@@ -159,7 +159,7 @@
         <footer class="docs-footer">VitrusCSS · Navbar</footer>
       </main>
     </div>
+    <script src="../assets/js/vitrus.bundle.min.js" defer></script>
     <script type="module" src="../assets/js/theme.js"></script>
-    <script type="module" src="../assets/js/navbar.js"></script>
   </body>
 </html>

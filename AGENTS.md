@@ -17,11 +17,12 @@ Bootstrap-style docs site that doubles as a live demo.
 - Component inventory: [`components.md`](./components.md)
 - Class/architecture notes: [`rules_classes.md`](./rules_classes.md)
 
-The current build is **Phase 2**: foundation, utilities, Phase 1
-components (buttons, badges, alerts, cards, forms), plus navbar, nav,
-breadcrumb, pagination, spinners, progress, and runtime theming (dark
-mode via `data-vitrus-theme`). JavaScript-driven components (dropdown,
-modal, toast, tooltip, popover, offcanvas, accordion) ship in Phase 3.
+The current build is **Phase 3a**: everything through Phase 2 (foundation,
+utilities, Phase 1 components, navbar, nav, breadcrumb, pagination,
+spinners, progress, runtime theming via `data-vitrus-theme`), plus a
+JavaScript bundle with **Alert**, **Collapse**, and **Tab** plugins.
+Overlay components (dropdown, modal, toast, tooltip, popover, offcanvas,
+accordion) ship in **Phase 3b**.
 
 ---
 
@@ -35,9 +36,10 @@ modal, toast, tooltip, popover, offcanvas, accordion) ship in Phase 3.
 | Lint (JS)    | ESLint 9 flat config + `@eslint/js`                 |
 | Format       | Prettier 3                                          |
 | Sass API     | `modern-compiler` (Vite) — no `@import`, use `@use` |
+| JS bundle    | Vite lib mode (`vite.js.config.js`) → IIFE + ESM    |
 
-There is **no JS framework**. The docs are plain HTML. The library CSS
-ships in `dist/`, the demo in `demo-dist/`.
+There is **no JS framework**. The docs are plain HTML. The library ships
+CSS and JS in `dist/`; the demo in `demo-dist/`.
 
 ---
 
@@ -66,6 +68,14 @@ vitrus-css/
 │       ├── _pagination.scss
 │       ├── _spinners.scss
 │       └── _progress.scss
+├── js/                        # Component plugins (Phase 3)
+│   ├── vitrus.js              # bundle entry — exports window.vitrus
+│   ├── base-component.js
+│   ├── alert.js
+│   ├── collapse.js
+│   ├── tab.js
+│   ├── dom/                   # data map, events, selectors
+│   └── util/
 ├── docs/                      # Documentation + live demo
 │   ├── index.html             # landing page
 │   ├── components/*.html      # one page per component
@@ -75,7 +85,9 @@ vitrus-css/
 │   └── create-dev-symlink.mjs # creates/removes docs/css symlink
 ├── dist/                      # build artifact (gitignored)
 ├── demo-dist/                 # build artifact (gitignored)
-├── vite.config.js
+├── vite.config.js             # docs site build
+├── vite.js.config.js          # JS bundle (expanded + ESM)
+├── vite.js.config.min.js      # JS bundle (minified IIFE)
 ├── eslint.config.js
 ├── .stylelintrc.json
 ├── .prettierrc.json
@@ -97,20 +109,56 @@ vitrus-css/
 | `npm run setup`        | Creates the `docs/css → ../css` symlink (idempotent).            |
 | `npm run dev`          | Starts Vite at `http://localhost:5173/`. HMR on for SCSS + HTML. |
 | `npm run build:css`    | Emits `dist/vitrus.css` (+ sourcemap) and `dist/vitrus.min.css`. |
+| `npm run build:js`     | Emits `dist/vitrus.bundle.js`, `dist/vitrus.bundle.min.js`, `dist/vitrus.js`. |
 | `npm run build:docs`   | Builds the static demo into `demo-dist/`.                        |
-| `npm run build`        | Runs both `build:css` and `build:docs`.                          |
+| `npm run build`        | Runs `build:css`, `build:js`, and `build:docs`.                  |
 | `npm run lint`         | Runs ESLint + Stylelint.                                         |
 | `npm run lint:fix`     | Auto-fixes what can be fixed.                                    |
 | `npm run format`       | Prettier-write across the repo.                                  |
 | `npm run format:check` | Prettier check (CI mode).                                        |
 | `npm run clean:dev`    | Removes the `docs/css` symlink.                                  |
 
-`predev` and `prebuild:docs` call `setup` automatically; `postbuild:docs`
-calls `clean:dev`. You should rarely need to touch the symlink by hand.
+`predev` runs `setup`, `build:js`, and copies the min bundle into
+`docs/assets/js/` for the dev server. `prebuild:docs` calls `setup`;
+`postbuild:docs` copies the bundle to `demo-dist/` then `clean:dev`.
 
 ---
 
-## 5. Sass architecture (ITCSS)
+## 5. JavaScript architecture (Phase 3)
+
+### Bundle outputs
+
+| File | Purpose |
+| ---- | ------- |
+| `dist/vitrus.bundle.js` | IIFE — drop-in `<script>` tag, exposes `window.vitrus` |
+| `dist/vitrus.bundle.min.js` | Minified IIFE for production |
+| `dist/vitrus.js` | ESM — `import { Alert } from 'vitrus-css'` |
+
+### Plugin rules
+
+- **MUST** extend `BaseComponent` (`js/base-component.js`) for every plugin.
+- **MUST** use `data-vitrus-toggle`, `data-vitrus-target`, `data-vitrus-dismiss`
+  (not `data-bs-*`). Document the mapping in docs when adding new plugins.
+- **MUST** fire namespaced events: `vitrus:show`, `vitrus:shown`, `vitrus:hide`,
+  `vitrus:hidden`, `vitrus:close`, `vitrus:closed`, etc.
+- **MUST** register data-api handlers in the plugin file (delegated on `document`).
+- **MUST NOT** bundle docs-only scripts (`theme.js`) into the library output.
+- **MUST** add new plugins to `js/vitrus.js` and rebuild with `npm run build:js`.
+
+### Adding a new JS component (recipe)
+
+1. Create `js/<name>.js` extending `BaseComponent`.
+2. Add glass SCSS partial in `css/components/_<name>.scss` and register in `css/vitrus.scss`.
+3. Export from `js/vitrus.js` and add to the `window.vitrus` object.
+4. Create `docs/components/<name>.html` with live examples loading `vitrus.bundle.min.js`.
+5. Run `npm run lint` and `npm run build`.
+
+Phase 3b overlays will also need `@popperjs/core` (bundled like Bootstrap's
+`bootstrap.bundle.js`) and shared utilities (`Backdrop`, `FocusTrap`).
+
+---
+
+## 6. Sass architecture (ITCSS)
 
 `css/vitrus.scss` imports every partial in this order:
 
@@ -139,7 +187,7 @@ calls `clean:dev`. You should rarely need to touch the symlink by hand.
 
 ---
 
-## 6. Design tokens
+## 7. Design tokens
 
 All design values live in `css/_variables.scss` and are exposed on `:root`
 in `css/_root.scss` as CSS custom properties (`--vitrus-*`).
@@ -191,7 +239,7 @@ $glass-radius-lg: 1.5rem;
 
 ---
 
-## 7. Class API rules (Bootstrap 5 parity)
+## 8. Class API rules (Bootstrap 5 parity)
 
 - **MUST** match Bootstrap 5 class names and HTML structure unless the
   deviation is recorded in `docs/` with a clear explanation.
@@ -212,7 +260,7 @@ $glass-radius-lg: 1.5rem;
 
 ---
 
-## 8. Adding a new component (recipe)
+## 9. Adding a new component (recipe)
 
 1. **Token check.** Decide whether existing glass tokens cover the new
    surface. If not, add new variables to `css/_variables.scss` and
@@ -237,7 +285,7 @@ $glass-radius-lg: 1.5rem;
 
 ---
 
-## 9. Adding a new utility (recipe)
+## 10. Adding a new utility (recipe)
 
 1. Find the right place in `css/_utilities.scss`. The file is grouped:
    `display`, `flex direction`, `justify/align`, `spacing`, `typography`,
@@ -253,7 +301,7 @@ $glass-radius-lg: 1.5rem;
 
 ---
 
-## 10. Glassmorphism: design language
+## 11. Glassmorphism: design language
 
 - **Translucent backgrounds** — `rgba`/`hsla` fills at 0.1–0.6 alpha.
 - **Backdrop blur** — `backdrop-filter: blur(...)` + the `-webkit-`
@@ -276,7 +324,7 @@ background variation that makes the effect visible.
 
 ---
 
-## 11. The dev symlink
+## 12. The dev symlink
 
 Vite is rooted at `docs/`, but the library CSS lives at the project
 root's `css/`. The `docs/css` symlink (created by `npm run setup`,
@@ -291,7 +339,7 @@ removed by `npm run clean:dev`) bridges the two.
 
 ---
 
-## 12. Code style
+## 13. Code style
 
 - **Sass:** 2-space indent, no tabs, single quotes for strings in `.scss`
   (Prettier override). Multi-line `@each` blocks must have an empty
@@ -309,7 +357,7 @@ removed by `npm run clean:dev`) bridges the two.
 
 ---
 
-## 13. Before you claim you're done
+## 14. Before you claim you're done
 
 Run **all** of the following and confirm each passes:
 
@@ -344,7 +392,7 @@ If you changed a component, also:
 
 ---
 
-## 14. Definition of done (for a Phase 1 component)
+## 15. Definition of done (for a Phase 1 component)
 
 - [ ] Token changes (if any) added to `_variables.scss` and exposed on
       `:root` in `_root.scss`.
@@ -362,7 +410,7 @@ If you changed a component, also:
 
 ---
 
-## 15. What you MUST NOT do
+## 16. What you MUST NOT do
 
 - **MUST NOT** introduce `@import` in any Sass file. Use `@use`.
 - **MUST NOT** use the global `red()` / `green()` / `blue()` /
@@ -382,7 +430,7 @@ If you changed a component, also:
 
 ---
 
-## 16. Quick reference: file → responsibility
+## 17. Quick reference: file → responsibility
 
 | File                             | Responsibility                                                                              |
 | -------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -407,12 +455,18 @@ If you changed a component, also:
 | `docs/index.html`                | Landing page, token swatches, component overview, roadmap.                                  |
 | `docs/components/<name>.html`    | One per component, with default + variant + code blocks.                                    |
 | `docs/assets/css/docs.scss`      | Docs-only chrome. Never bundled into the library output.                                    |
+| `js/vitrus.js`                   | Bundle entry; exports `window.vitrus` and ESM named exports.                                |
+| `js/alert.js`                    | Alert dismiss plugin (`data-vitrus-dismiss="alert"`).                                       |
+| `js/collapse.js`                 | Collapse toggle plugin (`data-vitrus-toggle="collapse"`).                                   |
+| `js/tab.js`                      | Tab switching plugin (`data-vitrus-toggle="tab"`).                                          |
 | `vite.config.js`                 | Multi-page input discovery, `root: docs/`, Sass loadPaths.                                  |
+| `vite.js.config.js`              | Library build → `dist/vitrus.bundle.js`, `dist/vitrus.js`.                                  |
 | `scripts/create-dev-symlink.mjs` | Bridges `docs/css` → `../css` for dev/build.                                                |
+| `scripts/copy-bundle.mjs`        | Copies min bundle to `docs/` or `demo-dist/` for serving.                                   |
 
 ---
 
-## 17. Getting help
+## 18. Getting help
 
 - Spec / vision: `PRODUCT.md`
 - Component scope: `components.md`

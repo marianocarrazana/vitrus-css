@@ -61,6 +61,17 @@ $alert-variants: (
   }
 }
 
+.alert.fade {
+  transition:
+    opacity 0.15s linear,
+    transform 0.15s ease;
+
+  &:not(.show) {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+}
+
 @each $name, $color in $alert-variants {
   .alert-#{$name} {
     color: $dark;

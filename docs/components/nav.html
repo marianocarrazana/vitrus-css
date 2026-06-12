@@ -77,7 +77,8 @@
         <span class="docs-eyebrow">Components</span>
         <h1 class="docs-title">Nav</h1>
         <p class="docs-lead">
-          Base navigation component for links, tabs, and pills. Markup matches Bootstrap 5; tab panes are CSS-only.
+          Base navigation component for links, tabs, and pills. Tab switching is wired by
+          <code>vitrus.bundle.min.js</code> via <code>data-vitrus-toggle="tab"</code>.
         </p>
 
         <section class="docs-section">
@@ -95,33 +96,77 @@
 
         <section class="docs-section">
           <h2 class="docs-section-title">Tabs</h2>
+          <p class="docs-section-sub">
+            Use <code>data-vitrus-toggle="tab"</code> and <code>data-vitrus-target</code> on each trigger. Arrow keys
+            move focus between tabs when the list has <code>role="tablist"</code>.
+          </p>
 
           <div class="docs-example">
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs" id="navTabDemo" role="tablist">
               <li class="nav-item" role="presentation">
-                <a class="nav-link active" href="#">Home</a>
+                <button
+                  class="nav-link active"
+                  id="nav-home-tab"
+                  data-vitrus-toggle="tab"
+                  data-vitrus-target="#nav-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                >
+                  Home
+                </button>
               </li>
               <li class="nav-item" role="presentation">
-                <a class="nav-link" href="#">Profile</a>
+                <button
+                  class="nav-link"
+                  id="nav-profile-tab"
+                  data-vitrus-toggle="tab"
+                  data-vitrus-target="#nav-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false"
+                >
+                  Profile
+                </button>
               </li>
               <li class="nav-item" role="presentation">
-                <a class="nav-link" href="#">Contact</a>
+                <button
+                  class="nav-link"
+                  id="nav-contact-tab"
+                  data-vitrus-toggle="tab"
+                  data-vitrus-target="#nav-contact"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-contact"
+                  aria-selected="false"
+                >
+                  Contact
+                </button>
               </li>
             </ul>
-            <div class="tab-content pt-3">
-              <div class="tab-pane active">Home tab pane content.</div>
-              <div class="tab-pane">Profile tab pane content.</div>
-              <div class="tab-pane">Contact tab pane content.</div>
+            <div class="tab-content pt-3" id="navTabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                Home tab pane content.
+              </div>
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                Profile tab pane content.
+              </div>
+              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                Contact tab pane content.
+              </div>
             </div>
           </div>
 
           <div class="docs-code">
-            <pre><code>&lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+            <pre><code>&lt;ul class="nav nav-tabs" role="tablist"&gt;
+  &lt;li class="nav-item" role="presentation"&gt;
+    &lt;button class="nav-link active" data-vitrus-toggle="tab" data-vitrus-target="#home" type="button" role="tab"&gt;Home&lt;/button&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="tab-content"&gt;
-  &lt;div class="tab-pane active"&gt;...&lt;/div&gt;
+  &lt;div class="tab-pane fade show active" id="home" role="tabpanel"&gt;...&lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </section>
@@ -153,6 +198,7 @@
         <footer class="docs-footer">VitrusCSS · Nav</footer>
       </main>
     </div>
+    <script src="../assets/js/vitrus.bundle.min.js" defer></script>
     <script type="module" src="../assets/js/theme.js"></script>
   </body>
 </html>
