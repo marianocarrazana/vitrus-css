@@ -17,5 +17,5 @@
     "declaration-empty-line-before": null,
     "at-rule-empty-line-before": null
   },
-  "ignoreFiles": ["dist/**", "demo-dist/**", "node_modules/**"]
+  "ignoreFiles": ["dist/**", "demo-dist/**", "docs-dist/**", "node_modules/**"]
 }

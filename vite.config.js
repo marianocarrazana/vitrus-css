@@ -3,9 +3,9 @@ import { fileURLToPath, URL } from 'node:url';
 import { readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
-const docsRoot = fileURLToPath(new URL('./docs', import.meta.url));
+const docsRoot = fileURLToPath(new URL('./docs-dist', import.meta.url));
 
-// Recursively find every *.html file under docs/ and register each as a
+// Recursively find every *.html file under docs-dist/ and register each as a
 // Rollup input. Output paths mirror the source layout.
 function collectHtmlInputs(dir, base = dir) {
   const inputs = {};

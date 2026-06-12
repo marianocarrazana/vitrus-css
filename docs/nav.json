@@ -1,0 +1,49 @@
+{
+  "sections": [
+    {
+      "title": "Getting started",
+      "links": [
+        { "id": "introduction", "label": "Introduction", "page": "index.html" },
+        { "id": "quick-start", "label": "Quick start", "page": "index.html#quick-start" },
+        { "id": "tokens", "label": "Design tokens", "page": "index.html#tokens" }
+      ]
+    },
+    {
+      "title": "Components",
+      "links": [
+        { "id": "buttons", "label": "Buttons", "page": "components/buttons.html" },
+        { "id": "badges", "label": "Badges", "page": "components/badges.html" },
+        { "id": "alerts", "label": "Alerts", "page": "components/alerts.html" },
+        { "id": "cards", "label": "Cards", "page": "components/cards.html" },
+        { "id": "forms", "label": "Forms", "page": "components/forms.html" },
+        { "id": "navbar", "label": "Navbar", "page": "components/navbar.html" },
+        { "id": "nav", "label": "Nav", "page": "components/nav.html" },
+        { "id": "breadcrumb", "label": "Breadcrumb", "page": "components/breadcrumb.html" },
+        { "id": "pagination", "label": "Pagination", "page": "components/pagination.html" },
+        { "id": "spinners", "label": "Spinners", "page": "components/spinners.html" },
+        { "id": "progress", "label": "Progress", "page": "components/progress.html" }
+      ]
+    },
+    {
+      "title": "Theming",
+      "links": [
+        { "id": "themes", "label": "Themes & dark mode", "page": "components/themes.html" }
+      ]
+    },
+    {
+      "title": "Overlays",
+      "links": [
+        { "id": "dropdown", "label": "Dropdown", "page": "components/dropdown.html" },
+        { "id": "modal", "label": "Modal", "page": "components/modal.html" },
+        { "id": "offcanvas", "label": "Offcanvas", "page": "components/offcanvas.html" },
+        { "id": "toast", "label": "Toast", "page": "components/toast.html" },
+        {
+          "id": "tooltips-popovers",
+          "label": "Tooltips & popovers",
+          "page": "components/tooltips-popovers.html"
+        },
+        { "id": "accordion", "label": "Accordion", "page": "components/accordion.html" }
+      ]
+    }
+  ]
+}

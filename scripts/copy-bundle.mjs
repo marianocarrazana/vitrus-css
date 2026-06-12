@@ -13,11 +13,11 @@ function copyBundle(dest) {
 
 const target = process.argv[2];
 
-if (target === 'docs') {
-  copyBundle('docs/assets/js/vitrus.bundle.min.js');
+if (target === 'docs-dist') {
+  copyBundle('docs-dist/assets/js/vitrus.bundle.min.js');
 } else if (target === 'demo') {
   copyBundle('demo-dist/assets/js/vitrus.bundle.min.js');
 } else {
-  console.error('Usage: node scripts/copy-bundle.mjs <docs|demo>');
+  console.error('Usage: node scripts/copy-bundle.mjs <docs-dist|demo>');
   process.exit(1);
 }

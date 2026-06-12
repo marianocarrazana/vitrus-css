@@ -1,0 +1,67 @@
+<span class="docs-eyebrow">Overlays</span>
+        <h1 class="docs-title">Dropdown</h1>
+        <p class="docs-lead">
+          Toggleable glass menus positioned with Popper. Use <code>data-vitrus-toggle="dropdown"</code> instead of
+          Bootstrap's <code>data-bs-toggle</code>.
+        </p>
+        <section class="docs-section">
+          <h2 class="docs-section-title">Basic example</h2>
+          <div class="docs-example">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-vitrus-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown button
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="docs-code">
+            <pre><code>&lt;div class="dropdown"&gt;
+  &lt;button class="btn btn-secondary dropdown-toggle" type="button"
+    data-vitrus-toggle="dropdown" aria-expanded="false"&gt;
+    Dropdown button
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2 class="docs-section-title">Directions</h2>
+          <div class="docs-example d-flex flex-wrap gap-2">
+            <div class="dropup">
+              <button class="btn btn-outline-primary dropdown-toggle" type="button" data-vitrus-toggle="dropdown">
+                Dropup
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+              </ul>
+            </div>
+            <div class="dropend">
+              <button class="btn btn-outline-primary dropdown-toggle" type="button" data-vitrus-toggle="dropdown">
+                Dropend
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+              </ul>
+            </div>
+            <div class="dropstart">
+              <button class="btn btn-outline-primary dropdown-toggle" type="button" data-vitrus-toggle="dropdown">
+                Dropstart
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <footer class="docs-footer">VitrusCSS · Dropdown</footer>

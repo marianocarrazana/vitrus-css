@@ -1,99 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>VitrusCSS · Bootstrap 5 compatible, glassmorphism by default</title>
-    <meta
-      name="description"
-      content="A CSS component library that mirrors the Bootstrap 5 class API while delivering a distinctive glassmorphism visual language across every element and component."
-    />
-    <script>
-      (function () {
-        var t = localStorage.getItem('vitrus-theme');
-        if (!t && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          t = 'midnight';
-        }
-        if (t) document.documentElement.setAttribute('data-vitrus-theme', t);
-      })();
-    </script>
-    <link rel="stylesheet" href="../css/vitrus.scss" />
-    <link rel="stylesheet" href="./assets/css/docs.scss" />
-    <link rel="stylesheet" href="./assets/css/themes.scss" />
-  </head>
-
-  <body class="docs-body">
-    <div class="docs-shell">
-      <!-- ============================================================== -->
-      <!-- Sidebar                                                       -->
-      <!-- ============================================================== -->
-      <aside class="docs-sidebar">
-        <a class="docs-brand" href="./index.html">
-          <span class="docs-brand-mark" aria-hidden="true"></span>
-          <span>Vitrus</span>
-        </a>
-
-        <div class="docs-theme-picker">
-          <label class="docs-theme-label" for="vitrus-theme-select">Theme</label>
-          <select id="vitrus-theme-select" class="form-select form-select-sm">
-            <option value="default">Default</option>
-            <option value="frost">Frost</option>
-            <option value="crystal">Crystal</option>
-            <option value="midnight">Midnight</option>
-          </select>
-        </div>
-
-        <nav aria-label="Documentation">
-          <ul class="docs-nav">
-            <li class="docs-nav-section">Getting started</li>
-            <li>
-              <a class="active" href="./index.html">Introduction</a>
-            </li>
-            <li>
-              <a href="./index.html#quick-start">Quick start</a>
-            </li>
-            <li>
-              <a href="./index.html#tokens">Design tokens</a>
-            </li>
-          </ul>
-
-          <ul class="docs-nav">
-            <li class="docs-nav-section">Components</li>
-            <li><a href="./components/buttons.html">Buttons</a></li>
-            <li><a href="./components/badges.html">Badges</a></li>
-            <li><a href="./components/alerts.html">Alerts</a></li>
-            <li><a href="./components/cards.html">Cards</a></li>
-            <li><a href="./components/forms.html">Forms</a></li>
-            <li><a href="./components/navbar.html">Navbar</a></li>
-            <li><a href="./components/nav.html">Nav</a></li>
-            <li><a href="./components/breadcrumb.html">Breadcrumb</a></li>
-            <li><a href="./components/pagination.html">Pagination</a></li>
-            <li><a href="./components/spinners.html">Spinners</a></li>
-            <li><a href="./components/progress.html">Progress</a></li>
-          </ul>
-
-          <ul class="docs-nav">
-            <li class="docs-nav-section">Theming</li>
-            <li><a href="./components/themes.html">Themes &amp; dark mode</a></li>
-          </ul>
-
-          <ul class="docs-nav">
-            <li class="docs-nav-section">Overlays</li>
-            <li><a href="./components/dropdown.html">Dropdown</a></li>
-            <li><a href="./components/modal.html">Modal</a></li>
-            <li><a href="./components/offcanvas.html">Offcanvas</a></li>
-            <li><a href="./components/toast.html">Toast</a></li>
-            <li><a href="./components/tooltips-popovers.html">Tooltips &amp; popovers</a></li>
-            <li><a href="./components/accordion.html">Accordion</a></li>
-          </ul>
-        </nav>
-      </aside>
-
-      <!-- ============================================================== -->
-      <!-- Main content                                                  -->
-      <!-- ============================================================== -->
-      <main class="docs-main">
-        <span class="docs-eyebrow">Phase 2</span>
+<span class="docs-eyebrow">Phase 2</span>
         <h1 class="docs-title">Bootstrap 5 compatible.<br />Glassmorphism by default.</h1>
         <p class="docs-lead">
           VitrusCSS is a Sass-authored component library that mirrors the Bootstrap 5 class API and ships translucent
@@ -213,7 +118,7 @@ $glass-blur: 16px;
           <h3 class="docs-h3">Themes</h3>
           <p class="docs-section-sub" style="margin-bottom: 1rem">
             Four built-in presets ship with the library. Set <code>data-vitrus-theme</code> on
-            <code>&lt;html&gt;</code> or use the sidebar picker to switch live — glass blur, transparency, and base
+            <code>&lt;html&gt;</code> or use the header theme picker to switch live — glass blur, transparency, and base
             color update without a rebuild.
           </p>
           <table class="docs-table">
@@ -435,9 +340,3 @@ $glass-blur: 16px;
         <footer class="docs-footer">
           Built with VitrusCSS · <a href="https://github.com/anomalyco/opencode/issues">Give feedback</a>
         </footer>
-      </main>
-    </div>
-    <script src="./assets/js/vitrus.bundle.min.js" defer></script>
-    <script type="module" src="./assets/js/theme.js"></script>
-  </body>
-</html>

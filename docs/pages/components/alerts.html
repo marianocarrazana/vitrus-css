@@ -1,0 +1,77 @@
+<span class="docs-eyebrow">Components</span>
+        <h1 class="docs-title">Alerts</h1>
+        <p class="docs-lead">
+          Contextual feedback messages. The variant color tints the translucent surface and accents the left edge.
+        </p>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Variants</h2>
+
+          <div class="docs-example">
+            <div class="alert alert-primary" role="alert">A simple <strong>primary</strong> alert — check it out!</div>
+            <div class="alert alert-secondary" role="alert">A simple <strong>secondary</strong> alert.</div>
+            <div class="alert alert-success" role="alert">
+              <strong>Well done!</strong> Your changes were saved successfully.
+            </div>
+            <div class="alert alert-danger" role="alert"><strong>Something went wrong.</strong> Please try again.</div>
+            <div class="alert alert-warning" role="alert"><strong>Heads up!</strong> This action cannot be undone.</div>
+            <div class="alert alert-info" role="alert">
+              <strong>Note:</strong> Include <code>vitrus.bundle.min.js</code> for dismiss behavior.
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;div class="alert alert-primary" role="alert"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-success" role="alert"&gt;...&lt;/div&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">With heading &amp; link</h2>
+
+          <div class="docs-example">
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Deploy successful</h4>
+              <p>
+                Your build is live on production. View the
+                <a href="#" class="alert-link">deployment log</a> for details.
+              </p>
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;div class="alert alert-success" role="alert"&gt;
+  &lt;h4 class="alert-heading"&gt;Deploy successful&lt;/h4&gt;
+  &lt;p&gt;Your build is live. &lt;a href="#" class="alert-link"&gt;View log&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Dismissible</h2>
+          <p class="docs-section-sub">
+            Add <code>fade show</code> for a transition. The close button uses
+            <code>data-vitrus-dismiss="alert"</code> (auto-wired by the bundle).
+          </p>
+
+          <div class="docs-example">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Warning:</strong> Better check yourself before you wreck yourself.
+              <button
+                type="button"
+                class="btn-close"
+                data-vitrus-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
+  Warning text.
+  &lt;button type="button" class="btn-close" data-vitrus-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </section>
+
+        <footer class="docs-footer">VitrusCSS · Alerts</footer>

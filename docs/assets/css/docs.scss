@@ -5,92 +5,285 @@
 // =============================================================================
 
 @use "variables" as *;
+@use "mixins" as *;
 
 // --- Page background (static gradient so the glass effect is visible) ------
 body.docs-body {
   position: relative;
   min-height: 100vh;
+  padding-top: var(--docs-header-height);
   background: var(--docs-page-bg);
   background-attachment: fixed;
   color: var(--docs-fg);
 }
 
-// --- Layout: sidebar + content ---------------------------------------------
-.docs-shell {
+// --- Top header -------------------------------------------------------------
+.docs-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: var(--docs-header-height);
+  padding: 0 1rem;
+  background: var(--docs-header-bg);
+  border-bottom: 1px solid var(--docs-header-border);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+.docs-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+
+  .form-select {
+    min-width: 7.5rem;
+    font-size: $font-size-sm;
+  }
+}
+
+.docs-sidebar-toggle {
+  display: none;
+  flex-shrink: 0;
+  padding: 0.35rem 0.55rem;
+
+  @include media-breakpoint-down(lg) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.docs-sidebar-toggle-icon {
+  display: block;
+  width: 1.1rem;
+  height: 0.85rem;
+  border-top: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  background: linear-gradient(currentcolor, currentcolor) center / 100% 2px no-repeat;
+}
+
+// --- Layout: sidebar + main + TOC -------------------------------------------
+.docs-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  min-height: 100vh;
+  grid-template-columns: var(--docs-sidebar-width) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  min-height: calc(100vh - var(--docs-header-height));
   gap: 0;
 
-  @media (width <=991.98px) {
-    grid-template-columns: 1fr;
+  @include media-breakpoint-up(xl) {
+    grid-template-columns: var(--docs-sidebar-width) minmax(0, 1fr) var(--docs-toc-width);
+    grid-template-rows: auto;
+  }
+
+  @include media-breakpoint-down(lg) {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .docs-sidebar {
   position: sticky;
-  top: 0;
+  top: var(--docs-header-height);
   align-self: start;
-  height: 100vh;
-  padding: 1.5rem 1.25rem;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  height: calc(100vh - var(--docs-header-height));
+  padding: 1.25rem 1rem 2rem;
   background: var(--docs-sidebar-bg);
   border-right: 1px solid var(--docs-sidebar-border);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   overflow-y: auto;
 
-  @media (width <=991.98px) {
-    position: static;
-    height: auto;
-    border-right: 0;
-    border-bottom: 1px solid var(--docs-sidebar-border);
+  @include media-breakpoint-down(lg) {
+    display: none;
   }
 }
 
+.docs-sidebar-offcanvas {
+  --vitrus-offcanvas-width: min(18rem, 85vw);
+}
+
+.docs-sidebar-offcanvas-body {
+  padding-top: 0;
+}
+
 .docs-main {
-  padding: 2.5rem clamp(1.25rem, 4vw, 3rem);
-  max-width: 1200px;
+  grid-column: 2;
+  grid-row: 2;
+  padding: 2rem clamp(1.25rem, 3vw, 2.5rem) 3rem;
+  min-width: 0;
   width: 100%;
+
+  @include media-breakpoint-up(xl) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  @include media-breakpoint-down(lg) {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }
 
-// --- Theme picker -----------------------------------------------------------
-.docs-theme-picker {
-  margin-bottom: 1.25rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--docs-sidebar-border);
+// --- Right TOC --------------------------------------------------------------
+.docs-toc {
+  position: sticky;
+  top: var(--docs-header-height);
+  align-self: start;
+  grid-column: 2;
+  grid-row: 1;
+  height: calc(100vh - var(--docs-header-height));
+  padding: 1.5rem 1rem 2rem 0.5rem;
+  overflow-y: auto;
+  border-left: 1px solid var(--docs-toc-border);
+  background: var(--docs-toc-bg);
+
+  @include media-breakpoint-up(xl) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  @include media-breakpoint-down(xl) {
+    position: static;
+    height: auto;
+    padding: 1rem clamp(1.25rem, 3vw, 2.5rem) 0;
+    border-left: 0;
+    background: transparent;
+  }
+
+  @include media-breakpoint-down(lg) {
+    grid-column: 1;
+    grid-row: 1;
+  }
 }
 
-.docs-theme-label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-size: 0.7rem;
+.docs-toc-heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--docs-fg-faint);
+
+  @include media-breakpoint-down(xl) {
+    display: none;
+  }
 }
 
-.docs-theme-picker .form-select {
+.docs-toc-mobile {
+  display: none;
+  margin-bottom: 1.5rem;
+
+  @include media-breakpoint-down(xl) {
+    display: block;
+  }
+}
+
+.docs-toc-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  font-size: $font-size-sm;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--docs-fg);
+  background: var(--docs-toc-mobile-bg);
+  border: 1px solid var(--docs-toc-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background: var(--docs-nav-hover-bg);
+  }
 }
 
-// --- Sidebar brand ---------------------------------------------------------
+.docs-toc-chevron {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.docs-toc-toggle[aria-expanded="true"] .docs-toc-chevron {
+  transform: rotate(-135deg) translateY(2px);
+}
+
+.docs-toc-panel {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--docs-toc-mobile-bg);
+  border: 1px solid var(--docs-toc-border);
+  border-radius: 0.5rem;
+}
+
+.docs-toc-desktop,
+.docs-toc-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.docs-toc-desktop {
+  @include media-breakpoint-down(xl) {
+    display: none;
+  }
+}
+
+.docs-toc-link {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  border-left: 2px solid transparent;
+  border-radius: 0 0.35rem 0.35rem 0;
+  color: var(--docs-fg-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover {
+    color: var(--docs-fg);
+    text-decoration: none;
+    background: var(--docs-nav-hover-bg);
+  }
+
+  &.active {
+    color: var(--docs-fg-strong);
+    border-left-color: var(--docs-toc-active-border);
+    background: var(--docs-nav-hover-bg);
+    font-weight: 600;
+  }
+}
+
+// --- Sidebar brand (header) -------------------------------------------------
 .docs-brand {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  margin-bottom: 1.5rem;
   text-decoration: none;
   color: var(--docs-fg);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   letter-spacing: -0.01em;
 
   img,
   svg {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
   }
 
@@ -101,8 +294,8 @@ body.docs-body {
 }
 
 .docs-brand-mark {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   display: inline-block;
   border-radius: 0.5rem;
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
@@ -164,8 +357,8 @@ body.docs-body {
   }
 
   &.active {
-    background: rgba(99, 102, 241, 0.25);
-    color: var(--docs-fg-strong);
+    background: var(--docs-nav-active-bg);
+    color: var(--docs-nav-active-fg);
     font-weight: 600;
   }
 }
@@ -203,7 +396,17 @@ body.docs-body {
 
 .docs-section {
   margin-bottom: 4rem;
-  scroll-margin-top: 1.5rem;
+  scroll-margin-top: calc(var(--docs-header-height) + 1rem);
+}
+
+.docs-section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.docs-section-title-text {
+  flex: 1 1 auto;
 }
 
 .docs-section-title {
@@ -212,6 +415,28 @@ body.docs-body {
   color: var(--docs-heading);
   margin: 0 0 0.25rem;
   letter-spacing: -0.01em;
+}
+
+.docs-anchor {
+  flex-shrink: 0;
+  padding: 0 0.25rem;
+  color: var(--docs-anchor-fg);
+  text-decoration: none;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    text-decoration: none;
+    color: var(--docs-anchor-fg);
+  }
+}
+
+.docs-section-title-wrap:hover .docs-anchor,
+.docs-section-title-wrap:focus-within .docs-anchor {
+  opacity: 1;
 }
 
 .docs-section-sub {

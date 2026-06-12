@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}}</title>
+    {{metaDescription}}
+    <script>
+      (function () {
+        var t = localStorage.getItem('vitrus-theme');
+        if (!t && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          t = 'midnight';
+        }
+        if (t) document.documentElement.setAttribute('data-vitrus-theme', t);
+      })();
+    </script>
+    <link rel="stylesheet" href="{{cssHref}}" />
+    <link rel="stylesheet" href="{{docsCssHref}}" />
+    <link rel="stylesheet" href="{{themesCssHref}}" />
+  </head>
+
+  <body class="docs-body">
+    <header class="docs-header">
+      <button
+        type="button"
+        class="docs-sidebar-toggle btn btn-sm btn-outline-secondary"
+        data-vitrus-toggle="offcanvas"
+        data-vitrus-target="#docs-sidebar-offcanvas"
+        aria-controls="docs-sidebar-offcanvas"
+        aria-label="Open navigation"
+      >
+        <span class="docs-sidebar-toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <a class="docs-brand" href="{{homeHref}}">
+        <span class="docs-brand-mark" aria-hidden="true"></span>
+        <span>Vitrus</span>
+      </a>
+
+      <div class="docs-header-actions">
+        <label class="visually-hidden" for="vitrus-theme-select">Theme</label>
+        <select id="vitrus-theme-select" class="form-select form-select-sm">
+          <option value="default">Default</option>
+          <option value="frost">Frost</option>
+          <option value="crystal">Crystal</option>
+          <option value="midnight">Midnight</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="docs-layout">
+      <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+        {{sidebarNav}}
+      </aside>
+
+      <main class="docs-main">
+        {{content}}
+      </main>
+
+      <aside class="docs-toc" aria-label="On this page">
+        <div class="docs-toc-mobile">
+          <button
+            type="button"
+            class="docs-toc-toggle collapsed"
+            data-vitrus-toggle="collapse"
+            data-vitrus-target="#docs-toc-panel"
+            aria-expanded="false"
+            aria-controls="docs-toc-panel"
+          >
+            On this page
+            <span class="docs-toc-chevron" aria-hidden="true"></span>
+          </button>
+          <nav id="docs-toc-panel" class="collapse docs-toc-panel"></nav>
+        </div>
+        <p class="docs-toc-heading">On this page</p>
+        <nav class="docs-toc-desktop" id="docs-toc-list"></nav>
+      </aside>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-start docs-sidebar-offcanvas"
+      tabindex="-1"
+      id="docs-sidebar-offcanvas"
+      aria-labelledby="docs-sidebar-offcanvas-label"
+    >
+      <div class="offcanvas-header">
+        <h2 class="offcanvas-title h6 mb-0" id="docs-sidebar-offcanvas-label">Documentation</h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-vitrus-dismiss="offcanvas"
+          aria-label="Close navigation"
+        ></button>
+      </div>
+      <div class="offcanvas-body docs-sidebar-offcanvas-body">
+        {{sidebarNav}}
+      </div>
+    </div>
+
+    {{bundleScript}}
+    <script type="module" src="{{themeJsHref}}"></script>
+    <script type="module" src="{{layoutJsHref}}"></script>
+  </body>
+</html>

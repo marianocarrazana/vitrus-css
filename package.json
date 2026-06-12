@@ -18,8 +18,9 @@
   "scripts": {
     "setup": "node scripts/create-dev-symlink.mjs",
     "clean:dev": "node scripts/create-dev-symlink.mjs --remove",
-    "predev": "npm run setup && npm run build:js && node scripts/copy-bundle.mjs docs",
-    "prebuild:docs": "npm run setup",
+    "docs:html": "node scripts/build-docs-html.mjs",
+    "predev": "npm run setup && npm run build:js && npm run docs:html && node scripts/copy-bundle.mjs docs-dist",
+    "prebuild:docs": "npm run setup && npm run docs:html",
     "postbuild:docs": "node scripts/copy-bundle.mjs demo && npm run clean:dev",
     "dev": "vite",
     "build:docs": "vite build",

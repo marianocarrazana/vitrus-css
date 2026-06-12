@@ -30,7 +30,7 @@ plus a JavaScript bundle with **Alert**, **Collapse**, **Tab**, **Dropdown**,
 | Layer        | Choice                                              |
 | ------------ | --------------------------------------------------- |
 | Preprocessor | Dart Sass (`sass` CLI)                              |
-| Dev server   | Vite 5 (multi-page input, root: `docs/`)            |
+| Dev server   | Vite 5 (multi-page input, root: `docs-dist/`)       |
 | Lint (CSS)   | Stylelint + `stylelint-config-standard-scss`        |
 | Lint (JS)    | ESLint 9 flat config + `@eslint/js`                 |
 | Format       | Prettier 3                                          |
@@ -75,13 +75,25 @@ vitrus-css/
 │   ├── tab.js
 │   ├── dom/                   # data map, events, selectors
 │   └── util/
-├── docs/                      # Documentation + live demo
-│   ├── index.html             # landing page
-│   ├── components/*.html      # one page per component
-│   ├── assets/css/docs.scss   # docs-only chrome (sidebar, code blocks, bg)
+├── docs/                      # Docs source (layout, pages, assets)
+│   ├── layout.html            # shared shell (header, sidebars, scripts)
+│   ├── nav.json               # sidebar navigation (single source of truth)
+│   ├── pages.json             # per-page metadata (title, activeNav, depth)
+│   ├── assets/
+│   │   ├── css/docs.scss      # docs-only chrome (header, sidebars, TOC)
+│   │   ├── css/themes.scss    # docs theme variables
+│   │   └── js/                # theme.js, layout.js
+│   └── pages/                 # main content only — no chrome
+│       ├── index.html
+│       └── components/*.html
+├── docs-dist/                 # Generated (gitignored) — Vite dev root + build input
+│   ├── index.html             # built via `npm run docs:html`
+│   ├── components/*.html
+│   ├── assets/                # copied from docs/assets/ at build time
 │   └── css → ../css           # symlink, created by `npm run setup`
 ├── scripts/
-│   └── create-dev-symlink.mjs # creates/removes docs/css symlink
+│   ├── build-docs-html.mjs    # assembles docs/ → docs-dist/
+│   └── create-dev-symlink.mjs # creates/removes docs-dist/css symlink
 ├── dist/                      # build artifact (gitignored)
 ├── demo-dist/                 # build artifact (gitignored)
 ├── vite.config.js             # docs site build
@@ -105,7 +117,8 @@ vitrus-css/
 | Command                | What it does                                                     |
 | ---------------------- | ---------------------------------------------------------------- |
 | `npm install`          | Installs dev deps. Run once after cloning.                       |
-| `npm run setup`        | Creates the `docs/css → ../css` symlink (idempotent).            |
+| `npm run setup`        | Creates the `docs-dist/css → ../css` symlink (idempotent).       |
+| `npm run docs:html`    | Builds `docs-dist/` from `docs/` (HTML + copied assets).         |
 | `npm run dev`          | Starts Vite at `http://localhost:5173/`. HMR on for SCSS + HTML. |
 | `npm run build:css`    | Emits `dist/vitrus.css` (+ sourcemap) and `dist/vitrus.min.css`. |
 | `npm run build:js`     | Emits `dist/vitrus.bundle.js`, `dist/vitrus.bundle.min.js`, `dist/vitrus.js`. |
@@ -115,11 +128,11 @@ vitrus-css/
 | `npm run lint:fix`     | Auto-fixes what can be fixed.                                    |
 | `npm run format`       | Prettier-write across the repo.                                  |
 | `npm run format:check` | Prettier check (CI mode).                                        |
-| `npm run clean:dev`    | Removes the `docs/css` symlink.                                  |
+| `npm run clean:dev`    | Removes the `docs-dist/css` symlink.                             |
 
-`predev` runs `setup`, `build:js`, and copies the min bundle into
-`docs/assets/js/` for the dev server. `prebuild:docs` calls `setup`;
-`postbuild:docs` copies the bundle to `demo-dist/` then `clean:dev`.
+`predev` runs `setup`, `build:js`, `docs:html`, and copies the min bundle into
+`docs-dist/assets/js/` for the dev server. `prebuild:docs` calls `setup` and
+`docs:html`; `postbuild:docs` copies the bundle to `demo-dist/` then `clean:dev`.
 
 ---
 
@@ -149,7 +162,7 @@ vitrus-css/
 1. Create `js/<name>.js` extending `BaseComponent`.
 2. Add glass SCSS partial in `css/components/_<name>.scss` and register in `css/vitrus.scss`.
 3. Export from `js/vitrus.js` and add to the `window.vitrus` object.
-4. Create `docs/components/<name>.html` with live examples loading `vitrus.bundle.min.js`.
+4. Create `docs-dist/components/<name>.html` with live examples loading `vitrus.bundle.min.js` (via `npm run docs:html`).
 5. Run `npm run lint` and `npm run build`.
 
 Phase 3b overlays will also need `@popperjs/core` (bundled like Bootstrap's
@@ -180,7 +193,7 @@ Phase 3b overlays will also need `@popperjs/core` (bundled like Bootstrap's
   `css/_utilities.scss`.
 - **MUST NOT** put component classes in `css/_utilities.scss`.
 - **MUST** put new components in `css/components/_<name>.scss` and add a
-  matching `docs/components/<name>.html` page in the same change.
+  matching `docs/pages/components/<name>.html` page in the same change.
 - **MUST** register the new component with `@use 'components/<name>';` in
   `css/vitrus.scss` in the **components block**, not at the end.
 
@@ -269,10 +282,11 @@ $glass-radius-lg: 1.5rem;
 3. **Wire the entry.** Add `@use 'components/<name>';` in the
    **components block** of `css/vitrus.scss`.
 4. **Build:** `npm run build:css` to confirm it compiles.
-5. **Docs page.** Create `docs/components/<name>.html`. Duplicate the
-   sidebar from an existing page; mark your new page as `active` in its
-   own sidebar and add a link in every other page's sidebar
-   (Getting started → Components list).
+5. **Docs page.** Create `docs/pages/components/<name>.html` with main
+   content only (no header/sidebar — those come from the layout). Add an
+   entry to `docs/pages.json` (`activeNav`, `depth: 1`, `title`) and a
+   link in `docs/nav.json`. Run `npm run docs:html` to regenerate
+   `docs-dist/components/<name>.html`.
 6. **Verify:**
    - `npm run dev` — open the new page, check the glass effect, check
      keyboard focus rings.
@@ -295,8 +309,8 @@ $glass-radius-lg: 1.5rem;
 3. **MUST** mark utility declarations with `!important`. They are the
    last layer in ITCSS and the only layer allowed to win specificity
    battles.
-4. Add at least one example to `docs/index.html` or a relevant
-   component page.
+4. Add at least one example to `docs/pages/index.html` or a relevant
+   component page, then run `npm run docs:html`.
 
 ---
 
@@ -325,11 +339,11 @@ background variation that makes the effect visible.
 
 ## 12. The dev symlink
 
-Vite is rooted at `docs/`, but the library CSS lives at the project
-root's `css/`. The `docs/css` symlink (created by `npm run setup`,
+Vite is rooted at `docs-dist/`, but the library CSS lives at the project
+root's `css/`. The `docs-dist/css` symlink (created by `npm run setup`,
 removed by `npm run clean:dev`) bridges the two.
 
-- **MUST** treat `docs/css` as build-only. It is in `.gitignore`.
+- **MUST** treat `docs-dist/css` as build-only. It is in `.gitignore`.
 - **MUST** run `npm run setup` (or `npm run dev` / `npm run build:docs`,
   which both call `setup` as a pre-hook) after cloning.
 - On Windows, symlinks require Developer Mode or admin rights. The
@@ -378,11 +392,11 @@ Open `http://localhost:5173/`, then:
   one element per page.
 - Tab through the page; focus rings must be visible on every focusable
   element.
-- Resize the window to < 992px and check the sidebar collapses cleanly.
+- Resize the window to < 992px and check the header menu opens the offcanvas nav.
 
 If you changed a component, also:
 
-- Open the matching `docs/components/<name>.html` and verify every
+- Open the matching `docs-dist/components/<name>.html` and verify every
   example.
 - Toggle the disabled state, the hover state, and the focus state in
   DevTools.
@@ -399,9 +413,9 @@ If you changed a component, also:
       variant-map pattern.
 - [ ] Registered in `css/vitrus.scss`.
 - [ ] `dist/vitrus.css` and `dist/vitrus.min.css` build cleanly.
-- [ ] `docs/components/<name>.html` exists with at least one default and
-      one variant example, plus a copy-friendly code block per example.
-- [ ] Sidebar link added to every other docs page.
+- [ ] `docs-dist/components/<name>.html` exists (run `npm run docs:html`) with at least one default and
+  one variant example, plus a copy-friendly code block per example.
+- [ ] Nav link added in `docs/nav.json`; page entry in `docs/pages.json`.
 - [ ] Lint passes.
 - [ ] No `console.log` / no `!important` outside `css/_utilities.scss` /
       no inline `style=` in the new docs page (a `style="position: relative"`
@@ -418,8 +432,8 @@ If you changed a component, also:
 - **MUST NOT** rename a class without updating every docs page and the
   migration notes in `docs/`.
 - **MUST NOT** add `!important` outside the utilities layer.
-- **MUST NOT** commit `node_modules/`, `dist/`, `demo-dist/`, or
-  `docs/css` (the symlink).
+- **MUST NOT** commit `node_modules/`, `dist/`, `demo-dist/`, or `docs-dist/`
+  (the generated dev/build tree; recreated by `npm run docs:html`).
 - **MUST NOT** add a new top-level dependency without justification in
   the relevant `package.json` `description` / comments.
 - **MUST NOT** implement Phase 3 (JS-driven) components in Phase 1 PRs.
@@ -451,9 +465,17 @@ If you changed a component, also:
 | `css/components/_spinners.scss`  | `.spinner-border`, `.spinner-grow`, size modifiers.                                         |
 | `css/components/_progress.scss`  | `.progress`, `.progress-bar`, striped/animated variants.                                    |
 | `css/_themes.scss`               | `data-vitrus-theme` presets including `midnight` dark glass.                                  |
-| `docs/index.html`                | Landing page, token swatches, component overview, roadmap.                                  |
-| `docs/components/<name>.html`    | One per component, with default + variant + code blocks.                                    |
-| `docs/assets/css/docs.scss`      | Docs-only chrome. Never bundled into the library output.                                    |
+| `docs/layout.html`               | Shared docs shell (header, nav, TOC mount, scripts).                                      |
+| `docs/nav.json`                  | Sidebar navigation — edit once, rebuild all pages.                                            |
+| `docs/pages.json`                | Per-page metadata (`title`, `activeNav`, `depth`).                                          |
+| `docs/pages/<path>.html`         | Page main content only (examples + code blocks).                                            |
+| `scripts/build-docs-html.mjs`    | Assembles `docs/` → `docs-dist/` HTML.                                                      |
+| `docs-dist/index.html`           | Built landing page (token swatches, component overview, roadmap).                           |
+| `docs-dist/components/<name>.html` | Built component docs (default + variant + code blocks).                                   |
+| `docs/assets/css/docs.scss`      | Docs-only chrome (header, sidebars, TOC). Never in library output.                           |
+| `docs/assets/css/themes.scss`    | Docs theme CSS variables per `data-vitrus-theme`.                                            |
+| `docs/assets/js/layout.js`       | TOC generation + scroll spy for docs pages.                                                 |
+| `docs/assets/js/theme.js`        | Header theme picker wiring.                                                                 |
 | `js/vitrus.js`                   | Bundle entry; exports `window.vitrus` and ESM named exports.                                |
 | `js/alert.js`                    | Alert dismiss plugin (`data-vitrus-dismiss="alert"`).                                       |
 | `js/collapse.js`                 | Collapse toggle plugin (`data-vitrus-toggle="collapse"`).                                   |
@@ -468,10 +490,10 @@ If you changed a component, also:
 | `js/util/backdrop.js`            | Shared backdrop for modal/offcanvas.                                                        |
 | `js/util/focustrap.js`           | Focus trap for modal/offcanvas.                                                             |
 | `js/util/scrollbar.js`           | Body scroll lock while overlays are open.                                                   |
-| `vite.config.js`                 | Multi-page input discovery, `root: docs/`, Sass loadPaths.                                  |
+| `vite.config.js`                 | Multi-page input discovery, `root: docs-dist/`, Sass loadPaths.                              |
 | `vite.js.config.js`              | Library build → `dist/vitrus.bundle.js`, `dist/vitrus.js`.                                  |
-| `scripts/create-dev-symlink.mjs` | Bridges `docs/css` → `../css` for dev/build.                                                |
-| `scripts/copy-bundle.mjs`        | Copies min bundle to `docs/` or `demo-dist/` for serving.                                   |
+| `scripts/create-dev-symlink.mjs` | Bridges `docs-dist/css` → `../css` for dev/build.                                           |
+| `scripts/copy-bundle.mjs`        | Copies min bundle to `docs-dist/` or `demo-dist/` for serving.                              |
 
 ---
 

@@ -4,12 +4,7 @@ node_modules/
 # Build output
 dist/
 demo-dist/
-
-# Dev symlink (created by `npm run setup`, removed by `npm run clean:dev`)
-docs/css
-
-# Copied JS bundle for docs dev server (from `scripts/copy-bundle.mjs`)
-docs/assets/js/vitrus.bundle.min.js
+docs-dist/
 
 # Editor / OS noise
 .DS_Store

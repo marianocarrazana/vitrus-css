@@ -1,0 +1,117 @@
+{
+  "index.html": {
+    "title": "VitrusCSS · Bootstrap 5 compatible, glassmorphism by default",
+    "description": "A CSS component library that mirrors the Bootstrap 5 class API while delivering a distinctive glassmorphism visual language across every element and component.",
+    "activeNav": "introduction",
+    "depth": 0,
+    "bundleJs": true
+  },
+  "components/buttons.html": {
+    "title": "Buttons · VitrusCSS",
+    "activeNav": "buttons",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/badges.html": {
+    "title": "Badges · VitrusCSS",
+    "activeNav": "badges",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/alerts.html": {
+    "title": "Alerts · VitrusCSS",
+    "activeNav": "alerts",
+    "depth": 1,
+    "bundleJs": true
+  },
+  "components/cards.html": {
+    "title": "Cards · VitrusCSS",
+    "activeNav": "cards",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/forms.html": {
+    "title": "Forms · VitrusCSS",
+    "activeNav": "forms",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/navbar.html": {
+    "title": "Navbar · VitrusCSS",
+    "activeNav": "navbar",
+    "depth": 1,
+    "bundleJs": true
+  },
+  "components/nav.html": {
+    "title": "Nav · VitrusCSS",
+    "activeNav": "nav",
+    "depth": 1,
+    "bundleJs": true
+  },
+  "components/breadcrumb.html": {
+    "title": "Breadcrumb · VitrusCSS",
+    "activeNav": "breadcrumb",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/pagination.html": {
+    "title": "Pagination · VitrusCSS",
+    "activeNav": "pagination",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/spinners.html": {
+    "title": "Spinners · VitrusCSS",
+    "activeNav": "spinners",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/progress.html": {
+    "title": "Progress · VitrusCSS",
+    "activeNav": "progress",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/themes.html": {
+    "title": "Themes & dark mode · VitrusCSS",
+    "activeNav": "themes",
+    "depth": 1,
+    "bundleJs": false
+  },
+  "components/dropdown.html": {
+    "title": "Dropdown · VitrusCSS",
+    "activeNav": "dropdown",
+    "depth": 1,
+    "bundleJs": true
+  },
+  "components/modal.html": {
+    "title": "Modal · VitrusCSS",
+    "activeNav": "modal",
+    "depth": 1,
+    "bundleJs": true
+  },
+  "components/offcanvas.html": {
+    "title": "Offcanvas · VitrusCSS",
+    "activeNav": "offcanvas",
+    "depth": 1,
+    "bundleJs": true
+  },
+  "components/toast.html": {
+    "title": "Toast · VitrusCSS",
+    "activeNav": "toast",
+    "depth": 1,
+    "bundleJs": true
+  },
+  "components/tooltips-popovers.html": {
+    "title": "Tooltips & Popovers · VitrusCSS",
+    "activeNav": "tooltips-popovers",
+    "depth": 1,
+    "bundleJs": true
+  },
+  "components/accordion.html": {
+    "title": "Accordion · VitrusCSS",
+    "activeNav": "accordion",
+    "depth": 1,
+    "bundleJs": true
+  }
+}

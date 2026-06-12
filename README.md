@@ -6,7 +6,7 @@ A CSS component library that mirrors the **Bootstrap 5 class API** while deliver
 - Glassmorphism as the default look (translucent fills, backdrop blur, soft borders, layered shadows)
 - Sass-authored, compiled to CSS
 - CSS-custom-property theming with dark-mode ready tokens
-- Self-documenting: the `docs/` site explains usage, shows live examples, and serves as the primary QA surface
+- Self-documenting: the docs site (`docs/` → built to `docs-dist/`) explains usage, shows live examples, and serves as the primary QA surface
 
 > **Status:** Phase 3b shipped — full JS bundle with Alert, Collapse, Tab, Dropdown, Modal, Offcanvas, Toast, Tooltip, Popover, and Accordion plugins (Popper bundled).
 
@@ -34,15 +34,13 @@ $primary: #6366f1;
 
 ```bash
 npm install
-npm run setup   # creates the docs/css → ../css symlink (idempotent)
-npm run dev
+npm run dev     # builds docs-dist/ from docs/, then starts Vite at :5173
 ```
 
 Then open <http://localhost:5173>. The docs site is also the live component demo — every example uses the compiled VitrusCSS over a static gradient so the glass effect is visible.
 
-`npm run dev` and `npm run build:docs` run `setup` automatically via the
-`predev` / `prebuild:docs` hooks; the explicit `setup` step is only
-required right after `npm install`.
+`npm run dev` runs `docs:html` (generates `docs-dist/` from `docs/`), creates
+the `docs-dist/css` symlink, and copies the JS bundle automatically.
 
 ## Build a distribution bundle
 
@@ -76,8 +74,13 @@ css/                  # Sass source (ITCSS order)
     _spinners.scss
     _progress.scss
   _themes.scss
-docs/                 # Documentation + live demo (run with `npm run dev`)
-  css → ../css        # dev-only symlink, created by `npm run setup`
+docs/                 # Docs source (layout, pages, SCSS/JS assets)
+  layout.html
+  nav.json
+  pages/
+  assets/css/
+  assets/js/
+docs-dist/            # Generated dev tree (gitignored; Vite root)
 js/                   # Component plugins (Alert, Collapse, Tab, …)
 dist/                 # Compiled CSS + JS bundles (build artifact)
 demo-dist/            # Built static demo site (build artifact)

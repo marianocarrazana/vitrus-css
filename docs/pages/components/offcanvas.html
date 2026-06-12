@@ -1,0 +1,34 @@
+<span class="docs-eyebrow">Overlays</span>
+        <h1 class="docs-title">Offcanvas</h1>
+        <p class="docs-lead">
+          Slide-in glass panels from any edge. Use <code>data-vitrus-toggle="offcanvas"</code> with
+          <code>data-vitrus-target</code>.
+        </p>
+        <section class="docs-section">
+          <h2 class="docs-section-title">Offcanvas start</h2>
+          <div class="docs-example">
+            <button
+              class="btn btn-primary"
+              type="button"
+              data-vitrus-toggle="offcanvas"
+              data-vitrus-target="#offcanvasStart"
+            >
+              Toggle offcanvas
+            </button>
+          </div>
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasStart"
+            aria-labelledby="offcanvasStartLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasStartLabel">Offcanvas</h5>
+              <button type="button" class="btn-close" data-vitrus-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <p>Content for the offcanvas panel goes here.</p>
+            </div>
+          </div>
+        </section>
+        <footer class="docs-footer">VitrusCSS · Offcanvas</footer>

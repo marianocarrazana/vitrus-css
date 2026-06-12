@@ -1,0 +1,44 @@
+<span class="docs-eyebrow">Overlays</span>
+        <h1 class="docs-title">Modal</h1>
+        <p class="docs-lead">
+          Glass dialog with backdrop, focus trap, and scroll lock. Toggle with
+          <code>data-vitrus-toggle="modal"</code> and <code>data-vitrus-target</code>.
+        </p>
+        <section class="docs-section">
+          <h2 class="docs-section-title">Live demo</h2>
+          <div class="docs-example">
+            <button type="button" class="btn btn-primary" data-vitrus-toggle="modal" data-vitrus-target="#demoModal">
+              Launch demo modal
+            </button>
+          </div>
+          <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="demoModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-vitrus-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Modal body text goes here. The glass surface blurs content behind the dialog.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-vitrus-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code">
+            <pre><code>&lt;button type="button" class="btn btn-primary"
+  data-vitrus-toggle="modal" data-vitrus-target="#demoModal"&gt;
+  Launch demo modal
+&lt;/button&gt;
+
+&lt;div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </section>
+        <footer class="docs-footer">VitrusCSS · Modal</footer>

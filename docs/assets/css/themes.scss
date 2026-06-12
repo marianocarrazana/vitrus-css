@@ -4,6 +4,9 @@
 // =============================================================================
 
 :root {
+  --docs-header-height: 3.5rem;
+  --docs-sidebar-width: 15rem;
+  --docs-toc-width: 13.75rem;
   --docs-page-bg:
     radial-gradient(at 18% 22%, rgba(99, 102, 241, 0.55) 0, transparent 45%),
     radial-gradient(at 82% 18%, rgba(139, 92, 246, 0.55) 0, transparent 45%),
@@ -19,9 +22,18 @@
   --docs-fg-dim: rgba(241, 245, 249, 0.55);
   --docs-heading: #fff;
   --docs-heading-sub: #cbd5e1;
+  --docs-header-bg: rgba(15, 23, 42, 0.72);
+  --docs-header-border: rgba(255, 255, 255, 0.08);
   --docs-sidebar-bg: rgba(15, 23, 42, 0.55);
   --docs-sidebar-border: rgba(255, 255, 255, 0.08);
+  --docs-toc-bg: rgba(15, 23, 42, 0.35);
+  --docs-toc-border: rgba(255, 255, 255, 0.06);
+  --docs-toc-mobile-bg: rgba(15, 23, 42, 0.55);
+  --docs-toc-active-border: #6366f1;
   --docs-nav-hover-bg: rgba(255, 255, 255, 0.06);
+  --docs-nav-active-bg: rgba(99, 102, 241, 0.22);
+  --docs-nav-active-fg: #fff;
+  --docs-anchor-fg: #818cf8;
   --docs-example-bg: rgba(255, 255, 255, 0.06);
   --docs-example-border: rgba(255, 255, 255, 0.12);
   --docs-code-bg: rgba(15, 23, 42, 0.7);
@@ -62,9 +74,18 @@
   --docs-fg-dim: rgba(15, 23, 42, 0.55);
   --docs-heading: #0f172a;
   --docs-heading-sub: #334155;
+  --docs-header-bg: rgba(255, 255, 255, 0.72);
+  --docs-header-border: rgba(15, 23, 42, 0.08);
   --docs-sidebar-bg: rgba(255, 255, 255, 0.55);
   --docs-sidebar-border: rgba(15, 23, 42, 0.08);
+  --docs-toc-bg: rgba(255, 255, 255, 0.45);
+  --docs-toc-border: rgba(15, 23, 42, 0.08);
+  --docs-toc-mobile-bg: rgba(255, 255, 255, 0.65);
+  --docs-toc-active-border: #6366f1;
   --docs-nav-hover-bg: rgba(15, 23, 42, 0.05);
+  --docs-nav-active-bg: rgba(99, 102, 241, 0.12);
+  --docs-nav-active-fg: #312e81;
+  --docs-anchor-fg: #4f46e5;
   --docs-example-bg: rgba(255, 255, 255, 0.45);
   --docs-example-border: rgba(15, 23, 42, 0.1);
   --docs-code-bg: rgba(15, 23, 42, 0.06);
@@ -94,9 +115,18 @@
   --docs-fg-dim: rgba(15, 23, 42, 0.6);
   --docs-heading: #0f172a;
   --docs-heading-sub: #475569;
+  --docs-header-bg: rgba(255, 255, 255, 0.82);
+  --docs-header-border: rgba(15, 23, 42, 0.1);
   --docs-sidebar-bg: rgba(255, 255, 255, 0.72);
   --docs-sidebar-border: rgba(15, 23, 42, 0.1);
+  --docs-toc-bg: rgba(255, 255, 255, 0.55);
+  --docs-toc-border: rgba(15, 23, 42, 0.1);
+  --docs-toc-mobile-bg: rgba(255, 255, 255, 0.75);
+  --docs-toc-active-border: #6366f1;
   --docs-nav-hover-bg: rgba(15, 23, 42, 0.06);
+  --docs-nav-active-bg: rgba(99, 102, 241, 0.12);
+  --docs-nav-active-fg: #312e81;
+  --docs-anchor-fg: #4f46e5;
   --docs-example-bg: rgba(255, 255, 255, 0.65);
   --docs-example-border: rgba(15, 23, 42, 0.12);
   --docs-code-bg: rgba(15, 23, 42, 0.08);
@@ -119,7 +149,10 @@
     radial-gradient(at 78% 82%, rgba(16, 185, 129, 0.25) 0, transparent 45%),
     radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.2) 0, transparent 60%),
     linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
+  --docs-header-bg: rgba(2, 6, 23, 0.82);
   --docs-sidebar-bg: rgba(2, 6, 23, 0.65);
+  --docs-toc-bg: rgba(2, 6, 23, 0.5);
+  --docs-toc-mobile-bg: rgba(2, 6, 23, 0.72);
   --docs-code-bg: rgba(2, 6, 23, 0.8);
   --docs-example-bg: rgba(255, 255, 255, 0.04);
 }

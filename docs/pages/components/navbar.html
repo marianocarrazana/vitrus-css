@@ -1,0 +1,83 @@
+<span class="docs-eyebrow">Components</span>
+        <h1 class="docs-title">Navbar</h1>
+        <p class="docs-lead">
+          Responsive glass navigation header with branding, nav links, and a collapsible menu for narrow viewports.
+        </p>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Basic navbar</h2>
+
+          <div class="docs-example">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="#">Vitrus</a>
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;nav class="navbar navbar-expand-lg"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;Vitrus&lt;/a&gt;
+  &lt;ul class="navbar-nav"&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Features&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Collapsible (mobile)</h2>
+          <p class="docs-section-sub">
+            Resize below 992px to test the toggler. Include <code>vitrus.bundle.min.js</code> and use
+            <code>data-vitrus-toggle="collapse"</code> on the toggler.
+          </p>
+
+          <div class="docs-example">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="#">Vitrus</a>
+              <button
+                class="navbar-toggler collapsed"
+                type="button"
+                data-vitrus-toggle="collapse"
+                data-vitrus-target="#navbarDemo"
+                aria-controls="navbarDemo"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarDemo">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Docs</a></li>
+                  <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Color schemes</h2>
+
+          <div class="docs-example">
+            <nav class="navbar navbar-dark mb-3">
+              <a class="navbar-brand" href="#">Dark glass</a>
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Link</a></li>
+              </ul>
+            </nav>
+            <nav class="navbar navbar-light">
+              <a class="navbar-brand" href="#">Light glass</a>
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Link</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <footer class="docs-footer">VitrusCSS · Navbar</footer>
