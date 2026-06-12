@@ -110,7 +110,11 @@ body.docs-body {
 }
 
 .docs-sidebar-offcanvas {
-  --vitrus-offcanvas-width: min(18rem, 85vw);
+  --vitrus-offcanvas-horizontal-width: min(18rem, 85vw);
+  background-color: var(--docs-header-bg);
+  border-right: 1px solid var(--docs-sidebar-border);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .docs-sidebar-offcanvas-body {

@@ -4,7 +4,7 @@ import SelectorEngine from './dom/selector-engine.js';
 import Backdrop from './util/backdrop.js';
 import FocusTrap from './util/focustrap.js';
 import ScrollBarHelper from './util/scrollbar.js';
-import { getElementFromSelector, isVisible, reflow } from './util/index.js';
+import { getElementFromSelector, reflow } from './util/index.js';
 
 const NAME = 'offcanvas';
 const DATA_KEY = 'vitrus.offcanvas';
@@ -53,7 +53,7 @@ class Offcanvas extends BaseComponent {
   }
 
   show(relatedTarget) {
-    if (this._isShown || !isVisible(this._element)) {
+    if (this._isShown) {
       return;
     }
     if (!EventHandler.trigger(this._element, EVENT_SHOW, { relatedTarget }).defaultPrevented) {
@@ -144,14 +144,18 @@ class Offcanvas extends BaseComponent {
   }
 
   static dataApiClickHandler(event) {
-    const target = getElementFromSelector(event.target);
-    if (event.target.tagName === 'A' || event.target.tagName === 'AREA') {
+    const toggle = event.delegateTarget ?? event.target.closest(SELECTOR_DATA_TOGGLE);
+    if (!toggle) {
+      return;
+    }
+    const target = getElementFromSelector(toggle);
+    if (toggle.tagName === 'A' || toggle.tagName === 'AREA') {
       event.preventDefault();
     }
     if (!target) {
       return;
     }
-    Offcanvas.getOrCreateInstance(target).toggle();
+    Offcanvas.getOrCreateInstance(target).toggle(toggle);
   }
 }
 
