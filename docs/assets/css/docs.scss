@@ -551,7 +551,7 @@ body.docs-body {
 
 .glass-card {
   padding: 1.5rem;
-  color: #fff;
+  color: var(--vitrus-body-color);
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(20px) saturate(180%);
@@ -560,17 +560,17 @@ body.docs-body {
 }
 
 .glass-card-light {
-  background: rgba(255, 255, 255, 0.3);
-  color: #0f172a;
+  background: rgba(255, 255, 255, 0.505);
+  color: #141414;
 }
 
 .glass-card-primary {
-  background: rgba(99, 102, 241, 0.45);
+  background: rgba(155, 156, 255, 0.666);
   border-color: rgba(99, 102, 241, 0.6);
 }
 
 .glass-card-success {
-  background: rgba(16, 185, 129, 0.4);
+  background: rgba(42, 255, 85, 0.4);
   border-color: rgba(16, 185, 129, 0.6);
 }
 
