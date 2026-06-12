@@ -33,6 +33,8 @@ export default defineConfig({
     open: false,
   },
   build: {
+    // LightningCSS (Vite 8 default) drops unprefixed backdrop-filter; use esbuild instead.
+    cssMinify: 'esbuild',
     outDir: fileURLToPath(new URL('./demo-dist', import.meta.url)),
     emptyOutDir: true,
     sourcemap: true,
