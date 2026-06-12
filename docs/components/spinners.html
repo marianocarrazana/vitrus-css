@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Badges · VitrusCSS</title>
+    <title>Spinners · VitrusCSS</title>
     <script>
       (function () {
         var t = localStorage.getItem('vitrus-theme');
@@ -47,7 +47,7 @@
           <ul class="docs-nav">
             <li class="docs-nav-section">Components</li>
             <li><a href="./buttons.html">Buttons</a></li>
-            <li><a class="active" href="./badges.html">Badges</a></li>
+            <li><a href="./badges.html">Badges</a></li>
             <li><a href="./alerts.html">Alerts</a></li>
             <li><a href="./cards.html">Cards</a></li>
             <li><a href="./forms.html">Forms</a></li>
@@ -55,7 +55,7 @@
             <li><a href="./nav.html">Nav</a></li>
             <li><a href="./breadcrumb.html">Breadcrumb</a></li>
             <li><a href="./pagination.html">Pagination</a></li>
-            <li><a href="./spinners.html">Spinners</a></li>
+            <li><a class="active" href="./spinners.html">Spinners</a></li>
             <li><a href="./progress.html">Progress</a></li>
           </ul>
 
@@ -67,71 +67,57 @@
           <ul class="docs-nav">
             <li class="docs-nav-section">Coming in Phase 3</li>
             <li><a class="disabled-link" aria-disabled="true" href="#">Dropdowns &amp; modals</a></li>
-            <li><a aria-disabled="true" href="#">Toasts, tooltips, popovers</a></li>
-            <li><a aria-disabled="true" href="#">Offcanvas &amp; accordion</a></li>
+            <li><a class="disabled-link" aria-disabled="true" href="#">Toasts, tooltips, popovers</a></li>
+            <li><a class="disabled-link" aria-disabled="true" href="#">Offcanvas &amp; accordion</a></li>
           </ul>
         </nav>
       </aside>
 
       <main class="docs-main">
         <span class="docs-eyebrow">Components</span>
-        <h1 class="docs-title">Badges</h1>
-        <p class="docs-lead">
-          Inline pill-shaped indicators. Pair <code>.badge</code> with a <code>.bg-*</code> color utility to get a
-          contextual variant.
-        </p>
+        <h1 class="docs-title">Spinners</h1>
+        <p class="docs-lead">Animated loading indicators. Apply semantic colors with <code>.text-*</code> utilities.</p>
 
         <section class="docs-section">
-          <h2 class="docs-section-title">Semantic variants</h2>
+          <h2 class="docs-section-title">Border spinner</h2>
 
           <div class="docs-example">
-            <div class="pill-row">
-              <span class="badge">Default</span>
-              <span class="badge bg-primary">Primary</span>
-              <span class="badge bg-secondary">Secondary</span>
-              <span class="badge bg-success">Success</span>
-              <span class="badge bg-danger">Danger</span>
-              <span class="badge bg-warning text-dark">Warning</span>
-              <span class="badge bg-info">Info</span>
-              <span class="badge bg-light text-dark">Light</span>
-              <span class="badge bg-dark">Dark</span>
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
             </div>
           </div>
 
           <div class="docs-code">
-            <pre><code>&lt;span class="badge"&gt;Default&lt;/span&gt;
-&lt;span class="badge bg-primary"&gt;Primary&lt;/span&gt;
-&lt;span class="badge bg-success"&gt;Success&lt;/span&gt;</code></pre>
+            <pre><code>&lt;div class="spinner-border" role="status"&gt;
+  &lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;
+&lt;/div&gt;</code></pre>
           </div>
         </section>
 
         <section class="docs-section">
-          <h2 class="docs-section-title">In context</h2>
-          <p class="docs-section-sub">Badges work inside headings, buttons, and list items.</p>
+          <h2 class="docs-section-title">Growing spinner</h2>
 
           <div class="docs-example">
-            <h1 class="h3">Inbox <span class="badge bg-primary">12</span></h1>
-            <h2 class="h4 mt-3">Mentions <span class="badge bg-success">3 new</span></h2>
-            <button type="button" class="btn btn-primary mt-3">
-              Notifications <span class="badge bg-light text-dark ms-1">4</span>
-            </button>
+            <div class="spinner-grow text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
         </section>
 
         <section class="docs-section">
-          <h2 class="docs-section-title">Pill style</h2>
-          <p class="docs-section-sub">
-            Add <code>.rounded-pill</code> for a more rounded shape (the base badge is already pill-shaped by default).
-          </p>
+          <h2 class="docs-section-title">Sizes &amp; colors</h2>
 
           <div class="docs-example">
-            <span class="badge rounded-pill bg-primary">New</span>
-            <span class="badge rounded-pill bg-success">Active</span>
-            <span class="badge rounded-pill bg-danger">Archived</span>
+            <div class="d-flex flex-wrap align-items-center gap-3">
+              <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+              <div class="spinner-border text-primary" role="status"></div>
+              <div class="spinner-grow spinner-grow-sm text-danger" role="status"></div>
+              <div class="spinner-grow text-warning" role="status"></div>
+            </div>
           </div>
         </section>
 
-        <footer class="docs-footer">VitrusCSS · Badges</footer>
+        <footer class="docs-footer">VitrusCSS · Spinners</footer>
       </main>
     </div>
     <script type="module" src="../assets/js/theme.js"></script>

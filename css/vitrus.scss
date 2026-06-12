@@ -26,6 +26,12 @@
 @use "components/alerts";
 @use "components/cards";
 @use "components/forms";
+@use "components/nav";
+@use "components/navbar";
+@use "components/breadcrumb";
+@use "components/pagination";
+@use "components/spinners";
+@use "components/progress";
 
 // Utilities last — high specificity + !important, per ITCSS
 @use "utilities";

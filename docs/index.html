@@ -11,6 +11,9 @@
     <script>
       (function () {
         var t = localStorage.getItem('vitrus-theme');
+        if (!t && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          t = 'midnight';
+        }
         if (t) document.documentElement.setAttribute('data-vitrus-theme', t);
       })();
     </script>
@@ -61,6 +64,17 @@
             <li><a href="./components/alerts.html">Alerts</a></li>
             <li><a href="./components/cards.html">Cards</a></li>
             <li><a href="./components/forms.html">Forms</a></li>
+            <li><a href="./components/navbar.html">Navbar</a></li>
+            <li><a href="./components/nav.html">Nav</a></li>
+            <li><a href="./components/breadcrumb.html">Breadcrumb</a></li>
+            <li><a href="./components/pagination.html">Pagination</a></li>
+            <li><a href="./components/spinners.html">Spinners</a></li>
+            <li><a href="./components/progress.html">Progress</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Theming</li>
+            <li><a href="./components/themes.html">Themes &amp; dark mode</a></li>
           </ul>
 
           <ul class="docs-nav">
@@ -82,7 +96,7 @@
       <!-- Main content                                                  -->
       <!-- ============================================================== -->
       <main class="docs-main">
-        <span class="docs-eyebrow">Phase 1 · MVP</span>
+        <span class="docs-eyebrow">Phase 2</span>
         <h1 class="docs-title">Bootstrap 5 compatible.<br />Glassmorphism by default.</h1>
         <p class="docs-lead">
           VitrusCSS is a Sass-authored component library that mirrors the Bootstrap 5 class API and ships translucent
@@ -343,6 +357,35 @@ $glass-blur: 16px;
                 </div>
               </div>
             </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Navbar &amp; Nav</h3>
+                  <p class="card-text text-muted">Responsive glass header, tabs, pills, and breadcrumbs.</p>
+                  <a class="btn btn-sm btn-outline-primary me-2" href="./components/navbar.html">Navbar</a>
+                  <a class="btn btn-sm btn-outline-primary" href="./components/nav.html">Nav</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Pagination &amp; Progress</h3>
+                  <p class="card-text text-muted">Page links, spinners, and completion bars.</p>
+                  <a class="btn btn-sm btn-outline-primary me-2" href="./components/pagination.html">Pagination</a>
+                  <a class="btn btn-sm btn-outline-primary" href="./components/progress.html">Progress</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Themes</h3>
+                  <p class="card-text text-muted">Runtime presets including dark glass via <code>midnight</code>.</p>
+                  <a class="btn btn-sm btn-outline-primary" href="./components/themes.html">View</a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -368,7 +411,7 @@ $glass-blur: 16px;
               <tr>
                 <td>Phase 2</td>
                 <td>Navbar, nav, breadcrumb, pagination, spinners, progress, dark mode</td>
-                <td><span class="badge">Planned</span></td>
+                <td><span class="badge bg-success">Shipped</span></td>
               </tr>
               <tr>
                 <td>Phase 3</td>

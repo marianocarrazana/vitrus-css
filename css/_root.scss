@@ -83,6 +83,43 @@
   // Grid
   --vitrus-grid-gutter: #{$grid-gutter-width};
 
+  // Nav
+  --vitrus-nav-link-padding-y: #{$nav-link-padding-y};
+  --vitrus-nav-link-padding-x: #{$nav-link-padding-x};
+  --vitrus-nav-tabs-border-color: #{$border-color};
+  --vitrus-nav-pills-border-radius: #{$nav-pills-border-radius};
+
+  // Navbar
+  --vitrus-navbar-padding-y: #{$navbar-padding-y};
+  --vitrus-navbar-padding-x: #{$navbar-padding-x};
+  --vitrus-navbar-brand-font-size: #{$navbar-brand-font-size};
+  --vitrus-navbar-toggler-icon-width: #{$navbar-toggler-icon-width};
+
+  // Breadcrumb
+  --vitrus-breadcrumb-padding-y: #{$breadcrumb-padding-y};
+  --vitrus-breadcrumb-active-color: #{$text-muted};
+  --vitrus-breadcrumb-border-radius: #{$breadcrumb-border-radius};
+
+  // Pagination
+  --vitrus-pagination-padding-y: #{$pagination-padding-y};
+  --vitrus-pagination-padding-x: #{$pagination-padding-x};
+  --vitrus-pagination-border-radius: #{$pagination-border-radius};
+
+  // Spinner
+  --vitrus-spinner-width: #{$spinner-width};
+  --vitrus-spinner-height: #{$spinner-height};
+  --vitrus-spinner-border-width: #{$spinner-border-width};
+  --vitrus-spinner-animation-speed: #{$spinner-animation-speed};
+  --vitrus-spinner-width-sm: #{$spinner-width-sm};
+  --vitrus-spinner-height-sm: #{$spinner-height-sm};
+  --vitrus-spinner-border-width-sm: #{$spinner-border-width-sm};
+
+  // Progress
+  --vitrus-progress-height: #{$progress-height};
+  --vitrus-progress-bg: #{$glass-bg-soft};
+  --vitrus-progress-border-radius: #{$progress-border-radius};
+  --vitrus-progress-bar-bg: #{$primary};
+
   // Heading sizes
   @each $key, $value in $headings-font-sizes {
     --vitrus-#{$key}-font-size: #{$value};

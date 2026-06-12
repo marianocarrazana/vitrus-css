@@ -1,0 +1,105 @@
+// =============================================================================
+// VitrusCSS — Nav
+// Base navigation links, tabs, and pills. Markup matches Bootstrap 5.
+// =============================================================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav-link {
+  @include focus-ring;
+
+  display: block;
+  padding: var(--vitrus-nav-link-padding-y) var(--vitrus-nav-link-padding-x);
+  font-size: $nav-link-font-size;
+  font-weight: $nav-link-font-weight;
+  color: var(--vitrus-body-color);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  border-radius: $border-radius-sm;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover,
+  &:focus {
+    color: var(--vitrus-primary);
+    text-decoration: none;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: var(--vitrus-muted);
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.nav-tabs {
+  border-bottom: 1px solid var(--vitrus-border-color);
+
+  .nav-link {
+    margin-bottom: -1px;
+    border: 1px solid transparent;
+    border-top-left-radius: var(--vitrus-border-radius);
+    border-top-right-radius: var(--vitrus-border-radius);
+
+    &:hover,
+    &:focus {
+      border-color: var(--vitrus-border-color);
+      isolation: isolate;
+    }
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: var(--vitrus-body-color);
+    background: var(--vitrus-glass-bg-strong);
+    border-color: var(--vitrus-border-color) var(--vitrus-border-color) transparent;
+    backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  }
+}
+
+.nav-pills {
+  .nav-link {
+    border-radius: var(--vitrus-nav-pills-border-radius);
+
+    &.active,
+    .show > & {
+      color: #fff;
+      background: var(--vitrus-primary);
+    }
+  }
+}
+
+.nav-fill,
+.nav-justified {
+  .nav-item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+.nav-justified {
+  .nav-link {
+    width: 100%;
+  }
+}
+
+.tab-content > .tab-pane {
+  display: none;
+}
+
+.tab-content > .active {
+  display: block;
+}

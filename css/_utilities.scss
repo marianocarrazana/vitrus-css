@@ -607,3 +607,47 @@
 .invisible {
   visibility: hidden !important;
 }
+
+// --- Collapse (toggle .show via JS) -----------------------------------------
+.collapse:not(.show) {
+  display: none;
+}
+
+.collapse.show {
+  display: block;
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
+
+// --- Fixed / sticky positioning ---------------------------------------------
+.fixed-top {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.sticky-top {
+  position: sticky !important;
+  top: 0;
+  z-index: 1020;
+}
+
+// --- Accessibility ----------------------------------------------------------
+.visually-hidden,
+.visually-hidden-focusable:not(:focus, :focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

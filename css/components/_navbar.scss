@@ -1,0 +1,176 @@
+// =============================================================================
+// VitrusCSS — Navbar
+// Responsive glass navigation header. Collapse toggled via .show class (JS).
+// =============================================================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.navbar {
+  --vitrus-navbar-color: var(--vitrus-body-color);
+  --vitrus-navbar-hover-color: var(--vitrus-primary);
+  --vitrus-navbar-disabled-color: var(--vitrus-muted);
+  --vitrus-navbar-brand-color: var(--vitrus-body-color);
+  --vitrus-navbar-brand-hover-color: var(--vitrus-primary);
+  --vitrus-navbar-toggler-border-color: var(--vitrus-border-color);
+  --vitrus-navbar-toggler-icon-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%2815, 23, 42, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--vitrus-navbar-padding-y) var(--vitrus-navbar-padding-x);
+  color: var(--vitrus-navbar-color);
+  background: var(--vitrus-glass-bg);
+  border: 1px solid var(--vitrus-glass-border);
+  border-radius: var(--vitrus-glass-radius);
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  box-shadow: var(--vitrus-glass-shadow);
+}
+
+.navbar > .container,
+.navbar > .container-fluid {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  padding-top: $navbar-brand-padding-y;
+  padding-bottom: $navbar-brand-padding-y;
+  margin-right: $navbar-brand-margin-end;
+  font-size: var(--vitrus-navbar-brand-font-size);
+  font-weight: var(--vitrus-fw-semibold);
+  color: var(--vitrus-navbar-brand-color);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: var(--vitrus-navbar-brand-hover-color);
+    text-decoration: none;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+    color: var(--vitrus-navbar-color);
+
+    &:hover,
+    &:focus {
+      color: var(--vitrus-navbar-hover-color);
+    }
+
+    &.disabled,
+    &:disabled {
+      color: var(--vitrus-navbar-disabled-color);
+    }
+
+    &.active {
+      color: var(--vitrus-navbar-hover-color);
+      font-weight: var(--vitrus-fw-semibold);
+    }
+  }
+
+  .show > .nav-link,
+  .nav-link.active {
+    color: var(--vitrus-navbar-hover-color);
+  }
+}
+
+.navbar-text {
+  padding-top: $nav-link-padding-y;
+  padding-bottom: $nav-link-padding-y;
+  color: var(--vitrus-navbar-color);
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navbar-toggler {
+  @include reset-button;
+  @include focus-ring;
+
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+  font-size: $navbar-toggler-font-size;
+  line-height: 1;
+  color: var(--vitrus-navbar-color);
+  background: var(--vitrus-glass-bg-soft);
+  border: 1px solid var(--vitrus-navbar-toggler-border-color);
+  border-radius: $navbar-toggler-border-radius;
+  transition: box-shadow 0.15s ease;
+
+  &:hover {
+    background: var(--vitrus-glass-bg);
+  }
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: var(--vitrus-navbar-toggler-icon-width);
+  height: $navbar-toggler-icon-height;
+  vertical-align: middle;
+  background-image: var(--vitrus-navbar-toggler-icon-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.navbar-dark {
+  --vitrus-navbar-color: rgba(241, 245, 249, 0.9);
+  --vitrus-navbar-hover-color: #fff;
+  --vitrus-navbar-disabled-color: rgba(241, 245, 249, 0.45);
+  --vitrus-navbar-brand-color: #fff;
+  --vitrus-navbar-brand-hover-color: #fff;
+  --vitrus-navbar-toggler-border-color: rgba(255, 255, 255, 0.15);
+  --vitrus-navbar-toggler-icon-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28241, 245, 249, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-light {
+  --vitrus-navbar-color: var(--vitrus-body-color);
+  --vitrus-navbar-hover-color: var(--vitrus-primary);
+  --vitrus-navbar-disabled-color: var(--vitrus-muted);
+  --vitrus-navbar-brand-color: var(--vitrus-body-color);
+  --vitrus-navbar-brand-hover-color: var(--vitrus-primary);
+}
+
+@each $bp in (sm, md, lg, xl, xxl) {
+  .navbar-expand-#{$bp} {
+    @include media-breakpoint-up($bp) {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+
+      .navbar-nav {
+        flex-direction: row;
+
+        .nav-link {
+          padding-right: var(--vitrus-nav-link-padding-x);
+          padding-left: var(--vitrus-nav-link-padding-x);
+        }
+      }
+
+      .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+      }
+
+      .navbar-toggler {
+        display: none;
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ A CSS component library that mirrors the **Bootstrap 5 class API** while deliver
 - CSS-custom-property theming with dark-mode ready tokens
 - Self-documenting: the `docs/` site explains usage, shows live examples, and serves as the primary QA surface
 
-> **Status:** Phase 1 MVP — reboot, grid, core utilities, and the first wave of components (buttons, badges, alerts, cards, forms). JS-dependent components (dropdown, modal, toast, tooltip, popover, offcanvas, accordion) ship in Phase 3.
+> **Status:** Phase 2 — foundation, utilities, Phase 1 components (buttons, badges, alerts, cards, forms), and navigation/feedback (navbar, nav, breadcrumb, pagination, spinners, progress) plus runtime theming with dark glass via the `midnight` preset. JS-dependent components (dropdown, modal, toast, tooltip, popover, offcanvas, accordion) ship in Phase 3.
 
 ---
 
@@ -65,6 +65,13 @@ css/                  # Sass source (ITCSS order)
     _alerts.scss
     _cards.scss
     _forms.scss
+    _nav.scss
+    _navbar.scss
+    _breadcrumb.scss
+    _pagination.scss
+    _spinners.scss
+    _progress.scss
+  _themes.scss
 docs/                 # Documentation + live demo (run with `npm run dev`)
   css → ../css        # dev-only symlink, created by `npm run setup`
 dist/                 # Compiled CSS (build artifact)

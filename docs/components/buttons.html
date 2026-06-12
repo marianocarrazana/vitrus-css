@@ -7,6 +7,9 @@
     <script>
       (function () {
         var t = localStorage.getItem('vitrus-theme');
+        if (!t && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          t = 'midnight';
+        }
         if (t) document.documentElement.setAttribute('data-vitrus-theme', t);
       })();
     </script>
@@ -48,11 +51,22 @@
             <li><a href="./alerts.html">Alerts</a></li>
             <li><a href="./cards.html">Cards</a></li>
             <li><a href="./forms.html">Forms</a></li>
+            <li><a href="./navbar.html">Navbar</a></li>
+            <li><a href="./nav.html">Nav</a></li>
+            <li><a href="./breadcrumb.html">Breadcrumb</a></li>
+            <li><a href="./pagination.html">Pagination</a></li>
+            <li><a href="./spinners.html">Spinners</a></li>
+            <li><a href="./progress.html">Progress</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Theming</li>
+            <li><a href="./themes.html">Themes &amp; dark mode</a></li>
           </ul>
 
           <ul class="docs-nav">
             <li class="docs-nav-section">Coming in Phase 3</li>
-            <li><a aria-disabled="true" href="#">Dropdowns &amp; modals</a></li>
+            <li><a class="disabled-link" aria-disabled="true" href="#">Dropdowns &amp; modals</a></li>
             <li><a aria-disabled="true" href="#">Toasts, tooltips, popovers</a></li>
             <li><a aria-disabled="true" href="#">Offcanvas &amp; accordion</a></li>
           </ul>

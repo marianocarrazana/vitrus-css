@@ -1,0 +1,55 @@
+// =============================================================================
+// VitrusCSS — Breadcrumb
+// Horizontal trail indicating page hierarchy. Bootstrap 5 markup.
+// =============================================================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: var(--vitrus-breadcrumb-padding-y) $breadcrumb-padding-x;
+  margin-bottom: $breadcrumb-margin-bottom;
+  font-size: $font-size-sm;
+  list-style: none;
+  background: var(--vitrus-glass-bg-soft);
+  border: 1px solid var(--vitrus-glass-border);
+  border-radius: var(--vitrus-breadcrumb-border-radius);
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(160%);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+
+  + .breadcrumb-item {
+    padding-left: $breadcrumb-item-padding-x;
+
+    &::before {
+      display: inline-block;
+      padding-right: $breadcrumb-item-padding-x;
+      color: var(--vitrus-muted);
+      content: "/";
+    }
+  }
+
+  a {
+    @include focus-ring;
+
+    color: var(--vitrus-body-color);
+    text-decoration: none;
+    border-radius: $border-radius-sm;
+
+    &:hover {
+      color: var(--vitrus-primary);
+      text-decoration: underline;
+    }
+  }
+
+  &.active {
+    color: var(--vitrus-breadcrumb-active-color);
+  }
+}

@@ -1,0 +1,85 @@
+// =============================================================================
+// VitrusCSS — Pagination
+// Multi-page navigation links. Glass-styled page items.
+// =============================================================================
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  gap: 0.25rem;
+}
+
+.page-link {
+  @include focus-ring;
+
+  position: relative;
+  display: block;
+  padding: var(--vitrus-pagination-padding-y) var(--vitrus-pagination-padding-x);
+  font-size: $pagination-font-size;
+  color: var(--vitrus-body-color);
+  text-decoration: none;
+  background: var(--vitrus-glass-bg-soft);
+  border: $pagination-border-width solid var(--vitrus-border-color);
+  border-radius: var(--vitrus-pagination-border-radius);
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(160%);
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    z-index: 2;
+    color: var(--vitrus-primary);
+    background: var(--vitrus-glass-bg);
+    border-color: var(--vitrus-border-color);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  }
+
+  &:focus-visible {
+    z-index: 3;
+  }
+}
+
+.page-item {
+  &:not(:first-child) .page-link {
+    margin-left: 0;
+  }
+
+  &.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background: var(--vitrus-primary);
+    border-color: var(--vitrus-primary);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+  }
+
+  &.disabled .page-link {
+    color: var(--vitrus-muted);
+    pointer-events: none;
+    background: var(--vitrus-glass-bg-soft);
+    border-color: var(--vitrus-border-color);
+    opacity: 0.65;
+  }
+}
+
+.pagination-lg {
+  --vitrus-pagination-padding-y: 0.75rem;
+  --vitrus-pagination-padding-x: 1.5rem;
+  --vitrus-pagination-border-radius: var(--vitrus-border-radius-lg);
+
+  font-size: $font-size-lg;
+}
+
+.pagination-sm {
+  --vitrus-pagination-padding-y: 0.25rem;
+  --vitrus-pagination-padding-x: 0.5rem;
+  --vitrus-pagination-border-radius: var(--vitrus-border-radius-sm);
+
+  font-size: $font-size-sm;
+}

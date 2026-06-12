@@ -4,7 +4,13 @@
 // custom properties exposed on :root (see css/_root.scss).
 // =============================================================================
 
+:root {
+  color-scheme: light;
+}
+
 [data-vitrus-theme="default"] {
+  color-scheme: light;
+
   --vitrus-body-bg: #f1f5f9;
   --vitrus-body-color: #0f172a;
   --vitrus-muted: rgba(15, 23, 42, 0.6);
@@ -27,6 +33,8 @@
 }
 
 [data-vitrus-theme="frost"] {
+  color-scheme: light;
+
   --vitrus-body-bg: #f8fafc;
   --vitrus-body-color: #0f172a;
   --vitrus-muted: rgba(15, 23, 42, 0.55);
@@ -49,6 +57,8 @@
 }
 
 [data-vitrus-theme="crystal"] {
+  color-scheme: light;
+
   --vitrus-body-bg: #e2e8f0;
   --vitrus-body-color: #0f172a;
   --vitrus-muted: rgba(15, 23, 42, 0.65);
@@ -71,6 +81,8 @@
 }
 
 [data-vitrus-theme="midnight"] {
+  color-scheme: dark;
+
   --vitrus-body-bg: #0f172a;
   --vitrus-body-color: #f1f5f9;
   --vitrus-muted: rgba(241, 245, 249, 0.6);

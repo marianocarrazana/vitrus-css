@@ -1,0 +1,58 @@
+// =============================================================================
+// VitrusCSS — Spinners
+// Animated loading indicators. Color via .text-* utilities.
+// =============================================================================
+
+@use "../variables" as *;
+
+@keyframes vitrus-spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes vitrus-spinner-grow {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.spinner-border {
+  display: inline-block;
+  width: var(--vitrus-spinner-width);
+  height: var(--vitrus-spinner-height);
+  vertical-align: -0.125em;
+  color: var(--vitrus-primary);
+  border: var(--vitrus-spinner-border-width) solid currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: vitrus-spinner-border var(--vitrus-spinner-animation-speed) linear infinite;
+}
+
+.spinner-grow {
+  display: inline-block;
+  width: var(--vitrus-spinner-width);
+  height: var(--vitrus-spinner-height);
+  vertical-align: -0.125em;
+  color: var(--vitrus-primary);
+  background-color: currentcolor;
+  border-radius: 50%;
+  opacity: 0;
+  animation: vitrus-spinner-grow var(--vitrus-spinner-animation-speed) linear infinite;
+}
+
+.spinner-border-sm {
+  --vitrus-spinner-width: var(--vitrus-spinner-width-sm);
+  --vitrus-spinner-height: var(--vitrus-spinner-height-sm);
+  --vitrus-spinner-border-width: var(--vitrus-spinner-border-width-sm);
+}
+
+.spinner-grow-sm {
+  --vitrus-spinner-width: var(--vitrus-spinner-width-sm);
+  --vitrus-spinner-height: var(--vitrus-spinner-height-sm);
+}

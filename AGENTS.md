@@ -17,8 +17,10 @@ Bootstrap-style docs site that doubles as a live demo.
 - Component inventory: [`components.md`](./components.md)
 - Class/architecture notes: [`rules_classes.md`](./rules_classes.md)
 
-The current build is **Phase 1 (MVP)**: foundation, utilities, buttons,
-badges, alerts, cards, forms. JavaScript-driven components (dropdown,
+The current build is **Phase 2**: foundation, utilities, Phase 1
+components (buttons, badges, alerts, cards, forms), plus navbar, nav,
+breadcrumb, pagination, spinners, progress, and runtime theming (dark
+mode via `data-vitrus-theme`). JavaScript-driven components (dropdown,
 modal, toast, tooltip, popover, offcanvas, accordion) ship in Phase 3.
 
 ---
@@ -51,12 +53,19 @@ vitrus-css/
 │   ├── _reboot.scss           # box-sizing, normalize, base typography
 │   ├── _grid.scss             # .container, .row, .col[-bp-N]
 │   ├── _utilities.scss        # @each-generated helpers
+│   ├── _themes.scss
 │   └── components/
 │       ├── _buttons.scss
 │       ├── _badges.scss
 │       ├── _alerts.scss
 │       ├── _cards.scss
-│       └── _forms.scss
+│       ├── _forms.scss
+│       ├── _nav.scss
+│       ├── _navbar.scss
+│       ├── _breadcrumb.scss
+│       ├── _pagination.scss
+│       ├── _spinners.scss
+│       └── _progress.scss
 ├── docs/                      # Documentation + live demo
 │   ├── index.html             # landing page
 │   ├── components/*.html      # one page per component
@@ -388,6 +397,13 @@ If you changed a component, also:
 | `css/components/_alerts.scss`    | `.alert` + variants, `.alert-dismissible`.                                                  |
 | `css/components/_cards.scss`     | `.card` family, `.card-group`, `.card-img-overlay`.                                         |
 | `css/components/_forms.scss`     | `.form-control`, `.form-select`, `.form-check`, `.form-switch`, `.input-group`, validation. |
+| `css/components/_nav.scss`       | `.nav`, `.nav-tabs`, `.nav-pills`, `.tab-content`, `.tab-pane`.                            |
+| `css/components/_navbar.scss`    | `.navbar`, `.navbar-brand`, `.navbar-nav`, `.navbar-expand-*`, toggler, collapse.           |
+| `css/components/_breadcrumb.scss`| `.breadcrumb`, `.breadcrumb-item`.                                                          |
+| `css/components/_pagination.scss`| `.pagination`, `.page-item`, `.page-link`, sizing modifiers.                                |
+| `css/components/_spinners.scss`  | `.spinner-border`, `.spinner-grow`, size modifiers.                                         |
+| `css/components/_progress.scss`  | `.progress`, `.progress-bar`, striped/animated variants.                                    |
+| `css/_themes.scss`               | `data-vitrus-theme` presets including `midnight` dark glass.                                  |
 | `docs/index.html`                | Landing page, token swatches, component overview, roadmap.                                  |
 | `docs/components/<name>.html`    | One per component, with default + variant + code blocks.                                    |
 | `docs/assets/css/docs.scss`      | Docs-only chrome. Never bundled into the library output.                                    |
