@@ -1,0 +1,75 @@
+// =============================================================================
+// VitrusCSS — Alerts
+// Contextual feedback messages. Glass-styled, with a left accent bar that
+// uses the variant color. Markup matches Bootstrap 5; .btn-close slot is
+// present so dismiss behavior can be wired up in Phase 3.
+// =============================================================================
+
+@use "sass:map";
+@use "../variables" as *;
+@use "../mixins" as *;
+
+$alert-variants: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  danger: $danger,
+  warning: $warning,
+  info: $info,
+);
+
+.alert {
+  position: relative;
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: var(--vitrus-spacer);
+  color: var(--vitrus-body-color);
+  background: var(--vitrus-glass-bg);
+  border: 1px solid var(--vitrus-glass-border);
+  border-left: 4px solid var(--vitrus-primary);
+  border-radius: $alert-border-radius;
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  box-shadow: var(--vitrus-glass-shadow);
+}
+
+.alert-heading {
+  margin: 0 0 0.25rem;
+  font-size: 1.15rem;
+  font-weight: var(--vitrus-heading-weight);
+  color: inherit;
+}
+
+.alert p:last-child {
+  margin-bottom: 0;
+}
+
+.alert-link {
+  font-weight: $alert-link-font-weight;
+  color: var(--vitrus-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.alert-dismissible {
+  padding-right: 2.5rem;
+
+  .btn-close {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+  }
+}
+
+@each $name, $color in $alert-variants {
+  .alert-#{$name} {
+    color: $dark;
+    border-left-color: $color;
+    background: rgba-color($color, 0.12);
+    border-color: rgba-color($color, 0.4);
+
+    .alert-link {
+      color: $color;
+    }
+  }
+}

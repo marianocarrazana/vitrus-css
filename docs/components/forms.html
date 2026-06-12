@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Forms · VitrusCSS</title>
+    <script>
+      (function () {
+        var t = localStorage.getItem('vitrus-theme');
+        if (t) document.documentElement.setAttribute('data-vitrus-theme', t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../../css/vitrus.scss" />
+    <link rel="stylesheet" href="../assets/css/docs.scss" />
+    <link rel="stylesheet" href="../assets/css/themes.scss" />
+  </head>
+  <body class="docs-body">
+    <div class="docs-shell">
+      <aside class="docs-sidebar">
+        <a class="docs-brand" href="../index.html">
+          <span class="docs-brand-mark" aria-hidden="true"></span>
+          <span>Vitrus</span>
+        </a>
+
+        <div class="docs-theme-picker">
+          <label class="docs-theme-label" for="vitrus-theme-select">Theme</label>
+          <select id="vitrus-theme-select" class="form-select form-select-sm">
+            <option value="default">Default</option>
+            <option value="frost">Frost</option>
+            <option value="crystal">Crystal</option>
+            <option value="midnight">Midnight</option>
+          </select>
+        </div>
+
+        <nav aria-label="Documentation">
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Getting started</li>
+            <li><a href="../index.html">Introduction</a></li>
+            <li><a href="../index.html#quick-start">Quick start</a></li>
+            <li><a href="../index.html#tokens">Design tokens</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Components</li>
+            <li><a href="./buttons.html">Buttons</a></li>
+            <li><a href="./badges.html">Badges</a></li>
+            <li><a href="./alerts.html">Alerts</a></li>
+            <li><a href="./cards.html">Cards</a></li>
+            <li><a class="active" href="./forms.html">Forms</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Coming in Phase 3</li>
+            <li><a aria-disabled="true" href="#">Dropdowns &amp; modals</a></li>
+            <li><a aria-disabled="true" href="#">Toasts, tooltips, popovers</a></li>
+            <li><a aria-disabled="true" href="#">Offcanvas &amp; accordion</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="docs-main">
+        <span class="docs-eyebrow">Components</span>
+        <h1 class="docs-title">Forms</h1>
+        <p class="docs-lead">
+          Glass-styled form controls. Inputs, selects, checks, radios, switches, input groups, and validation states.
+          All keyboard- and screen-reader-friendly.
+        </p>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Text inputs</h2>
+
+          <div class="docs-example">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="you@vitrus.dev"
+                />
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="At least 12 characters"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleTextarea" class="form-label">Message</label>
+                <textarea
+                  class="form-control"
+                  id="exampleTextarea"
+                  rows="3"
+                  placeholder="Tell us what you think..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;
+&lt;input type="email" class="form-control" id="email" placeholder="you@example.com"&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Sizing</h2>
+
+          <div class="docs-example">
+            <input class="form-control form-control-lg mb-3" type="text" placeholder="Large input" />
+            <input class="form-control mb-3" type="text" placeholder="Default input" />
+            <input class="form-control form-control-sm" type="text" placeholder="Small input" />
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Select</h2>
+
+          <div class="docs-example">
+            <label for="exampleSelect" class="form-label">Pick a framework</label>
+            <select class="form-select" id="exampleSelect">
+              <option selected>Open this select menu</option>
+              <option value="1">Bootstrap 5</option>
+              <option value="2">VitrusCSS</option>
+              <option value="3">Tailwind CSS</option>
+              <option value="4">Plain CSS</option>
+            </select>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;select class="form-select"&gt;
+  &lt;option selected&gt;Open this select menu&lt;/option&gt;
+  &lt;option value="1"&gt;VitrusCSS&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Checks &amp; radios</h2>
+
+          <div class="docs-example">
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="check1" checked />
+                <label class="form-check-label" for="check1">Glass by default</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="check2" />
+                <label class="form-check-label" for="check2">Sass-authored</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="check3" />
+                <label class="form-check-label" for="check3">Bootstrap 5 compatible</label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioGroup" id="radio1" checked />
+                <label class="form-check-label" for="radio1">Light</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioGroup" id="radio2" />
+                <label class="form-check-label" for="radio2">Dark</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioGroup" id="radio3" />
+                <label class="form-check-label" for="radio3">Auto</label>
+              </div>
+            </div>
+
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="switch1" checked />
+              <label class="form-check-label" for="switch1">Glass effects enabled</label>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Input groups</h2>
+          <p class="docs-section-sub">
+            Glue text or buttons to either side of an input with
+            <code>.input-group</code>.
+          </p>
+
+          <div class="docs-example">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">@</span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Email" aria-label="Email" />
+              <span class="input-group-text">@vitrus.dev</span>
+            </div>
+
+            <div class="input-group">
+              <button type="button" class="btn btn-outline-primary">Search</button>
+              <input type="text" class="form-control" placeholder="Component name" aria-label="Component" />
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Validation states</h2>
+          <p class="docs-section-sub">
+            Add <code>.is-valid</code> or <code>.is-invalid</code> to the <code>.form-control</code> (or the wrapper for
+            selects) to render the corresponding feedback message.
+          </p>
+
+          <div class="docs-example">
+            <div class="mb-3">
+              <label for="validInput" class="form-label">Looks good</label>
+              <input type="text" class="form-control is-valid" id="validInput" value="vitrus@dev" />
+              <div class="valid-feedback">That username is available.</div>
+            </div>
+            <div class="mb-3">
+              <label for="invalidInput" class="form-label">Needs attention</label>
+              <input type="text" class="form-control is-invalid" id="invalidInput" value="ab" />
+              <div class="invalid-feedback">Username must be at least 4 characters long.</div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="docs-footer">VitrusCSS · Forms</footer>
+      </main>
+    </div>
+    <script type="module" src="../assets/js/theme.js"></script>
+  </body>
+</html>

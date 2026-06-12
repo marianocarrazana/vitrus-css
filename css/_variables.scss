@@ -1,0 +1,160 @@
+// =============================================================================
+// VitrusCSS — Design tokens
+// Single source of truth for colors, spacing, typography, breakpoints, and
+// the four glass tokens that drive the default glassmorphism look.
+// =============================================================================
+
+// --- Spacing scale (0..5) ---------------------------------------------------
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  // 4px
+  2: $spacer * 0.5,
+  // 8px
+  3: $spacer,
+  // 16px
+  4: $spacer * 1.5,
+  // 24px
+  5: $spacer * 3, // 48px
+);
+
+// --- Breakpoints (Bootstrap 5 defaults) -------------------------------------
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+);
+
+// --- Grid -------------------------------------------------------------------
+$grid-gutter-width: 1.5rem;
+$grid-columns: 12;
+$grid-row-columns: 6;
+
+// --- Typography -------------------------------------------------------------
+$font-family-sans-serif:
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  roboto,
+  "Helvetica Neue",
+  arial,
+  "Noto Sans",
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji";
+$font-family-monospace: sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.875;
+$font-size-lg: $font-size-base * 1.25;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+$headings-font-sizes: (
+  h1: $h1-font-size,
+  h2: $h2-font-size,
+  h3: $h3-font-size,
+  h4: $h4-font-size,
+  h5: $h5-font-size,
+  h6: $h6-font-size,
+);
+$headings-font-weight: 600;
+$headings-line-height: 1.2;
+
+// --- Color palette ----------------------------------------------------------
+// Semantic tokens — components tint glass with these; never reference literals.
+$primary: #6366f1;
+$secondary: #8b5cf6;
+$success: #10b981;
+$danger: #ef4444;
+$warning: #f59e0b;
+$info: #06b6d4;
+$light: #f8fafc;
+$dark: #0f172a;
+$body-bg: #f1f5f9;
+$body-color: $dark;
+$text-muted: rgba($dark, 0.6);
+
+// --- Glass tokens (the heart of Vitrus) -------------------------------------
+$glass-bg: rgba(255, 255, 255, 0.55);
+$glass-bg-strong: rgba(255, 255, 255, 0.7);
+$glass-bg-soft: rgba(255, 255, 255, 0.25);
+$glass-border: rgba(255, 255, 255, 0.6);
+$glass-blur: 16px;
+$glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.12);
+$glass-shadow-lg: 0 16px 48px rgba(15, 23, 42, 0.18);
+$glass-radius: 1rem;
+$glass-radius-sm: 0.5rem;
+$glass-radius-lg: 1.5rem;
+
+// --- Borders & radii --------------------------------------------------------
+$border-width: 1px;
+$border-color: rgba(15, 23, 42, 0.12);
+$border-radius: 0.5rem;
+$border-radius-sm: 0.375rem;
+$border-radius-lg: 0.75rem;
+$border-radius-pill: 50rem;
+
+// --- Components -------------------------------------------------------------
+$btn-padding-y: 0.5rem;
+$btn-padding-x: 1.25rem;
+$btn-padding-y-sm: 0.25rem;
+$btn-padding-x-sm: 0.75rem;
+$btn-padding-y-lg: 0.75rem;
+$btn-padding-x-lg: 1.5rem;
+$btn-font-weight: $font-weight-semibold;
+$btn-border-radius: $glass-radius-sm;
+$btn-focus-width: 0.2rem;
+$input-padding-y: 0.5rem;
+$input-padding-x: 0.875rem;
+$input-padding-y-lg: 0.75rem;
+$input-padding-x-lg: 1rem;
+$input-bg: rgba(255, 255, 255, 0.6);
+$input-bg-focus: rgba(255, 255, 255, 0.85);
+$input-bg-disabled: rgba(255, 255, 255, 0.4);
+$input-border-color: rgba(15, 23, 42, 0.15);
+$input-color: $dark;
+$check-bg: rgba(255, 255, 255, 0.7);
+$input-group-bg: rgba(255, 255, 255, 0.5);
+$input-border-radius: $glass-radius-sm;
+$input-focus-border-color: rgba($primary, 0.6);
+$input-focus-box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+$card-spacer-y: 1.25rem;
+$card-spacer-x: 1.5rem;
+$card-border-radius: $glass-radius;
+$card-cap-bg: rgba(255, 255, 255, 0.4);
+$card-cap-padding-y: 0.85rem;
+$card-cap-padding-x: 1.25rem;
+$alert-padding-y: 0.85rem;
+$alert-padding-x: 1.25rem;
+$alert-border-radius: $glass-radius-sm;
+$alert-border-width: 1px;
+$alert-border-radius: $glass-radius-sm;
+$alert-link-font-weight: $font-weight-bold;
+$badge-padding-y: 0.35em;
+$badge-padding-x: 0.65em;
+$badge-font-size: 0.75em;
+$badge-font-weight: $font-weight-semibold;
+$badge-border-radius: $border-radius-pill;

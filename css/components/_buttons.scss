@@ -1,0 +1,186 @@
+// =============================================================================
+// VitrusCSS — Buttons
+// Glass-styled buttons. Variants tint a translucent surface; outline variants
+// use a transparent fill with a colored border. Includes sizes, block, and
+// disabled states. JS-free; works for <button>, <a>, and <input>.
+// =============================================================================
+
+@use "sass:map";
+@use "../variables" as *;
+@use "../mixins" as *;
+
+// Per-variant base color → maps to a tint + foreground.
+$btn-variants: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  danger: $danger,
+  warning: $warning,
+  info: $info,
+  light: $light,
+  dark: $dark,
+);
+
+.btn {
+  @include reset-button;
+  @include focus-ring;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  padding: $btn-padding-y $btn-padding-x;
+  font-family: var(--vitrus-font-sans);
+  font-size: $font-size-base;
+  font-weight: $btn-font-weight;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  color: var(--vitrus-body-color);
+  background: var(--vitrus-glass-bg);
+  border: 1px solid var(--vitrus-glass-border);
+  border-radius: $btn-border-radius;
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    pointer-events: none;
+    opacity: 0.55;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// --- Variants (tinted glass) ------------------------------------------------
+// Foreground color per variant — light variants keep dark text for contrast.
+$btn-fg: (
+  primary: #fff,
+  secondary: #fff,
+  success: #fff,
+  danger: #fff,
+  warning: $dark,
+  info: #fff,
+  light: $dark,
+  dark: #fff,
+);
+
+@each $name, $color in $btn-variants {
+  $fg: map.get($btn-fg, $name);
+
+  .btn-#{$name} {
+    color: $fg;
+
+    @include glass-tinted($color, 0.45);
+
+    border-color: rgba-color($color, 0.6);
+
+    &:hover {
+      background: rgba-color($color, 0.55);
+      border-color: rgba-color($color, 0.75);
+    }
+  }
+}
+
+.btn-link {
+  font-weight: $font-weight-semibold;
+  color: var(--vitrus-primary);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--vitrus-primary);
+    text-decoration: underline;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// --- Outline variants (transparent fill, colored border) --------------------
+@each $name, $color in $btn-variants {
+  $fg: map.get($btn-fg, $name);
+
+  .btn-outline-#{$name} {
+    color: $color;
+    background: transparent;
+    border: 1px solid rgba-color($color, 0.6);
+    box-shadow: none;
+    backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(160%);
+    -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(160%);
+
+    &:hover {
+      color: $fg;
+      background: rgba-color($color, 0.35);
+      border-color: rgba-color($color, 0.85);
+    }
+  }
+}
+
+// --- Sizing -----------------------------------------------------------------
+.btn-sm {
+  padding: $btn-padding-y-sm $btn-padding-x-sm;
+  font-size: $font-size-sm;
+  border-radius: $border-radius-sm;
+}
+
+.btn-lg {
+  padding: $btn-padding-y-lg $btn-padding-x-lg;
+  font-size: $font-size-lg;
+  border-radius: $border-radius-lg;
+}
+
+// --- Block ------------------------------------------------------------------
+.btn-block,
+.w-100.btn {
+  display: flex;
+  width: 100%;
+}
+
+// --- Close button (for dismissing alerts/modals) ----------------------------
+.btn-close {
+  @include reset-button;
+
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230f172a'%3E%3Cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3E%3C/svg%3E")
+    center / 0.9em auto no-repeat;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+}
+
+.btn-close-white {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}

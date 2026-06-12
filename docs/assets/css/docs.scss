@@ -1,0 +1,407 @@
+// =============================================================================
+// VitrusCSS — Docs site styles
+// Page background, sidebar, code blocks, and page chrome. Only loaded on
+// docs pages — never bundled with the library output.
+// =============================================================================
+
+@use "variables" as *;
+
+// --- Page background (static gradient so the glass effect is visible) ------
+body.docs-body {
+  position: relative;
+  min-height: 100vh;
+  background: var(--docs-page-bg);
+  background-attachment: fixed;
+  color: var(--docs-fg);
+}
+
+// --- Layout: sidebar + content ---------------------------------------------
+.docs-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  gap: 0;
+
+  @media (width <=991.98px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.docs-sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 1.5rem 1.25rem;
+  background: var(--docs-sidebar-bg);
+  border-right: 1px solid var(--docs-sidebar-border);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  overflow-y: auto;
+
+  @media (width <=991.98px) {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--docs-sidebar-border);
+  }
+}
+
+.docs-main {
+  padding: 2.5rem clamp(1.25rem, 4vw, 3rem);
+  max-width: 1200px;
+  width: 100%;
+}
+
+// --- Theme picker -----------------------------------------------------------
+.docs-theme-picker {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--docs-sidebar-border);
+}
+
+.docs-theme-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--docs-fg-faint);
+}
+
+.docs-theme-picker .form-select {
+  width: 100%;
+  font-size: $font-size-sm;
+}
+
+// --- Sidebar brand ---------------------------------------------------------
+.docs-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  color: var(--docs-fg);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+
+  img,
+  svg {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: var(--docs-fg-strong);
+  }
+}
+
+.docs-brand-mark {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.45);
+  position: relative;
+
+  &::after {
+    content: "V";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.docs-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.docs-nav-section {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--docs-fg-faint);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.docs-nav a {
+  display: block;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--docs-fg-muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background: var(--docs-nav-hover-bg);
+    color: var(--docs-fg);
+    text-decoration: none;
+  }
+
+  &.active {
+    background: rgba(99, 102, 241, 0.25);
+    color: var(--docs-fg-strong);
+    font-weight: 600;
+  }
+}
+
+// --- Page chrome ------------------------------------------------------------
+.docs-eyebrow {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c7d2fe;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  border-radius: 999px;
+}
+
+.docs-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+  color: var(--docs-heading);
+  line-height: 1.1;
+}
+
+.docs-lead {
+  font-size: 1.15rem;
+  color: var(--docs-fg-muted);
+  max-width: 60ch;
+  margin: 0 0 2.5rem;
+}
+
+.docs-section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 1.5rem;
+}
+
+.docs-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--docs-heading);
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.01em;
+}
+
+.docs-section-sub {
+  color: var(--docs-fg-subtle);
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.docs-h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--docs-heading-sub);
+  margin: 1.5rem 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+// --- Example block (glass-styled container holding a live demo) -----------
+.docs-example {
+  position: relative;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--docs-example-bg);
+  border: 1px solid var(--docs-example-border);
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.docs-example.docs-example-light {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%);
+  color: var(--vitrus-body-color);
+}
+
+// --- Code block ------------------------------------------------------------
+.docs-code {
+  position: relative;
+  margin: 0 0 1.5rem;
+  background: var(--docs-code-bg);
+  border: 1px solid var(--docs-code-border);
+  border-radius: 0.75rem;
+  font-family: var(--vitrus-font-mono);
+  font-size: 0.85rem;
+  overflow: hidden;
+}
+
+.docs-code pre {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  color: var(--docs-code-fg);
+  line-height: 1.55;
+}
+
+.docs-code code {
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  padding: 0;
+}
+
+// --- Token swatch grid ------------------------------------------------------
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.token-swatch {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background: var(--docs-swatch-bg);
+  border: 1px solid var(--docs-swatch-border);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.token-swatch-fill {
+  height: 60px;
+  border-radius: 0.5rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid var(--docs-swatch-border);
+}
+
+.token-swatch-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--docs-fg);
+}
+
+.token-swatch-value {
+  font-family: var(--vitrus-font-mono);
+  font-size: 0.78rem;
+  color: var(--docs-fg-dim);
+}
+
+// --- Glass token showcase --------------------------------------------------
+.glass-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 1rem 0 2rem;
+}
+
+.glass-card {
+  padding: 1.5rem;
+  color: #fff;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.3);
+  color: #0f172a;
+}
+
+.glass-card-primary {
+  background: rgba(99, 102, 241, 0.45);
+  border-color: rgba(99, 102, 241, 0.6);
+}
+
+.glass-card-success {
+  background: rgba(16, 185, 129, 0.4);
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+.glass-card-warning {
+  background: rgba(245, 158, 11, 0.4);
+  border-color: rgba(245, 158, 11, 0.6);
+  color: #0f172a;
+}
+
+// --- Pill row utility ------------------------------------------------------
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+// --- Footer ----------------------------------------------------------------
+.docs-footer {
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+  border-top: 1px solid var(--docs-footer-border);
+  color: var(--docs-fg-faint);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+// --- Inline code outside of pre blocks -------------------------------------
+:not(pre) > code {
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  color: var(--docs-inline-code-fg);
+  background: var(--docs-inline-code-bg);
+  border-radius: 0.25rem;
+  border: 1px solid var(--docs-code-border);
+}
+
+// --- Tables ----------------------------------------------------------------
+.docs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background: var(--docs-table-bg);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+
+.docs-table th,
+.docs-table td {
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--docs-table-border);
+}
+
+.docs-table th {
+  background: var(--docs-table-head-bg);
+  color: var(--docs-heading-sub);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.docs-table tr:last-child td {
+  border-bottom: 0;
+}

@@ -1,0 +1,111 @@
+// =============================================================================
+// VitrusCSS — Shared mixins
+// =============================================================================
+
+@use "sass:map";
+@use "sass:color";
+@use "sass:list";
+@use "variables" as *;
+
+// White reference (kept at the top so glass-surface can use it as a default).
+$white: #fff;
+
+// --- Color helpers ----------------------------------------------------------
+// Returns the r, g, b channels of a color as a comma-separated list.
+@function rgb-channels($color) {
+  @return color.channel($color, "red", $space: rgb), color.channel($color, "green", $space: rgb),
+    color.channel($color, "blue", $space: rgb);
+}
+
+// Returns an rgba() color built from `$color` (any Sass color) and `$alpha`.
+// Use this instead of `rgba($color, $alpha)` to avoid deprecation noise and
+// keep call sites readable.
+@function rgba-color($color, $alpha: 1) {
+  $c: rgb-channels($color);
+
+  @return rgba(list.nth($c, 1), list.nth($c, 2), list.nth($c, 3), $alpha);
+}
+
+// --- Media queries ----------------------------------------------------------
+@mixin media-breakpoint-up($name) {
+  $min: map.get($grid-breakpoints, $name);
+
+  @if not $min {
+    @error "Unknown breakpoint `#{$name}`.";
+  }
+
+  @if $min != 0 {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($name) {
+  $min: map.get($grid-breakpoints, $name);
+
+  @if not $min {
+    @error "Unknown breakpoint `#{$name}`.";
+  }
+
+  @if $min != 0 {
+    @media (max-width: ($min - 0.02px)) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// --- Reset button (for .btn base) ------------------------------------------
+@mixin reset-button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// --- Focus ring (a11y) ------------------------------------------------------
+@mixin focus-ring($color: rgba($primary, 0.45)) {
+  &:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 $btn-focus-width $color;
+  }
+}
+
+// --- The signature glass surface -------------------------------------------
+// Tints a translucent layer with a configurable color and alpha. Falls back
+// to a higher-opacity solid background where `backdrop-filter` is unsupported.
+@mixin glass-surface($tint: $white, $alpha: 0.55, $border-alpha: 0.6, $blur: $glass-blur) {
+  background: rgba-color($tint, $alpha);
+  border: 1px solid rgba-color($tint, $border-alpha);
+  backdrop-filter: blur($blur) saturate(180%);
+  -webkit-backdrop-filter: blur($blur) saturate(180%);
+  box-shadow: $glass-shadow;
+  border-radius: $glass-radius;
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background: rgba-color($tint, 0.92);
+  }
+}
+
+// A subtly tinted glass using one of the semantic colors as the base hue.
+@mixin glass-tinted($color, $alpha: 0.18) {
+  background: rgba-color($color, $alpha);
+  border: 1px solid rgba-color($color, 0.35);
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(160%);
+  box-shadow: var(--vitrus-glass-shadow);
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background: rgba-color($color, 0.85);
+  }
+}

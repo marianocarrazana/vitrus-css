@@ -1,0 +1,125 @@
+// =============================================================================
+// VitrusCSS — Docs theme chrome
+// Docs-only CSS variables keyed to data-vitrus-theme. Loaded after docs.scss.
+// =============================================================================
+
+:root {
+  --docs-page-bg:
+    radial-gradient(at 18% 22%, rgba(99, 102, 241, 0.55) 0, transparent 45%),
+    radial-gradient(at 82% 18%, rgba(139, 92, 246, 0.55) 0, transparent 45%),
+    radial-gradient(at 78% 82%, rgba(16, 185, 129, 0.5) 0, transparent 45%),
+    radial-gradient(at 18% 88%, rgba(245, 158, 11, 0.45) 0, transparent 45%),
+    radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.35) 0, transparent 60%),
+    linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #0f172a 100%);
+  --docs-fg: #f1f5f9;
+  --docs-fg-strong: #fff;
+  --docs-fg-muted: rgba(241, 245, 249, 0.75);
+  --docs-fg-subtle: rgba(241, 245, 249, 0.6);
+  --docs-fg-faint: rgba(241, 245, 249, 0.5);
+  --docs-fg-dim: rgba(241, 245, 249, 0.55);
+  --docs-heading: #fff;
+  --docs-heading-sub: #cbd5e1;
+  --docs-sidebar-bg: rgba(15, 23, 42, 0.55);
+  --docs-sidebar-border: rgba(255, 255, 255, 0.08);
+  --docs-nav-hover-bg: rgba(255, 255, 255, 0.06);
+  --docs-example-bg: rgba(255, 255, 255, 0.06);
+  --docs-example-border: rgba(255, 255, 255, 0.12);
+  --docs-code-bg: rgba(15, 23, 42, 0.7);
+  --docs-code-border: rgba(255, 255, 255, 0.08);
+  --docs-code-fg: #e2e8f0;
+  --docs-inline-code-fg: #fda4af;
+  --docs-inline-code-bg: rgba(15, 23, 42, 0.6);
+  --docs-swatch-bg: rgba(255, 255, 255, 0.06);
+  --docs-swatch-border: rgba(255, 255, 255, 0.1);
+  --docs-table-bg: rgba(255, 255, 255, 0.04);
+  --docs-table-border: rgba(255, 255, 255, 0.06);
+  --docs-table-head-bg: rgba(255, 255, 255, 0.05);
+  --docs-footer-border: rgba(255, 255, 255, 0.08);
+}
+
+[data-vitrus-theme="default"] {
+  --docs-page-bg:
+    radial-gradient(at 18% 22%, rgba(99, 102, 241, 0.55) 0, transparent 45%),
+    radial-gradient(at 82% 18%, rgba(139, 92, 246, 0.55) 0, transparent 45%),
+    radial-gradient(at 78% 82%, rgba(16, 185, 129, 0.5) 0, transparent 45%),
+    radial-gradient(at 18% 88%, rgba(245, 158, 11, 0.45) 0, transparent 45%),
+    radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.35) 0, transparent 60%),
+    linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #0f172a 100%);
+}
+
+[data-vitrus-theme="frost"] {
+  --docs-page-bg:
+    radial-gradient(at 20% 25%, rgba(99, 102, 241, 0.35) 0, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(139, 92, 246, 0.3) 0, transparent 50%),
+    radial-gradient(at 75% 80%, rgba(16, 185, 129, 0.28) 0, transparent 50%),
+    radial-gradient(at 15% 85%, rgba(245, 158, 11, 0.25) 0, transparent 50%),
+    linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f1f5f9 100%);
+  --docs-fg: #0f172a;
+  --docs-fg-strong: #020617;
+  --docs-fg-muted: rgba(15, 23, 42, 0.75);
+  --docs-fg-subtle: rgba(15, 23, 42, 0.6);
+  --docs-fg-faint: rgba(15, 23, 42, 0.5);
+  --docs-fg-dim: rgba(15, 23, 42, 0.55);
+  --docs-heading: #0f172a;
+  --docs-heading-sub: #334155;
+  --docs-sidebar-bg: rgba(255, 255, 255, 0.55);
+  --docs-sidebar-border: rgba(15, 23, 42, 0.08);
+  --docs-nav-hover-bg: rgba(15, 23, 42, 0.05);
+  --docs-example-bg: rgba(255, 255, 255, 0.45);
+  --docs-example-border: rgba(15, 23, 42, 0.1);
+  --docs-code-bg: rgba(15, 23, 42, 0.06);
+  --docs-code-border: rgba(15, 23, 42, 0.1);
+  --docs-code-fg: #1e293b;
+  --docs-inline-code-fg: #be123c;
+  --docs-inline-code-bg: rgba(15, 23, 42, 0.06);
+  --docs-swatch-bg: rgba(255, 255, 255, 0.5);
+  --docs-swatch-border: rgba(15, 23, 42, 0.1);
+  --docs-table-bg: rgba(255, 255, 255, 0.4);
+  --docs-table-border: rgba(15, 23, 42, 0.08);
+  --docs-table-head-bg: rgba(255, 255, 255, 0.55);
+  --docs-footer-border: rgba(15, 23, 42, 0.1);
+}
+
+[data-vitrus-theme="crystal"] {
+  --docs-page-bg:
+    radial-gradient(at 25% 30%, rgba(6, 182, 212, 0.3) 0, transparent 50%),
+    radial-gradient(at 75% 25%, rgba(99, 102, 241, 0.25) 0, transparent 50%),
+    radial-gradient(at 70% 75%, rgba(16, 185, 129, 0.22) 0, transparent 50%),
+    linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 50%, #e0e7ff 100%);
+  --docs-fg: #0f172a;
+  --docs-fg-strong: #020617;
+  --docs-fg-muted: rgba(15, 23, 42, 0.8);
+  --docs-fg-subtle: rgba(15, 23, 42, 0.65);
+  --docs-fg-faint: rgba(15, 23, 42, 0.55);
+  --docs-fg-dim: rgba(15, 23, 42, 0.6);
+  --docs-heading: #0f172a;
+  --docs-heading-sub: #475569;
+  --docs-sidebar-bg: rgba(255, 255, 255, 0.72);
+  --docs-sidebar-border: rgba(15, 23, 42, 0.1);
+  --docs-nav-hover-bg: rgba(15, 23, 42, 0.06);
+  --docs-example-bg: rgba(255, 255, 255, 0.65);
+  --docs-example-border: rgba(15, 23, 42, 0.12);
+  --docs-code-bg: rgba(15, 23, 42, 0.08);
+  --docs-code-border: rgba(15, 23, 42, 0.12);
+  --docs-code-fg: #1e293b;
+  --docs-inline-code-fg: #be123c;
+  --docs-inline-code-bg: rgba(15, 23, 42, 0.08);
+  --docs-swatch-bg: rgba(255, 255, 255, 0.65);
+  --docs-swatch-border: rgba(15, 23, 42, 0.12);
+  --docs-table-bg: rgba(255, 255, 255, 0.55);
+  --docs-table-border: rgba(15, 23, 42, 0.1);
+  --docs-table-head-bg: rgba(255, 255, 255, 0.7);
+  --docs-footer-border: rgba(15, 23, 42, 0.12);
+}
+
+[data-vitrus-theme="midnight"] {
+  --docs-page-bg:
+    radial-gradient(at 18% 22%, rgba(99, 102, 241, 0.35) 0, transparent 45%),
+    radial-gradient(at 82% 18%, rgba(139, 92, 246, 0.3) 0, transparent 45%),
+    radial-gradient(at 78% 82%, rgba(16, 185, 129, 0.25) 0, transparent 45%),
+    radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.2) 0, transparent 60%),
+    linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
+  --docs-sidebar-bg: rgba(2, 6, 23, 0.65);
+  --docs-code-bg: rgba(2, 6, 23, 0.8);
+  --docs-example-bg: rgba(255, 255, 255, 0.04);
+}

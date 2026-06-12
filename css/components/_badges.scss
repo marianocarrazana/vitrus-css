@@ -1,0 +1,67 @@
+// =============================================================================
+// VitrusCSS — Badges
+// Inline pill-shaped indicators, glass-styled by default with per-variant
+// color tints. Compatible with Bootstrap 5 .badge markup.
+// =============================================================================
+
+@use "sass:map";
+@use "../variables" as *;
+@use "../mixins" as *;
+
+$badge-variants: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  danger: $danger,
+  warning: $warning,
+  info: $info,
+  light: $light,
+  dark: $dark,
+);
+
+.badge {
+  display: inline-block;
+  padding: $badge-padding-y $badge-padding-x;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: var(--vitrus-body-color);
+  background: var(--vitrus-glass-bg-strong);
+  border: 1px solid var(--vitrus-glass-border);
+  border-radius: $badge-border-radius;
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+$badge-fg: (
+  primary: #fff,
+  secondary: #fff,
+  success: #fff,
+  danger: #fff,
+  warning: $dark,
+  info: #fff,
+  light: $dark,
+  dark: #fff,
+);
+
+@each $name, $color in $badge-variants {
+  $fg: map.get($badge-fg, $name);
+
+  .bg-#{$name} {
+    &.badge,
+    .badge {
+      color: $fg;
+      background: rgba-color($color, 0.55);
+      border-color: rgba-color($color, 0.65);
+    }
+  }
+}
+
+// Pill style — only adjust border-radius since base already rounds to pill.
+.rounded-pill.badge {
+  padding-inline: 0.85em;
+}

@@ -1,0 +1,31 @@
+// =============================================================================
+// VitrusCSS — Main entry
+// ITCSS order: tokens → mixins → root → reboot → grid → components → utilities
+//
+// Override tokens before importing:
+//
+//     @use 'vitrus-css/css/variables' with (
+//       $primary: #ff0066,
+//     );
+//     @use 'vitrus-css/css/vitrus';
+//
+// Or override via CSS custom properties at runtime — every token is exposed
+// on :root (see css/_root.scss).
+// =============================================================================
+
+@use "variables" as *;
+@use "mixins" as *;
+@use "root";
+@use "themes";
+@use "reboot";
+@use "grid";
+
+// Components
+@use "components/buttons";
+@use "components/badges";
+@use "components/alerts";
+@use "components/cards";
+@use "components/forms";
+
+// Utilities last — high specificity + !important, per ITCSS
+@use "utilities";

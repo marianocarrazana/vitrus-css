@@ -1,0 +1,132 @@
+// =============================================================================
+// VitrusCSS — Reboot / Normalize
+// Bare HTML baseline. Strips inconsistent browser defaults and sets the
+// page-level type scale, link styles, and image fluid behavior.
+// =============================================================================
+
+@use "variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  margin: 0;
+  font-family: var(--vitrus-font-sans);
+  font-size: var(--vitrus-font-size-base);
+  font-weight: var(--vitrus-fw-normal);
+  line-height: var(--vitrus-line-height-base);
+  color: var(--vitrus-body-color);
+  background-color: var(--vitrus-body-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  min-height: 100vh;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 calc(var(--vitrus-spacer) * 0.5);
+  font-weight: var(--vitrus-heading-weight);
+  line-height: 1.2;
+  color: var(--vitrus-body-color);
+}
+
+h1 {
+  font-size: $h1-font-size;
+}
+
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
+}
+
+h6 {
+  font-size: $h6-font-size;
+}
+
+p {
+  margin: 0 0 var(--vitrus-spacer);
+}
+
+a {
+  color: var(--vitrus-primary);
+  text-decoration: none;
+  background-color: transparent;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+img,
+svg {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  margin: var(--vitrus-spacer) 0;
+  color: var(--vitrus-border-color);
+  border: 0;
+  border-top: var(--vitrus-border-width) solid var(--vitrus-border-color);
+  opacity: 1;
+}
+
+small,
+.small {
+  font-size: 0.875em;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--vitrus-font-mono);
+  font-size: 1em;
+}
+
+button {
+  border-radius: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--vitrus-primary);
+  outline-offset: 2px;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

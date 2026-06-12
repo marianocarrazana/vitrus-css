@@ -1,0 +1,140 @@
+// =============================================================================
+// VitrusCSS — Cards
+// Flexible content container. Glass-styled, with optional header/footer,
+// images, and overlay text. Markup matches Bootstrap 5.
+// =============================================================================
+
+@use "sass:map";
+@use "../variables" as *;
+@use "../mixins" as *;
+
+$card-variants: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  danger: $danger,
+  warning: $warning,
+  info: $info,
+  light: $light,
+  dark: $dark,
+);
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background: var(--vitrus-glass-bg-strong);
+  border: 1px solid var(--vitrus-glass-border);
+  border-radius: $card-border-radius;
+  backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--vitrus-glass-blur)) saturate(180%);
+  box-shadow: var(--vitrus-glass-shadow);
+  overflow: hidden;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: $card-spacer-y $card-spacer-x;
+  color: var(--vitrus-body-color);
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: var(--vitrus-heading-weight);
+  line-height: 1.2;
+}
+
+.card-subtitle {
+  margin-top: -0.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--vitrus-muted);
+  font-size: 0.95rem;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+.card-header {
+  padding: $card-cap-padding-y $card-cap-padding-x;
+  margin-bottom: 0;
+  background: var(--vitrus-card-cap-bg);
+  border-bottom: 1px solid var(--vitrus-glass-border);
+  font-weight: var(--vitrus-fw-semibold);
+}
+
+.card-footer {
+  padding: $card-cap-padding-y $card-cap-padding-x;
+  background: var(--vitrus-card-cap-bg);
+  border-top: 1px solid var(--vitrus-glass-border);
+}
+
+.card-img-top,
+.card-img-bottom {
+  width: 100%;
+  display: block;
+}
+
+.card-img-top {
+  border-top-left-radius: calc(#{$card-border-radius} - 1px);
+  border-top-right-radius: calc(#{$card-border-radius} - 1px);
+}
+
+.card-img-bottom {
+  border-bottom-left-radius: calc(#{$card-border-radius} - 1px);
+  border-bottom-right-radius: calc(#{$card-border-radius} - 1px);
+}
+
+.card-img-overlay {
+  position: absolute;
+  inset: 0;
+  padding: $card-spacer-y $card-spacer-x;
+  border-radius: $card-border-radius;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.65) 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-link {
+  font-weight: var(--vitrus-fw-semibold);
+  text-decoration: none;
+
+  + .card-link {
+    margin-left: 0.5rem;
+  }
+}
+
+// --- Variant tints (optional) -----------------------------------------------
+@each $name, $color in $card-variants {
+  .card-#{$name} {
+    background: rgba-color($color, 0.15);
+    border-color: rgba-color($color, 0.4);
+
+    .card-header,
+    .card-footer {
+      background: rgba-color($color, 0.18);
+      border-color: rgba-color($color, 0.3);
+    }
+  }
+}
+
+// --- Card group -------------------------------------------------------------
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vitrus-grid-gutter);
+
+  > .card {
+    flex: 1 0 0%;
+    margin-bottom: 0;
+
+    + .card {
+      margin-left: 0;
+    }
+  }
+}

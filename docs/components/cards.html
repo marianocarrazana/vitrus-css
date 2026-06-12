@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cards · VitrusCSS</title>
+    <script>
+      (function () {
+        var t = localStorage.getItem('vitrus-theme');
+        if (t) document.documentElement.setAttribute('data-vitrus-theme', t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../../css/vitrus.scss" />
+    <link rel="stylesheet" href="../assets/css/docs.scss" />
+    <link rel="stylesheet" href="../assets/css/themes.scss" />
+  </head>
+  <body class="docs-body">
+    <div class="docs-shell">
+      <aside class="docs-sidebar">
+        <a class="docs-brand" href="../index.html">
+          <span class="docs-brand-mark" aria-hidden="true"></span>
+          <span>Vitrus</span>
+        </a>
+
+        <div class="docs-theme-picker">
+          <label class="docs-theme-label" for="vitrus-theme-select">Theme</label>
+          <select id="vitrus-theme-select" class="form-select form-select-sm">
+            <option value="default">Default</option>
+            <option value="frost">Frost</option>
+            <option value="crystal">Crystal</option>
+            <option value="midnight">Midnight</option>
+          </select>
+        </div>
+
+        <nav aria-label="Documentation">
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Getting started</li>
+            <li><a href="../index.html">Introduction</a></li>
+            <li><a href="../index.html#quick-start">Quick start</a></li>
+            <li><a href="../index.html#tokens">Design tokens</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Components</li>
+            <li><a href="./buttons.html">Buttons</a></li>
+            <li><a href="./badges.html">Badges</a></li>
+            <li><a href="./alerts.html">Alerts</a></li>
+            <li><a class="active" href="./cards.html">Cards</a></li>
+            <li><a href="./forms.html">Forms</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Coming in Phase 3</li>
+            <li><a aria-disabled="true" href="#">Dropdowns &amp; modals</a></li>
+            <li><a aria-disabled="true" href="#">Toasts, tooltips, popovers</a></li>
+            <li><a aria-disabled="true" href="#">Offcanvas &amp; accordion</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="docs-main">
+        <span class="docs-eyebrow">Components</span>
+        <h1 class="docs-title">Cards</h1>
+        <p class="docs-lead">
+          Vitrus's most flexible content container. Glass-styled by default, with optional headers, footers, images,
+          overlays, and variant tints.
+        </p>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Basic</h2>
+
+          <div class="docs-example">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title">Card title</h3>
+                    <h4 class="card-subtitle text-muted">Card subtitle</h4>
+                    <p class="card-text">
+                      Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title">Glass by default</h3>
+                    <p class="card-text">
+                      The card surface is translucent, with a soft border and a layered shadow. No extra class needed.
+                    </p>
+                    <button type="button" class="btn btn-primary">Action</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;div class="card"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h3 class="card-title"&gt;Title&lt;/h3&gt;
+    &lt;p class="card-text"&gt;Content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Header &amp; footer</h2>
+
+          <div class="docs-example">
+            <div class="card">
+              <div class="card-header">Featured</div>
+              <div class="card-body">
+                <h3 class="card-title">Special title treatment</h3>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <button type="button" class="btn btn-primary">Go somewhere</button>
+              </div>
+              <div class="card-footer text-muted">2 days ago</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Image with overlay text</h2>
+
+          <div class="docs-example">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'&gt;&lt;stop offset='0%25' stop-color='%236366f1'/&gt;&lt;stop offset='100%25' stop-color='%2306b6d4'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='600' height='300' fill='url(%23g)'/&gt;&lt;/svg&gt;"
+                    alt="Sample gradient"
+                  />
+                  <div class="card-body">
+                    <h3 class="card-title">Image top</h3>
+                    <p class="card-text">Drop in an image with <code>.card-img-top</code>.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card" style="position: relative">
+                  <img
+                    src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'&gt;&lt;defs&gt;&lt;linearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'&gt;&lt;stop offset='0%25' stop-color='%238b5cf6'/&gt;&lt;stop offset='100%25' stop-color='%23ef4444'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='600' height='300' fill='url(%23g2)'/&gt;&lt;/svg&gt;"
+                    class="card-img"
+                    style="height: 240px; object-fit: cover"
+                    alt="Sample gradient"
+                  />
+                  <div class="card-img-overlay">
+                    <h3 class="card-title">Overlay text</h3>
+                    <p class="card-text">Text laid on top of the image.</p>
+                    <p class="card-text">Last updated 3 mins ago</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Variant tints</h2>
+
+          <div class="docs-example">
+            <div class="row g-3">
+              <div class="col-md-6 col-lg-3">
+                <div class="card card-primary h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h6">Primary</h3>
+                    <p class="card-text">Glass tinted with the primary color.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="card card-success h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h6">Success</h3>
+                    <p class="card-text">Confirmation state.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="card card-danger h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h6">Danger</h3>
+                    <p class="card-text">Destructive or error state.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="card card-warning h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h6">Warning</h3>
+                    <p class="card-text">Caution state.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Card group</h2>
+
+          <div class="docs-example">
+            <div class="card-group">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title h5">First card</h3>
+                  <p class="card-text">Equal width, equal height siblings.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title h5">Second card</h3>
+                  <p class="card-text">No gutters between cards in a group.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title h5">Third card</h3>
+                  <p class="card-text">Wraps on smaller viewports.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="docs-footer">VitrusCSS · Cards</footer>
+      </main>
+    </div>
+    <script type="module" src="../assets/js/theme.js"></script>
+  </body>
+</html>

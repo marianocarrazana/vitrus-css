@@ -1,0 +1,90 @@
+// =============================================================================
+// VitrusCSS — :root custom properties
+// Exposes every design token as a CSS variable for runtime theming, dark mode,
+// and consumers that want to tweak values without recompiling Sass.
+// =============================================================================
+
+@use "variables" as *;
+
+:root {
+  // Spacer scale
+  --vitrus-spacer: #{$spacer};
+
+  @each $key, $value in $spacers {
+    --vitrus-spacer-#{$key}: #{$value};
+  }
+
+  // Breakpoints (exposed for JS-driven layout, not used in stylesheets)
+  @each $key, $value in $grid-breakpoints {
+    --vitrus-bp-#{$key}: #{$value};
+  }
+
+  // Container max widths
+  @each $key, $value in $container-max-widths {
+    --vitrus-container-#{$key}: #{$value};
+  }
+
+  // Typography
+  --vitrus-font-sans: #{$font-family-sans-serif};
+  --vitrus-font-mono: #{$font-family-monospace};
+  --vitrus-font-size-base: #{$font-size-base};
+  --vitrus-font-size-sm: #{$font-size-sm};
+  --vitrus-font-size-lg: #{$font-size-lg};
+  --vitrus-line-height-base: #{$line-height-base};
+  --vitrus-fw-light: #{$font-weight-light};
+  --vitrus-fw-normal: #{$font-weight-normal};
+  --vitrus-fw-semibold: #{$font-weight-semibold};
+  --vitrus-fw-bold: #{$font-weight-bold};
+  --vitrus-heading-weight: #{$headings-font-weight};
+
+  // Semantic colors
+  --vitrus-primary: #{$primary};
+  --vitrus-secondary: #{$secondary};
+  --vitrus-success: #{$success};
+  --vitrus-danger: #{$danger};
+  --vitrus-warning: #{$warning};
+  --vitrus-info: #{$info};
+  --vitrus-light: #{$light};
+  --vitrus-dark: #{$dark};
+  --vitrus-body-bg: #{$body-bg};
+  --vitrus-body-color: #{$body-color};
+  --vitrus-muted: #{$text-muted};
+
+  // Form / input tokens
+  --vitrus-input-bg: #{$input-bg};
+  --vitrus-input-bg-focus: #{$input-bg-focus};
+  --vitrus-input-bg-disabled: #{$input-bg-disabled};
+  --vitrus-input-color: #{$input-color};
+  --vitrus-input-border-color: #{$input-border-color};
+  --vitrus-check-bg: #{$check-bg};
+  --vitrus-input-group-bg: #{$input-group-bg};
+  --vitrus-card-cap-bg: #{$card-cap-bg};
+
+  // Glass tokens
+  --vitrus-glass-bg: #{$glass-bg};
+  --vitrus-glass-bg-strong: #{$glass-bg-strong};
+  --vitrus-glass-bg-soft: #{$glass-bg-soft};
+  --vitrus-glass-border: #{$glass-border};
+  --vitrus-glass-blur: #{$glass-blur};
+  --vitrus-glass-shadow: #{$glass-shadow};
+  --vitrus-glass-shadow-lg: #{$glass-shadow-lg};
+  --vitrus-glass-radius: #{$glass-radius};
+  --vitrus-glass-radius-sm: #{$glass-radius-sm};
+  --vitrus-glass-radius-lg: #{$glass-radius-lg};
+
+  // Borders
+  --vitrus-border-width: #{$border-width};
+  --vitrus-border-color: #{$border-color};
+  --vitrus-border-radius: #{$border-radius};
+  --vitrus-border-radius-sm: #{$border-radius-sm};
+  --vitrus-border-radius-lg: #{$border-radius-lg};
+  --vitrus-border-radius-pill: #{$border-radius-pill};
+
+  // Grid
+  --vitrus-grid-gutter: #{$grid-gutter-width};
+
+  // Heading sizes
+  @each $key, $value in $headings-font-sizes {
+    --vitrus-#{$key}-font-size: #{$value};
+  }
+}

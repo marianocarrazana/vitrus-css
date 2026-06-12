@@ -1,0 +1,57 @@
+{
+  "name": "vitrus-css",
+  "version": "0.1.0",
+  "description": "VitrusCSS — a Bootstrap 5-compatible component library with a glassmorphism design language. Sass-authored, CSS-variable driven, dark-mode ready.",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "css",
+    "README.md"
+  ],
+  "main": "dist/vitrus.min.css",
+  "style": "dist/vitrus.min.css",
+  "sass": "css/vitrus.scss",
+  "scripts": {
+    "setup": "node scripts/create-dev-symlink.mjs",
+    "clean:dev": "node scripts/create-dev-symlink.mjs --remove",
+    "predev": "npm run setup",
+    "prebuild:docs": "npm run setup",
+    "postbuild:docs": "npm run clean:dev",
+    "dev": "vite",
+    "build:docs": "vite build",
+    "build:css": "npm run build:css:expanded && npm run build:css:min",
+    "build:css:expanded": "sass css/vitrus.scss dist/vitrus.css --style=expanded --source-map",
+    "build:css:min": "sass css/vitrus.scss dist/vitrus.min.css --style=compressed --no-source-map",
+    "build": "npm run build:css && npm run build:docs",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint \"vite.config.js\"",
+    "lint:css": "stylelint \"css/**/*.scss\" \"docs/**/*.scss\"",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:css -- --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "sass",
+    "bootstrap",
+    "glassmorphism",
+    "component-library",
+    "design-system",
+    "vitrus"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.78.0",
+    "stylelint": "^16.9.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "vite": "^5.4.8"
+  }
+}

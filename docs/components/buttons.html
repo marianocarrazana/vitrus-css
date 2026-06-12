@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Buttons · VitrusCSS</title>
+    <script>
+      (function () {
+        var t = localStorage.getItem('vitrus-theme');
+        if (t) document.documentElement.setAttribute('data-vitrus-theme', t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../../css/vitrus.scss" />
+    <link rel="stylesheet" href="../assets/css/docs.scss" />
+    <link rel="stylesheet" href="../assets/css/themes.scss" />
+  </head>
+
+  <body class="docs-body">
+    <div class="docs-shell">
+      <aside class="docs-sidebar">
+        <a class="docs-brand" href="../index.html">
+          <span class="docs-brand-mark" aria-hidden="true"></span>
+          <span>Vitrus</span>
+        </a>
+
+        <div class="docs-theme-picker">
+          <label class="docs-theme-label" for="vitrus-theme-select">Theme</label>
+          <select id="vitrus-theme-select" class="form-select form-select-sm">
+            <option value="default">Default</option>
+            <option value="frost">Frost</option>
+            <option value="crystal">Crystal</option>
+            <option value="midnight">Midnight</option>
+          </select>
+        </div>
+
+        <nav aria-label="Documentation">
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Getting started</li>
+            <li><a href="../index.html">Introduction</a></li>
+            <li><a href="../index.html#quick-start">Quick start</a></li>
+            <li><a href="../index.html#tokens">Design tokens</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Components</li>
+            <li><a class="active" href="./buttons.html">Buttons</a></li>
+            <li><a href="./badges.html">Badges</a></li>
+            <li><a href="./alerts.html">Alerts</a></li>
+            <li><a href="./cards.html">Cards</a></li>
+            <li><a href="./forms.html">Forms</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Coming in Phase 3</li>
+            <li><a aria-disabled="true" href="#">Dropdowns &amp; modals</a></li>
+            <li><a aria-disabled="true" href="#">Toasts, tooltips, popovers</a></li>
+            <li><a aria-disabled="true" href="#">Offcanvas &amp; accordion</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="docs-main">
+        <span class="docs-eyebrow">Components</span>
+        <h1 class="docs-title">Buttons</h1>
+        <p class="docs-lead">
+          Use the <code>.btn</code> base class with a variant modifier to render a glass-tinted button. Works on
+          <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, and <code>&lt;input&gt;</code> elements.
+        </p>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Variants</h2>
+          <p class="docs-section-sub">
+            Eight semantic variants. Each tints a translucent surface with the variant color.
+          </p>
+
+          <div class="docs-example">
+            <div class="pill-row">
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-secondary">Secondary</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-info">Info</button>
+              <button type="button" class="btn btn-light">Light</button>
+              <button type="button" class="btn btn-dark">Dark</button>
+              <button type="button" class="btn btn-link">Link</button>
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;button type="button" class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button type="button" class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn btn-info"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn btn-light"&gt;Light&lt;/button&gt;
+&lt;button type="button" class="btn btn-dark"&gt;Dark&lt;/button&gt;
+&lt;button type="button" class="btn btn-link"&gt;Link&lt;/button&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Outline</h2>
+          <p class="docs-section-sub">Transparent fill, colored border, and a colored hover state.</p>
+
+          <div class="docs-example">
+            <div class="pill-row">
+              <button type="button" class="btn btn-outline-primary">Primary</button>
+              <button type="button" class="btn btn-outline-secondary">Secondary</button>
+              <button type="button" class="btn btn-outline-success">Success</button>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info">Info</button>
+              <button type="button" class="btn btn-outline-light">Light</button>
+              <button type="button" class="btn btn-outline-dark">Dark</button>
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;button type="button" class="btn btn-outline-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-success"&gt;Success&lt;/button&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Sizes</h2>
+
+          <div class="docs-example">
+            <div class="pill-row align-items-center">
+              <button type="button" class="btn btn-primary btn-sm">Small</button>
+              <button type="button" class="btn btn-primary">Default</button>
+              <button type="button" class="btn btn-primary btn-lg">Large</button>
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;button type="button" class="btn btn-primary btn-sm"&gt;Small&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Default&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary btn-lg"&gt;Large&lt;/button&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Block</h2>
+
+          <div class="docs-example">
+            <button type="button" class="btn btn-primary w-100">Block button (full width)</button>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;button type="button" class="btn btn-primary w-100"&gt;Block button&lt;/button&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Disabled</h2>
+          <p class="docs-section-sub">
+            Add the <code>disabled</code> attribute on a real <code>&lt;button&gt;</code> or the
+            <code>.disabled</code> class on <code>&lt;a&gt;</code>.
+          </p>
+
+          <div class="docs-example">
+            <div class="pill-row">
+              <button type="button" class="btn btn-primary" disabled>Disabled button</button>
+              <a href="#" class="btn btn-primary disabled" role="button" aria-disabled="true">Disabled link</a>
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;button type="button" class="btn btn-primary" disabled&gt;Disabled&lt;/button&gt;
+&lt;a href="#" class="btn btn-primary disabled" role="button" aria-disabled="true"&gt;Disabled link&lt;/a&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2 class="docs-section-title">Close button</h2>
+          <p class="docs-section-sub">
+            For dismissing alerts and modals. JS behavior ships in Phase 3; the markup is in place now.
+          </p>
+
+          <div class="docs-example">
+            <div class="d-flex align-items-center gap-3">
+              <button type="button" class="btn-close" aria-label="Close"></button>
+              <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+              <span class="text-muted" style="color: rgba(241, 245, 249, 0.55) !important">
+                &larr; on dark backgrounds, use <code>.btn-close-white</code>
+              </span>
+            </div>
+          </div>
+
+          <div class="docs-code">
+            <pre><code>&lt;button type="button" class="btn-close" aria-label="Close"&gt;&lt;/button&gt;</code></pre>
+          </div>
+        </section>
+
+        <footer class="docs-footer">VitrusCSS · Buttons</footer>
+      </main>
+    </div>
+    <script type="module" src="../assets/js/theme.js"></script>
+  </body>
+</html>

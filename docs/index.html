@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VitrusCSS · Bootstrap 5 compatible, glassmorphism by default</title>
+    <meta
+      name="description"
+      content="A CSS component library that mirrors the Bootstrap 5 class API while delivering a distinctive glassmorphism visual language across every element and component."
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem('vitrus-theme');
+        if (t) document.documentElement.setAttribute('data-vitrus-theme', t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/vitrus.scss" />
+    <link rel="stylesheet" href="./assets/css/docs.scss" />
+    <link rel="stylesheet" href="./assets/css/themes.scss" />
+  </head>
+
+  <body class="docs-body">
+    <div class="docs-shell">
+      <!-- ============================================================== -->
+      <!-- Sidebar                                                       -->
+      <!-- ============================================================== -->
+      <aside class="docs-sidebar">
+        <a class="docs-brand" href="./index.html">
+          <span class="docs-brand-mark" aria-hidden="true"></span>
+          <span>Vitrus</span>
+        </a>
+
+        <div class="docs-theme-picker">
+          <label class="docs-theme-label" for="vitrus-theme-select">Theme</label>
+          <select id="vitrus-theme-select" class="form-select form-select-sm">
+            <option value="default">Default</option>
+            <option value="frost">Frost</option>
+            <option value="crystal">Crystal</option>
+            <option value="midnight">Midnight</option>
+          </select>
+        </div>
+
+        <nav aria-label="Documentation">
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Getting started</li>
+            <li>
+              <a class="active" href="./index.html">Introduction</a>
+            </li>
+            <li>
+              <a href="./index.html#quick-start">Quick start</a>
+            </li>
+            <li>
+              <a href="./index.html#tokens">Design tokens</a>
+            </li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Components</li>
+            <li><a href="./components/buttons.html">Buttons</a></li>
+            <li><a href="./components/badges.html">Badges</a></li>
+            <li><a href="./components/alerts.html">Alerts</a></li>
+            <li><a href="./components/cards.html">Cards</a></li>
+            <li><a href="./components/forms.html">Forms</a></li>
+          </ul>
+
+          <ul class="docs-nav">
+            <li class="docs-nav-section">Coming in Phase 3</li>
+            <li>
+              <a class="disabled-link" aria-disabled="true" href="#">Dropdowns &amp; modals</a>
+            </li>
+            <li>
+              <a class="disabled-link" aria-disabled="true" href="#">Toasts, tooltips, popovers</a>
+            </li>
+            <li>
+              <a class="disabled-link" aria-disabled="true" href="#">Offcanvas &amp; accordion</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- ============================================================== -->
+      <!-- Main content                                                  -->
+      <!-- ============================================================== -->
+      <main class="docs-main">
+        <span class="docs-eyebrow">Phase 1 · MVP</span>
+        <h1 class="docs-title">Bootstrap 5 compatible.<br />Glassmorphism by default.</h1>
+        <p class="docs-lead">
+          VitrusCSS is a Sass-authored component library that mirrors the Bootstrap 5 class API and ships translucent
+          glassmorphism as the default look on every element. Drop in a stylesheet, write the markup you already know,
+          and your UI gets frosted.
+        </p>
+
+        <!-- =========================================================== -->
+        <!-- Hero glass showcase                                         -->
+        <!-- =========================================================== -->
+        <section class="docs-section" id="showcase">
+          <div class="glass-showcase">
+            <article class="glass-card glass-card-light">
+              <h3 class="m-0 mb-2" style="font-size: 1.25rem; font-weight: 700">Light surface</h3>
+              <p class="m-0" style="opacity: 0.8">Translucent white with a hairline border and soft shadow.</p>
+            </article>
+            <article class="glass-card glass-card-primary">
+              <h3 class="m-0 mb-2" style="font-size: 1.25rem; font-weight: 700">Tinted primary</h3>
+              <p class="m-0" style="opacity: 0.9">The brand color tints a frosted layer. No solid fills here.</p>
+            </article>
+            <article class="glass-card glass-card-success">
+              <h3 class="m-0 mb-2" style="font-size: 1.25rem; font-weight: 700">Success state</h3>
+              <p class="m-0" style="opacity: 0.9">Contextual tinting for every semantic variant.</p>
+            </article>
+            <article class="glass-card glass-card-warning">
+              <h3 class="m-0 mb-2" style="font-size: 1.25rem; font-weight: 700">Warning</h3>
+              <p class="m-0" style="opacity: 0.9">Warm tints stay readable; text contrast is preserved.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- =========================================================== -->
+        <!-- Quick start                                                 -->
+        <!-- =========================================================== -->
+        <section class="docs-section" id="quick-start">
+          <h2 class="docs-section-title">Quick start</h2>
+          <p class="docs-section-sub">
+            Three lines and you have the full library in your page. The CSS bundle is self-contained.
+          </p>
+
+          <h3 class="docs-h3">Via compiled CSS</h3>
+          <div class="docs-code">
+            <pre><code>&lt;link rel="stylesheet" href="dist/vitrus.min.css"&gt;</code></pre>
+          </div>
+
+          <h3 class="docs-h3">Via Sass (recommended)</h3>
+          <p class="mb-2" style="color: rgba(241, 245, 249, 0.7)">
+            Override tokens before importing the entry. The library exposes every value on <code>:root</code> as a CSS
+            custom property too, so you can theme at runtime.
+          </p>
+          <div class="docs-code">
+            <pre><code>// Override Sass variables
+$primary: #6366f1;
+$glass-blur: 16px;
+
+@import 'vitrus-css/css/vitrus';</code></pre>
+          </div>
+
+          <h3 class="docs-h3">Install</h3>
+          <div class="docs-code">
+            <pre><code>npm install vitrus-css</code></pre>
+          </div>
+        </section>
+
+        <!-- =========================================================== -->
+        <!-- Design tokens                                               -->
+        <!-- =========================================================== -->
+        <section class="docs-section" id="tokens">
+          <h2 class="docs-section-title">Design tokens</h2>
+          <p class="docs-section-sub">
+            Every Sass variable is also exposed as a CSS custom property on
+            <code>:root</code>. Tweak them at runtime without rebuilding.
+          </p>
+
+          <h3 class="docs-h3">Semantic colors</h3>
+          <div class="token-grid">
+            <div class="token-swatch">
+              <div class="token-swatch-fill" style="background: var(--vitrus-primary)"></div>
+              <div class="token-swatch-label">Primary</div>
+              <div class="token-swatch-value">--vitrus-primary</div>
+            </div>
+            <div class="token-swatch">
+              <div class="token-swatch-fill" style="background: var(--vitrus-secondary)"></div>
+              <div class="token-swatch-label">Secondary</div>
+              <div class="token-swatch-value">--vitrus-secondary</div>
+            </div>
+            <div class="token-swatch">
+              <div class="token-swatch-fill" style="background: var(--vitrus-success)"></div>
+              <div class="token-swatch-label">Success</div>
+              <div class="token-swatch-value">--vitrus-success</div>
+            </div>
+            <div class="token-swatch">
+              <div class="token-swatch-fill" style="background: var(--vitrus-danger)"></div>
+              <div class="token-swatch-label">Danger</div>
+              <div class="token-swatch-value">--vitrus-danger</div>
+            </div>
+            <div class="token-swatch">
+              <div class="token-swatch-fill" style="background: var(--vitrus-warning)"></div>
+              <div class="token-swatch-label">Warning</div>
+              <div class="token-swatch-value">--vitrus-warning</div>
+            </div>
+            <div class="token-swatch">
+              <div class="token-swatch-fill" style="background: var(--vitrus-info)"></div>
+              <div class="token-swatch-label">Info</div>
+              <div class="token-swatch-value">--vitrus-info</div>
+            </div>
+          </div>
+
+          <h3 class="docs-h3">Themes</h3>
+          <p class="docs-section-sub" style="margin-bottom: 1rem">
+            Four built-in presets ship with the library. Set <code>data-vitrus-theme</code> on
+            <code>&lt;html&gt;</code> or use the sidebar picker to switch live — glass blur, transparency, and base
+            color update without a rebuild.
+          </p>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Theme</th>
+                <th>Base</th>
+                <th>Blur</th>
+                <th>Character</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>default</code></td>
+                <td>Light glass</td>
+                <td>16px</td>
+                <td>Baseline Vitrus look</td>
+              </tr>
+              <tr>
+                <td><code>frost</code></td>
+                <td>Light glass</td>
+                <td>28px</td>
+                <td>Heavy frost, high transparency</td>
+              </tr>
+              <tr>
+                <td><code>crystal</code></td>
+                <td>Light glass</td>
+                <td>8px</td>
+                <td>Crisp panels, minimal blur</td>
+              </tr>
+              <tr>
+                <td><code>midnight</code></td>
+                <td>Dark glass</td>
+                <td>20px</td>
+                <td>Dark-base glassmorphism</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 class="docs-h3">Glass tokens</h3>
+          <p class="docs-section-sub" style="margin-bottom: 1rem">
+            The values below are the heart of the Vitrus look. Every surface — buttons, cards, alerts, inputs — composes
+            them into a frosted glass panel. They are exposed as CSS custom properties and overridden per theme.
+          </p>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Default</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>--vitrus-glass-bg</code></td>
+                <td><code>rgba(255, 255, 255, 0.55)</code></td>
+                <td>Translucent fill</td>
+              </tr>
+              <tr>
+                <td><code>--vitrus-glass-border</code></td>
+                <td><code>rgba(255, 255, 255, 0.6)</code></td>
+                <td>Hairline edge</td>
+              </tr>
+              <tr>
+                <td><code>--vitrus-glass-blur</code></td>
+                <td><code>16px</code></td>
+                <td>Backdrop blur radius</td>
+              </tr>
+              <tr>
+                <td><code>--vitrus-glass-shadow</code></td>
+                <td><code>0 8px 32px rgba(15, 23, 42, 0.12)</code></td>
+                <td>Soft, layered depth</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- =========================================================== -->
+        <!-- Component overview                                          -->
+        <!-- =========================================================== -->
+        <section class="docs-section" id="components">
+          <h2 class="docs-section-title">What's included in Phase 1</h2>
+          <p class="docs-section-sub">
+            Foundation, utilities, and the first wave of components. JS-driven overlays ship in Phase 3.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Foundation</h3>
+                  <p class="card-text text-muted">
+                    Reboot, grid system, and core utilities (spacing, flex, typography, colors).
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Buttons</h3>
+                  <p class="card-text text-muted">Variants, outline styles, sizes, block, and close button.</p>
+                  <a class="btn btn-sm btn-outline-primary" href="./components/buttons.html">View</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Badges</h3>
+                  <p class="card-text text-muted">
+                    Inline pill-shaped indicators, glass-styled with semantic color tints.
+                  </p>
+                  <a class="btn btn-sm btn-outline-primary" href="./components/badges.html">View</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Alerts</h3>
+                  <p class="card-text text-muted">Contextual feedback with a left accent bar in the variant color.</p>
+                  <a class="btn btn-sm btn-outline-primary" href="./components/alerts.html">View</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Cards</h3>
+                  <p class="card-text text-muted">
+                    Flexible content container with header, footer, images, and overlay text.
+                  </p>
+                  <a class="btn btn-sm btn-outline-primary" href="./components/cards.html">View</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h6 mb-2">Forms</h3>
+                  <p class="card-text text-muted">
+                    Inputs, selects, checks, radios, switches, input groups, and validation states.
+                  </p>
+                  <a class="btn btn-sm btn-outline-primary" href="./components/forms.html">View</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================== -->
+        <!-- Roadmap                                                     -->
+        <!-- =========================================================== -->
+        <section class="docs-section" id="roadmap">
+          <h2 class="docs-section-title">Roadmap</h2>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>Scope</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Phase 1</td>
+                <td>Foundation, utilities, buttons, badges, alerts, cards, forms</td>
+                <td><span class="badge bg-success">Shipped</span></td>
+              </tr>
+              <tr>
+                <td>Phase 2</td>
+                <td>Navbar, nav, breadcrumb, pagination, spinners, progress, dark mode</td>
+                <td><span class="badge">Planned</span></td>
+              </tr>
+              <tr>
+                <td>Phase 3</td>
+                <td>Dropdown, modal, toast, tooltip, popover, offcanvas, accordion</td>
+                <td><span class="badge">Planned</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <footer class="docs-footer">
+          Built with VitrusCSS · <a href="https://github.com/anomalyco/opencode/issues">Give feedback</a>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="./assets/js/theme.js"></script>
+  </body>
+</html>

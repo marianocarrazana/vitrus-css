@@ -1,0 +1,93 @@
+// =============================================================================
+// VitrusCSS — Theme presets
+// Activate with data-vitrus-theme on <html>. Each preset overrides the CSS
+// custom properties exposed on :root (see css/_root.scss).
+// =============================================================================
+
+[data-vitrus-theme="default"] {
+  --vitrus-body-bg: #f1f5f9;
+  --vitrus-body-color: #0f172a;
+  --vitrus-muted: rgba(15, 23, 42, 0.6);
+  --vitrus-border-color: rgba(15, 23, 42, 0.12);
+  --vitrus-glass-bg: rgba(255, 255, 255, 0.55);
+  --vitrus-glass-bg-strong: rgba(255, 255, 255, 0.7);
+  --vitrus-glass-bg-soft: rgba(255, 255, 255, 0.25);
+  --vitrus-glass-border: rgba(255, 255, 255, 0.6);
+  --vitrus-glass-blur: 16px;
+  --vitrus-glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.12);
+  --vitrus-glass-shadow-lg: 0 16px 48px rgba(15, 23, 42, 0.18);
+  --vitrus-input-bg: rgba(255, 255, 255, 0.6);
+  --vitrus-input-bg-focus: rgba(255, 255, 255, 0.85);
+  --vitrus-input-bg-disabled: rgba(255, 255, 255, 0.4);
+  --vitrus-input-color: #0f172a;
+  --vitrus-input-border-color: rgba(15, 23, 42, 0.15);
+  --vitrus-check-bg: rgba(255, 255, 255, 0.7);
+  --vitrus-input-group-bg: rgba(255, 255, 255, 0.5);
+  --vitrus-card-cap-bg: rgba(255, 255, 255, 0.4);
+}
+
+[data-vitrus-theme="frost"] {
+  --vitrus-body-bg: #f8fafc;
+  --vitrus-body-color: #0f172a;
+  --vitrus-muted: rgba(15, 23, 42, 0.55);
+  --vitrus-border-color: rgba(15, 23, 42, 0.1);
+  --vitrus-glass-bg: rgba(255, 255, 255, 0.35);
+  --vitrus-glass-bg-strong: rgba(255, 255, 255, 0.5);
+  --vitrus-glass-bg-soft: rgba(255, 255, 255, 0.15);
+  --vitrus-glass-border: rgba(255, 255, 255, 0.55);
+  --vitrus-glass-blur: 28px;
+  --vitrus-glass-shadow: 0 8px 40px rgba(15, 23, 42, 0.1);
+  --vitrus-glass-shadow-lg: 0 16px 56px rgba(15, 23, 42, 0.14);
+  --vitrus-input-bg: rgba(255, 255, 255, 0.4);
+  --vitrus-input-bg-focus: rgba(255, 255, 255, 0.65);
+  --vitrus-input-bg-disabled: rgba(255, 255, 255, 0.25);
+  --vitrus-input-color: #0f172a;
+  --vitrus-input-border-color: rgba(15, 23, 42, 0.12);
+  --vitrus-check-bg: rgba(255, 255, 255, 0.5);
+  --vitrus-input-group-bg: rgba(255, 255, 255, 0.35);
+  --vitrus-card-cap-bg: rgba(255, 255, 255, 0.28);
+}
+
+[data-vitrus-theme="crystal"] {
+  --vitrus-body-bg: #e2e8f0;
+  --vitrus-body-color: #0f172a;
+  --vitrus-muted: rgba(15, 23, 42, 0.65);
+  --vitrus-border-color: rgba(15, 23, 42, 0.14);
+  --vitrus-glass-bg: rgba(255, 255, 255, 0.75);
+  --vitrus-glass-bg-strong: rgba(255, 255, 255, 0.88);
+  --vitrus-glass-bg-soft: rgba(255, 255, 255, 0.45);
+  --vitrus-glass-border: rgba(255, 255, 255, 0.7);
+  --vitrus-glass-blur: 8px;
+  --vitrus-glass-shadow: 0 4px 20px rgba(15, 23, 42, 0.14);
+  --vitrus-glass-shadow-lg: 0 8px 32px rgba(15, 23, 42, 0.2);
+  --vitrus-input-bg: rgba(255, 255, 255, 0.8);
+  --vitrus-input-bg-focus: rgba(255, 255, 255, 0.95);
+  --vitrus-input-bg-disabled: rgba(255, 255, 255, 0.55);
+  --vitrus-input-color: #0f172a;
+  --vitrus-input-border-color: rgba(15, 23, 42, 0.18);
+  --vitrus-check-bg: rgba(255, 255, 255, 0.85);
+  --vitrus-input-group-bg: rgba(255, 255, 255, 0.7);
+  --vitrus-card-cap-bg: rgba(255, 255, 255, 0.6);
+}
+
+[data-vitrus-theme="midnight"] {
+  --vitrus-body-bg: #0f172a;
+  --vitrus-body-color: #f1f5f9;
+  --vitrus-muted: rgba(241, 245, 249, 0.6);
+  --vitrus-border-color: rgba(255, 255, 255, 0.1);
+  --vitrus-glass-bg: rgba(15, 23, 42, 0.55);
+  --vitrus-glass-bg-strong: rgba(15, 23, 42, 0.72);
+  --vitrus-glass-bg-soft: rgba(15, 23, 42, 0.28);
+  --vitrus-glass-border: rgba(255, 255, 255, 0.12);
+  --vitrus-glass-blur: 20px;
+  --vitrus-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --vitrus-glass-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --vitrus-input-bg: rgba(15, 23, 42, 0.6);
+  --vitrus-input-bg-focus: rgba(15, 23, 42, 0.85);
+  --vitrus-input-bg-disabled: rgba(15, 23, 42, 0.4);
+  --vitrus-input-color: #f1f5f9;
+  --vitrus-input-border-color: rgba(255, 255, 255, 0.15);
+  --vitrus-check-bg: rgba(15, 23, 42, 0.7);
+  --vitrus-input-group-bg: rgba(15, 23, 42, 0.5);
+  --vitrus-card-cap-bg: rgba(15, 23, 42, 0.4);
+}
