@@ -155,7 +155,7 @@ class Offcanvas extends BaseComponent {
   }
 }
 
-EventHandler.on(document, 'click', Offcanvas.dataApiClickHandler, SELECTOR_DATA_TOGGLE);
+EventHandler.on(document, 'click', SELECTOR_DATA_TOGGLE, Offcanvas.dataApiClickHandler);
 
 EventHandler.on(document, 'click', (event) => {
   const trigger = event.target.closest('[data-vitrus-dismiss="offcanvas"]');

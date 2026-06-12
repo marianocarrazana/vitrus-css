@@ -252,7 +252,7 @@ class Modal extends BaseComponent {
   }
 }
 
-EventHandler.on(document, 'click', Modal.dataApiClickHandler, SELECTOR_DATA_TOGGLE);
+EventHandler.on(document, 'click', SELECTOR_DATA_TOGGLE, Modal.dataApiClickHandler);
 EventHandler.on(window, 'resize', () => {
   for (const element of SelectorEngine.find(OPEN_SELECTOR)) {
     Modal.getOrCreateInstance(element).handleUpdate();

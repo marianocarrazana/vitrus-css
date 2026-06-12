@@ -8,11 +8,25 @@ function getNamespaceEvent(event) {
   return event.match(namespaceRegex)?.[0] ?? '';
 }
 
+function hydrateObj(obj, meta = {}) {
+  for (const [key, value] of Object.entries(meta)) {
+    try {
+      obj[key] = value;
+    } catch {
+      Object.defineProperty(obj, key, {
+        configurable: true,
+        get() {
+          return value;
+        },
+      });
+    }
+  }
+  return obj;
+}
+
 function bootstrapHandler(element, fn) {
   return function handler(event) {
-    if (event.delegateTarget !== element) {
-      return;
-    }
+    hydrateObj(event, { delegateTarget: element });
     handler.oneOff = handler.oneOff || event.oneOff;
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn);
@@ -28,7 +42,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
     while (target && target !== element) {
       for (const domElement of domElements) {
         if (domElement === target) {
-          event.delegateTarget = target;
+          hydrateObj(event, { delegateTarget: target });
           if (handler.oneOff) {
             EventHandler.off(element, event.type, selector, fn);
           }
@@ -91,7 +105,7 @@ function removeHandler(element, events, typeEvent, handler, delegationSelector) 
 
 function getElementEvents(element) {
   if (!element.vitrusEventRegistry) {
-    element.vitrusEventRegistry = {};
+    element.vitrusEventRegistry = [];
   }
   return element.vitrusEventRegistry;
 }
@@ -138,23 +152,13 @@ const EventHandler = {
     }
     const typeEvent = getTypeEvent(event);
     const inNamespace = event !== typeEvent;
-    let defaultPrevented = false;
-    const evt = new Event(event, { bubbles: true, cancelable: true });
-    evt.preventDefault = function preventDefault() {
-      defaultPrevented = true;
-      Event.prototype.preventDefault.call(this);
-    };
-    if (args) {
-      for (const [key, value] of Object.entries(args)) {
-        Object.defineProperty(evt, key, { value, configurable: true });
-      }
-    }
+    const evt = hydrateObj(new Event(event, { bubbles: true, cancelable: true }), args);
     element.dispatchEvent(evt);
     if (inNamespace) {
       const namespaceEvent = new Event(typeEvent, { bubbles: true, cancelable: true });
       element.dispatchEvent(namespaceEvent);
     }
-    return !defaultPrevented;
+    return evt;
   },
 };
 

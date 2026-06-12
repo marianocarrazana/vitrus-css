@@ -63,6 +63,6 @@ function getElementFromDismissTrigger(trigger) {
   return trigger.closest('.alert');
 }
 
-EventHandler.on(document, 'click', Alert.dataApiClickHandler, '[data-vitrus-dismiss="alert"]');
+EventHandler.on(document, 'click', '[data-vitrus-dismiss="alert"]', Alert.dataApiClickHandler);
 
 export default Alert;

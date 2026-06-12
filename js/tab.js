@@ -170,6 +170,6 @@ class Tab extends BaseComponent {
 }
 
 EventHandler.on(document, 'click', Tab.dataApiClickHandler);
-EventHandler.on(document, 'keydown', Tab.dataApiKeydownHandler, SELECTOR_INNER);
+EventHandler.on(document, 'keydown', SELECTOR_INNER, Tab.dataApiKeydownHandler);
 
 export default Tab;

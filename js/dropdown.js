@@ -225,7 +225,7 @@ class Dropdown extends BaseComponent {
 
 EventHandler.on(document, EVENT_CLICK, Dropdown.clearMenus);
 EventHandler.on(document, 'keyup', Dropdown.clearMenus);
-EventHandler.on(document, EVENT_KEYDOWN, Dropdown.dataApiKeydownHandler, '[data-vitrus-toggle="dropdown"]');
+EventHandler.on(document, EVENT_KEYDOWN, '[data-vitrus-toggle="dropdown"]', Dropdown.dataApiKeydownHandler);
 EventHandler.on(document, EVENT_CLICK, (event) => {
   const toggle = event.target.closest('[data-vitrus-toggle="dropdown"]');
   if (!toggle) {
