@@ -7,7 +7,7 @@
 // points to the right place.
 
 import { fileURLToPath } from 'node:url';
-import { existsSync, lstatSync, symlinkSync, unlinkSync } from 'node:fs';
+import { existsSync, lstatSync, mkdirSync, symlinkSync, unlinkSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -39,6 +39,7 @@ try {
     log(`docs-dist/css exists and is not a symlink; please remove it manually`);
     process.exit(0);
   }
+  mkdirSync(dirname(linkPath), { recursive: true });
   symlinkSync(target, linkPath, 'dir');
   log(`created docs-dist/css → ${target}`);
 } catch (err) {
