@@ -7,13 +7,17 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-// --- Page background (static gradient so the glass effect is visible) ------
+// --- Page background (fixed image + tint so the glass effect is visible) ---
 body.docs-body {
   position: relative;
   min-height: 100vh;
   padding-top: var(--docs-header-height);
-  background: var(--docs-page-bg);
-  background-attachment: fixed;
+  background-color: var(--docs-page-bg-fallback);
+  background-image: var(--docs-page-bg-overlay), var(--docs-page-bg-image);
+  background-position: center center, center center;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
   color: var(--docs-fg);
 }
 
@@ -591,7 +595,7 @@ body.docs-body {
 }
 
 // --- Inline code outside of pre blocks -------------------------------------
-:not(pre) > code {
+:not(pre)>code {
   padding: 0.15em 0.4em;
   font-size: 0.875em;
   color: var(--docs-inline-code-fg);

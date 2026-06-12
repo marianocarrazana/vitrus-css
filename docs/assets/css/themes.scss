@@ -7,13 +7,14 @@
   --docs-header-height: 3.5rem;
   --docs-sidebar-width: 15rem;
   --docs-toc-width: 13.75rem;
-  --docs-page-bg:
-    radial-gradient(at 18% 22%, rgba(99, 102, 241, 0.55) 0, transparent 45%),
-    radial-gradient(at 82% 18%, rgba(139, 92, 246, 0.55) 0, transparent 45%),
-    radial-gradient(at 78% 82%, rgba(16, 185, 129, 0.5) 0, transparent 45%),
-    radial-gradient(at 18% 88%, rgba(245, 158, 11, 0.45) 0, transparent 45%),
-    radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.35) 0, transparent 60%),
-    linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #0f172a 100%);
+
+  // Placeholder: replace docs/assets/images/docs-page-bg.jpg (Unsplash, free license).
+  --docs-page-bg-image: url("../images/docs-page-bg.jpg");
+  --docs-page-bg-fallback: #0f172a;
+  --docs-page-bg-overlay: linear-gradient(
+    rgba(15, 23, 42, 0.15),
+    rgba(15, 23, 42, 0.3)
+  );
   --docs-fg: #f1f5f9;
   --docs-fg-strong: #fff;
   --docs-fg-muted: rgba(241, 245, 249, 0.75);
@@ -50,22 +51,18 @@
 }
 
 [data-vitrus-theme="default"] {
-  --docs-page-bg:
-    radial-gradient(at 18% 22%, rgba(99, 102, 241, 0.55) 0, transparent 45%),
-    radial-gradient(at 82% 18%, rgba(139, 92, 246, 0.55) 0, transparent 45%),
-    radial-gradient(at 78% 82%, rgba(16, 185, 129, 0.5) 0, transparent 45%),
-    radial-gradient(at 18% 88%, rgba(245, 158, 11, 0.45) 0, transparent 45%),
-    radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.35) 0, transparent 60%),
-    linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #0f172a 100%);
+  --docs-page-bg-overlay: linear-gradient(
+    rgba(15, 23, 42, 0.15),
+    rgba(15, 23, 42, 0.3)
+  );
 }
 
 [data-vitrus-theme="frost"] {
-  --docs-page-bg:
-    radial-gradient(at 20% 25%, rgba(99, 102, 241, 0.35) 0, transparent 50%),
-    radial-gradient(at 80% 20%, rgba(139, 92, 246, 0.3) 0, transparent 50%),
-    radial-gradient(at 75% 80%, rgba(16, 185, 129, 0.28) 0, transparent 50%),
-    radial-gradient(at 15% 85%, rgba(245, 158, 11, 0.25) 0, transparent 50%),
-    linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f1f5f9 100%);
+  --docs-page-bg-fallback: #f1f5f9;
+  --docs-page-bg-overlay: linear-gradient(
+    rgba(248, 250, 252, 0.5),
+    rgba(241, 245, 249, 0.65)
+  );
   --docs-fg: #0f172a;
   --docs-fg-strong: #020617;
   --docs-fg-muted: rgba(15, 23, 42, 0.75);
@@ -102,11 +99,11 @@
 }
 
 [data-vitrus-theme="crystal"] {
-  --docs-page-bg:
-    radial-gradient(at 25% 30%, rgba(6, 182, 212, 0.3) 0, transparent 50%),
-    radial-gradient(at 75% 25%, rgba(99, 102, 241, 0.25) 0, transparent 50%),
-    radial-gradient(at 70% 75%, rgba(16, 185, 129, 0.22) 0, transparent 50%),
-    linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 50%, #e0e7ff 100%);
+  --docs-page-bg-fallback: #e2e8f0;
+  --docs-page-bg-overlay: linear-gradient(
+    rgba(241, 245, 249, 0.45),
+    rgba(224, 231, 255, 0.6)
+  );
   --docs-fg: #0f172a;
   --docs-fg-strong: #020617;
   --docs-fg-muted: rgba(15, 23, 42, 0.8);
@@ -143,12 +140,11 @@
 }
 
 [data-vitrus-theme="midnight"] {
-  --docs-page-bg:
-    radial-gradient(at 18% 22%, rgba(99, 102, 241, 0.35) 0, transparent 45%),
-    radial-gradient(at 82% 18%, rgba(139, 92, 246, 0.3) 0, transparent 45%),
-    radial-gradient(at 78% 82%, rgba(16, 185, 129, 0.25) 0, transparent 45%),
-    radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.2) 0, transparent 60%),
-    linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
+  --docs-page-bg-fallback: #020617;
+  --docs-page-bg-overlay: linear-gradient(
+    rgba(2, 6, 23, 0.4),
+    rgba(15, 23, 42, 0.55)
+  );
   --docs-header-bg: rgba(2, 6, 23, 0.82);
   --docs-sidebar-bg: rgba(2, 6, 23, 0.65);
   --docs-toc-bg: rgba(2, 6, 23, 0.5);
